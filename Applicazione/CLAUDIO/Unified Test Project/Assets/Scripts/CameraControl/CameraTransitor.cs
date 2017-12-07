@@ -30,8 +30,14 @@ public class CameraTransitor : MonoBehaviour {
         set { m_active = value; }
     }
 
-	// Use this for initialization
-	void Start () {
+    public bool forward
+    {
+        get { return m_forward; }
+        set { m_forward = value; }
+    }
+
+    // Use this for initialization
+    void Start () {
         if (m_transitionList != null && m_transitionList.Count >= 2)
             m_initialized = true;
         else
@@ -54,9 +60,11 @@ public class CameraTransitor : MonoBehaviour {
                 m_currentTransitionPoint = 1f;
             }
 
-            if ( (m_currentTransitionIndex + 1 < m_transitionList.Count) && (m_currentTransitionIndex >= 0) )
+
+
+            if ((m_currentTransitionIndex + 1 < m_transitionList.Count) && (m_currentTransitionIndex >= 0))
             {
-                
+
                 var currentTransition = m_transitionList[m_currentTransitionIndex];
                 var nextTransition = m_transitionList[m_currentTransitionIndex + 1];
 
@@ -68,14 +76,38 @@ public class CameraTransitor : MonoBehaviour {
                 m_currentTransitionPoint = Mathf.Clamp(m_currentTransitionPoint, 0f, 1f);
 
                 transform.position = Vector3.Lerp(currentTransition.transitionPoint.transform.position,
-                                                    nextTransition.transitionPoint.transform.position,
+                                        nextTransition.transitionPoint.transform.position,
+                                        m_currentTransitionPoint);
+
+                transform.localRotation = Quaternion.Lerp(currentTransition.transitionPoint.transform.rotation,
+                                                    nextTransition.transitionPoint.transform.rotation,
                                                     m_currentTransitionPoint);
+            }
+            else if (m_currentTransitionIndex + 1 >= m_transitionList.Count)
+            {
+                var currentTransition = m_transitionList[m_transitionList.Count - 2];
+                var nextTransition = m_transitionList[m_transitionList.Count - 1];
 
-                transform.localRotation = Quaternion.Lerp(currentTransition.transitionPoint.transform.localRotation,
-                                                    nextTransition.transitionPoint.transform.localRotation,
-                                                    m_currentTransitionPoint);
+                transform.position = Vector3.Lerp(currentTransition.transitionPoint.transform.position,
+                                        nextTransition.transitionPoint.transform.position,
+                                        1f);
 
+                transform.localRotation = Quaternion.Lerp(currentTransition.transitionPoint.transform.rotation,
+                                                    nextTransition.transitionPoint.transform.rotation,
+                                                    1f);
+            }
+            else if(m_currentTransitionIndex < 0)
+            {
+                    var currentTransition = m_transitionList[0];
+                    var nextTransition = m_transitionList[1];
 
+                    transform.position = Vector3.Lerp(currentTransition.transitionPoint.transform.position,
+                                            nextTransition.transitionPoint.transform.position,
+                                            0f);
+
+                    transform.localRotation = Quaternion.Lerp(currentTransition.transitionPoint.transform.rotation,
+                                                        nextTransition.transitionPoint.transform.rotation,
+                                                        0f);
             }
 
 

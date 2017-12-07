@@ -19,20 +19,22 @@ public class LaserBehaviour : MonoBehaviour {
     float m_rayLenght;                          //lunghezza attuale del laser
 
     GameObject m_laser;                         //gameobject che rappresenta un cilindro con materiale emettente per fare il laser, usato per prova
-    Camera m_camera;
+    
 
-	// Inizializza l'oggetto laser prendendo il primo figlio (se ne aggiungi altri ricorda questo dettaglio)
-	void Awake () {
+    public bool controlled{ get { return m_controlled; }
+                            set { m_controlled = value; }
+    }
+
+    // Inizializza l'oggetto laser prendendo il primo figlio (se ne aggiungi altri ricorda questo dettaglio)
+    void Awake() {
         m_laser = transform.GetChild(0).gameObject;
         if (m_laser == null)
             Debug.LogError("Impossible to find laser!");
-        m_camera = GetComponentInChildren<Camera>();
-        if (m_camera == null)
-            Debug.LogError("Impossible to find camera!");
+        
     }
-	
-	// Nell'update chiamo 3 funzioni, controlla quello che fanno nella loro dichiarazione sotto
-	void Update () {
+
+    // Nell'update chiamo 3 funzioni, controlla quello che fanno nella loro dichiarazione sotto
+    void Update() {
         if (m_controlled)
             InputManager();
         RayCast();
@@ -83,9 +85,11 @@ public class LaserBehaviour : MonoBehaviour {
      */
     private void ChangeLaser()
     {
-        Vector3 newPosition = new Vector3(0, 0, m_rayLenght/2);
-        Vector3 newScale = new Vector3(0.05f, m_rayLenght/2, 0.05f);
+        Vector3 newPosition = new Vector3(0, 0, m_rayLenght / 2);
+        Vector3 newScale = new Vector3(0.05f, m_rayLenght / 2, 0.05f);
         m_laser.transform.localPosition = newPosition;
         m_laser.transform.localScale = newScale;
     }
+
+
 }
