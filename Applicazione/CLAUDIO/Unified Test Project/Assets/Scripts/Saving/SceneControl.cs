@@ -45,10 +45,10 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Reload")) {
+        /*if (Input.GetButtonDown("Reload")) {
 
             SceneManager.LoadScene(m_currentSceneIndex);
-        }
+        }*/
             
     }
 
@@ -99,7 +99,7 @@ public class SceneControl : MonoBehaviour
             file.Close();
         }
         else
-            Debug.LogError("Impossible to load save data");
+            Debug.Log("Impossible to load save data");
     }
 
     //scene loading

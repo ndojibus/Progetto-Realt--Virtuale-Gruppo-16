@@ -500,11 +500,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239151950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13eb253114017734f9876e2cf1c091a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_timerTime: 1
 --- !u!65 &239151952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -773,11 +774,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 348675629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13eb253114017734f9876e2cf1c091a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_timerTime: 1
 --- !u!1001 &375261839
 Prefab:
   m_ObjectHideFlags: 0
