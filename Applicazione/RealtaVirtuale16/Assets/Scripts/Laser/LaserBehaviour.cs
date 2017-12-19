@@ -16,6 +16,12 @@ public class LaserBehaviour : MonoBehaviour {
     [SerializeField]
     bool m_controlled = false;
 
+    [SerializeField]
+    float m_rayDistance = 0.2f;
+
+    [SerializeField]
+    float m_rayThickness = 0.2f;
+
     float m_rayLenght;                          //lunghezza attuale del laser
 
     GameObject m_laser;                         //gameobject che rappresenta un cilindro con materiale emettente per fare il laser, usato per prova
@@ -85,8 +91,8 @@ public class LaserBehaviour : MonoBehaviour {
      */
     private void ChangeLaser()
     {
-        Vector3 newPosition = new Vector3(0, 0, m_rayLenght / 2);
-        Vector3 newScale = new Vector3(0.05f, m_rayLenght / 2, 0.05f);
+        Vector3 newPosition = new Vector3(0, 0, m_rayLenght / 2 + m_rayDistance);
+        Vector3 newScale = new Vector3(m_rayThickness, m_rayLenght / 2 - m_rayDistance, m_rayThickness);
         m_laser.transform.localPosition = newPosition;
         m_laser.transform.localScale = newScale;
     }
