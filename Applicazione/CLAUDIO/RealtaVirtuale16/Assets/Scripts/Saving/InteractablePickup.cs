@@ -58,7 +58,10 @@ public class InteractablePickup : InteractableObject_Abstract
                     m_actionText.text = m_action;
             }
             else
+            {
+                m_playerHasObject = true;
                 m_actionText.text = "PRENDI";
+            }
 
             m_descriptionText.text = m_description;
 
@@ -67,5 +70,33 @@ public class InteractablePickup : InteractableObject_Abstract
 
             m_examining = false;
         }
+    }
+    protected override void timerEndActions()
+    {
+        if (m_playerHasObject)
+            m_actionDone = true;
+        switchControls();
+        switchCameras();
+    }
+    protected override void transitionOutActions()
+    {
+        m_camerasInTransition = true;
+    }
+    protected override void endingClickActions() {
+        if (m_playerHasObject)
+        {
+            m_item.SetActive(!m_item.activeSelf);
+            if (!m_picking)
+                m_inventory.deleteItem(m_itemID);
+            else
+                m_inventory.addItem(m_itemID);
+        }
+        else if (!m_examining)
+            m_examining = true;
+    }
+
+    public override bool loadData(int t_key, ulong t_data)
+    {
+        return base.loadData(t_key, t_data);
     }
 }

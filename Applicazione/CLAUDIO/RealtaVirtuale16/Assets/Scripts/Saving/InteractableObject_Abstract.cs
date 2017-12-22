@@ -23,6 +23,7 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected Text m_descriptionText;
     protected bool m_activated = false;
     protected bool m_camerasInTransition = false;
+    protected bool m_actionDone = false;
     protected Camera m_mainCamera;
     protected Camera m_objectCamera;
     protected CameraTransitor m_transitor;
@@ -91,7 +92,8 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected void OnTriggerStay(Collider other)
     {
         if ((other.tag == "Player")
-            && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
+            && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f)
+            && !m_actionDone)
         {
             setActionText();
 
@@ -109,43 +111,51 @@ public abstract class InteractableObject_Abstract : PersistentData
     // Update is called once per frame
     protected void Update()
     {
-        objectControl();
-        if (m_camerasInTransition)
+        if (!m_actionDone)
         {
-            m_descriptionText.text = "";
-            m_actionText.text = "";
-
-            m_timer -= Time.deltaTime;
-            if (m_timer <= 0f)
+            objectControl();
+            if (m_camerasInTransition)
             {
-                timerEndActions();
+                m_descriptionText.text = "";
+                m_actionText.text = "";
 
-                m_timer = m_cameraSwitchTime;
-                m_camerasInTransition = false;
+                m_timer -= Time.deltaTime;
+                if (m_timer <= 0f)
+                {
+                    timerEndActions();
+
+                    m_timer = m_cameraSwitchTime;
+                    m_camerasInTransition = false;
+                }
             }
-        }
-        else if (Input.GetButtonDown("Fire1") && m_activated)
-        {
-            if (m_mainCamera.enabled)
+            else if (Input.GetButtonDown("Fire1") && m_activated)
             {
-                transitionInActions();
+                if (m_mainCamera.enabled)
+                {
+                    transitionInActions();
+                }
+                else
+                {
+                    transitionOutActions();
+                }
+
+                m_transitor.forward = !m_transitor.forward;
+
+
+                m_actionCanvas.alpha = 0;
+                m_activated = false;
+
+                endingClickActions();
             }
-            else
-            {
-                transitionOutActions();
-            }
-
-            m_transitor.forward = !m_transitor.forward;
-
-
-            m_actionCanvas.alpha = 0;
-            m_activated = false;
         }
     }
 
     protected abstract void setActionText();
     protected abstract void objectControl();
-    protected abstract void timerEndActions();
+
+    protected virtual void timerEndActions() {
+        switchCameras();
+    }
 
     protected virtual void transitionInActions() {
         switchCameras();
@@ -156,6 +166,8 @@ public abstract class InteractableObject_Abstract : PersistentData
         switchControls();
         m_camerasInTransition = true;
     }
+
+    protected abstract void endingClickActions();
 
     protected virtual void switchCameras()
     {
