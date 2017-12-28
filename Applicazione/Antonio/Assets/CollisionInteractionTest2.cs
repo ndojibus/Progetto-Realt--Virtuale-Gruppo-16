@@ -70,7 +70,7 @@ public class CollisionInteractionTest2 : MonoBehaviour {
 
 
 
-            Debug.Log("Premuto");
+            
             //cancello il bottone
 
             Destroy(instanceTextRaccogliRubino.gameObject);
@@ -90,9 +90,9 @@ public class CollisionInteractionTest2 : MonoBehaviour {
                 //se c'è il rubino lo rimuovo
                 if (uiElement.tag == "rubinoInventario")
                 {
-                    Debug.Log("trovato");
+                    
                     Destroy(uiElement.gameObject);
-                    Debug.Log("eliminato ui element");
+                    
 
                 }
 
@@ -112,7 +112,7 @@ public class CollisionInteractionTest2 : MonoBehaviour {
             //cancello il testo
 
             Destroy(instanceTextInserisciRubino.gameObject);
-            Debug.Log("Premuto");
+           
 
 
         }
