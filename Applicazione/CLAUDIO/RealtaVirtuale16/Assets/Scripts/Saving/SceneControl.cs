@@ -67,6 +67,10 @@ public class SceneControl : MonoBehaviour
         file.Close();
     }
 
+	public void ReloadScene(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
     public void Load() {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
             BinaryFormatter bf = new BinaryFormatter();

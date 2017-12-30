@@ -11,6 +11,9 @@ public class InteractablePickup : InteractableObject_Abstract
     [SerializeField]
     UInt64 m_itemID = 0;
 
+	[SerializeField]
+	InteractableObject_Abstract m_nextBehaviour;
+
     [SerializeField]
     bool m_picking = false;
 
@@ -25,6 +28,9 @@ public class InteractablePickup : InteractableObject_Abstract
         if (m_item == null)
             Debug.LogError("Select an item!");
 
+		if (m_nextBehaviour == null && m_picking)
+			Debug.LogError("Select the next behaviour!");
+
         GameObject sceneManager = GameObject.Find("SceneManager");
         if (sceneManager != null)
         {
@@ -38,7 +44,11 @@ public class InteractablePickup : InteractableObject_Abstract
 
     // Update is called once per frame
     void Update () {
-        base.Update();
+		if (m_actionDone && !m_picking) {
+			m_nextBehaviour.enabled = true;
+			this.enabled = false;
+		}
+		base.Update();
 	}
 
     protected override void setActionText() {
@@ -73,15 +83,19 @@ public class InteractablePickup : InteractableObject_Abstract
     }
     protected override void timerEndActions()
     {
-        if (m_playerHasObject)
-            m_actionDone = true;
         switchControls();
         switchCameras();
+		if (m_playerHasObject) {
+			m_actionDone = true;
+			m_transitor.enabled = false;
+		}
     }
+
     protected override void transitionOutActions()
     {
         m_camerasInTransition = true;
     }
+
     protected override void endingClickActions() {
         if (m_playerHasObject)
         {

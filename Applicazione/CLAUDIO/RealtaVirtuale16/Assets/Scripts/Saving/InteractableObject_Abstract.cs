@@ -113,8 +113,12 @@ public abstract class InteractableObject_Abstract : PersistentData
     {
         if (!m_actionDone)
         {
+			if (!m_transitor.enabled)
+				m_transitor.enabled = true;
+
             objectControl();
-            if (m_camerasInTransition)
+            
+			if (m_camerasInTransition)
             {
                 m_descriptionText.text = "";
                 m_actionText.text = "";
