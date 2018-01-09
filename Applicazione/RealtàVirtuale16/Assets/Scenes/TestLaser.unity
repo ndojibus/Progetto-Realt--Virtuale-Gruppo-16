@@ -167,6 +167,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &80339482 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1891695895884796, guid: d52abd5b130e440489251e825fc535da,
+    type: 2}
+  m_PrefabInternal: {fileID: 129957131}
 --- !u!1 &83629134
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +304,26 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329480089518074, guid: d52abd5b130e440489251e825fc535da,
+        type: 2}
+      propertyPath: m_transitionList.Array.data[1].transitionPoint
+      value: 
+      objectReference: {fileID: 80339482}
+    - target: {fileID: 114329480089518074, guid: d52abd5b130e440489251e825fc535da,
+        type: 2}
+      propertyPath: m_transitionList.Array.data[1].transitionSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329480089518074, guid: d52abd5b130e440489251e825fc535da,
+        type: 2}
+      propertyPath: m_forward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329480089518074, guid: d52abd5b130e440489251e825fc535da,
+        type: 2}
+      propertyPath: m_transitorID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d52abd5b130e440489251e825fc535da, type: 2}
@@ -464,7 +489,7 @@ Prefab:
     - target: {fileID: 224251811974293948, guid: 017637aca5e41ac499c2696e749ec4ce,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 644.5
+      value: 617
       objectReference: {fileID: 0}
     - target: {fileID: 224251811974293948, guid: 017637aca5e41ac499c2696e749ec4ce,
         type: 2}
@@ -1110,39 +1135,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.23
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.95
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalPosition.z
       value: 9.986
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.000000074505806
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4746808244055684, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
+    - target: {fileID: 4128979184384518, guid: a15957aacf51cda4ca2c0bf1dda1a1b9, type: 2}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114402596905539268, guid: a15957aacf51cda4ca2c0bf1dda1a1b9,
+    - target: {fileID: 114966618038511738, guid: a15957aacf51cda4ca2c0bf1dda1a1b9,
+        type: 2}
+      propertyPath: m_transitionList.Array.data[0].transitionPoint
+      value: 
+      objectReference: {fileID: 282067318}
+    - target: {fileID: 114518949718211492, guid: a15957aacf51cda4ca2c0bf1dda1a1b9,
         type: 2}
       propertyPath: m_doorObject
       value: 
