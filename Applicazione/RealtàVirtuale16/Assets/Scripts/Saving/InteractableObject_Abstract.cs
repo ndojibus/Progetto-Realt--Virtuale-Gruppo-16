@@ -10,9 +10,6 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected string m_description;               //il testo descrittivo sulla GUI
 
     [SerializeField]
-    protected string m_action;                    //il testo che indica al giocatore cosa fare nella GUI
-
-    [SerializeField]
     protected float m_cameraSwitchTime;      //quanto deve rimanere in transizione la camera prima di switchare al ritorno
 
     [SerializeField]
