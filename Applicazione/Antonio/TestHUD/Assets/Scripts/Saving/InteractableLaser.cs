@@ -116,6 +116,7 @@ public class InteractableLaser : InteractableObject_Abstract {
         else if (equiped && inspectMode)
         {
             inspectText.text = "Premi A e D per Ruotare";
+            toggleDescriptionPanel(false);
             toggleInspectPanel(true);
 
         }

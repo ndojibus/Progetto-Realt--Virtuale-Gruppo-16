@@ -253,6 +253,18 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     }
 
+    protected void toggleDescriptionPanel(bool active)
+    {
+
+        if (descriptionPanel.activeSelf != active)
+        {
+            descriptionPanel.SetActive(!descriptionPanel.activeSelf);
+            m_activated = descriptionPanel.activeSelf;
+
+        }
+
+    }
+
     //Attiva/disattiva il inspect mode, cioè pannello descrizione e pannello continue
     protected void ToggleInspectMode(bool active)
     {
