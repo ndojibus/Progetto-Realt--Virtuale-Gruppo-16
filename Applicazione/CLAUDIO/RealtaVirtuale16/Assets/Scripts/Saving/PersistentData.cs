@@ -37,7 +37,7 @@ public abstract class PersistentData : MonoBehaviour
                                    set { m_dataValues = value; }}
     public PersistentData() {  }
 
-    void Awake()
+    protected void Awake()
     {
         m_objectNumberKey = objectCount++;
         m_dataValues = new List<Data>();
@@ -47,6 +47,7 @@ public abstract class PersistentData : MonoBehaviour
 
     //remember: t_key should be < 0
     public virtual void createData(UInt64 t_data) {
+
         Data newData = new Data( (10 * m_actualKey + m_indexKey++), t_data);
         if (m_dataValues.Count < 10)
         {

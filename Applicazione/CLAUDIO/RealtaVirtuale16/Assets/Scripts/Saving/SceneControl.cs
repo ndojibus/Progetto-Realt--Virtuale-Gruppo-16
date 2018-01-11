@@ -45,10 +45,10 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetButtonDown("Reload")) {
-
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneControl.sceneControl.Save();
             SceneManager.LoadScene(m_currentSceneIndex);
-        }*/
+        }
             
     }
 
@@ -130,6 +130,6 @@ public class SceneControl : MonoBehaviour
             m_persistentObjectList.Add(persistent.objectKey, persistent);
         }
 
-        Invoke("Load", 1);
+        Invoke("Load", 0.1f);
     }
 }
