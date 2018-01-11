@@ -26,9 +26,7 @@ public class InteractableLaser : InteractableObject_Abstract {
     // Use this for initialization
     protected void Start () {
 		base.Start ();
-
-
-        
+      
         //m_item.SetActive(true);
         m_equiped = false;
         m_inspectMode = false;
@@ -73,9 +71,8 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_item.SetActive(true);
 
         m_equiped = true;
-
-        toggleInspectPanel(false);
-        toggleDescriptionPanel(false);
+        m_uiManager.ToggleActionPanel(false);
+        m_uiManager.ToggleDescriptionPanel(false);
 
         saveData(0, 1);     //inserisci il rubino, index 0 diventa 1
 
@@ -90,30 +87,32 @@ public class InteractableLaser : InteractableObject_Abstract {
     {
         if(!m_equiped && !m_inspectMode)
         {
-
-            m_inspectText.text = "Premi E per Esaminare";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Esaminare");
+            m_uiManager.ToggleActionPanel(true);
+            
         }else if (m_equiped && !m_inspectMode)
         {
-            m_inspectText.text = "Premi E per Ruotare la Base";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Ruotare la Base");
+            m_uiManager.ToggleActionPanel(true);
+
 
         }else if (m_inspectMode && m_inventory.HasRuby())
         {
-            m_inspectText.text = "Premi E per Inserire";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Inserire");
+            m_uiManager.ToggleActionPanel(true);
+            
 
         }
         else if (m_equiped && m_inspectMode)
         {
-            m_inspectText.text = "Premi A e D per Ruotare";
-            toggleDescriptionPanel(false);
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi A e D per Ruotare");
+            m_uiManager.ToggleActionPanel(true);
+            m_uiManager.ToggleDescriptionPanel(false);
 
         }
         else 
         {
-            toggleInspectPanel(false);
+            m_uiManager.ToggleActionPanel(false);
         }
     }
 

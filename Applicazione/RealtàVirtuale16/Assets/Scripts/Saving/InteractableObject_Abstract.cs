@@ -23,13 +23,9 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected ThirdPersonUserControl m_userControl;
     protected GameObject m_player;
     protected Canvas m_hudCanvas;
+    protected UIManager m_uiManager;
     protected GameObject m_inventoryPanel;
-    protected GameObject m_inspectPanel;
-    protected Text m_inspectText;
-    protected GameObject m_descriptionPanel;
-    protected Text m_descriptionText;
-    protected GameObject m_continuePanel;
-    protected Text m_continueText;
+    
 
     protected PlayerInventory m_inventory;
 
@@ -45,39 +41,17 @@ public abstract class InteractableObject_Abstract : PersistentData
         base.Awake();
         //aggiunto io test
         GameObject canvas = GameObject.Find("HUDCanvas");
+        
         if (canvas != null)
         {
+            m_uiManager = canvas.GetComponentInChildren<UIManager>();
 
-            m_inspectPanel = canvas.transform.Find("InspectPanel").gameObject;
-            m_inspectText = m_inspectPanel.GetComponentInChildren<Text>();
-            if (m_inspectPanel == null || m_inspectText== null)
-                Debug.LogError("Impossible to find inspect!");
-            else
+            if (m_uiManager == null)
             {
-                m_inspectPanel.SetActive(false);
+                Debug.LogError("Impossible to find UI Manager!");
 
             }
-
-            m_descriptionPanel = canvas.transform.Find("DescriptionPanel").gameObject;
-            m_descriptionText = m_descriptionPanel.GetComponentInChildren<Text>();
-            if (m_descriptionPanel == null || m_descriptionText == null)
-                Debug.LogError("Impossible to find description!");
-            else
-            {
-                m_descriptionPanel.SetActive(false);
-
-            }
-
-            m_continuePanel = canvas.transform.Find("ContinuePanel").gameObject;
-            m_continueText = m_continuePanel.GetComponentInChildren<Text>();
-            if (m_continuePanel == null || m_continueText == null)
-                Debug.LogError("Impossible to find continue!");
-            else
-            {
-                m_continuePanel.SetActive(false);
-
-            }
-
+            
             m_inventory = canvas.GetComponentInChildren<PlayerInventory>();
             if (m_inventory == null)
                 Debug.LogError("Impossible to find a PlayerInventory!");
@@ -122,6 +96,11 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected void Start () {
         m_timer = m_cameraSwitchTime;
 
+        m_uiManager.SetDescriptionText(m_description);
+        
+        
+
+
         int i;
         for (i = 0; i < m_transitors.Length; i++)
         {
@@ -135,7 +114,7 @@ public abstract class InteractableObject_Abstract : PersistentData
             Debug.LogError("Impossible to find camera transitor!");     
     }
 
-     protected void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" && !m_inspectMode
            && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
@@ -158,51 +137,19 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected void OnTriggerExit(Collider other)
     {
 
-        toggleInspectPanel(false);
-        
-    }
-
-    //Attiva/disattiva il pannello Inspect
-    protected void toggleInspectPanel(bool active)
-    {
-
-        if(m_inspectPanel.activeSelf!= active)
-        {
-            m_inspectPanel.SetActive(!m_inspectPanel.activeSelf);
-
-        }
+        m_uiManager.ToggleActionPanel(false);
 
     }
 
-    protected void toggleDescriptionPanel(bool active)
-    {
+    
 
-        if (m_descriptionPanel.activeSelf != active)
-        {
-            m_descriptionPanel.SetActive(!m_descriptionPanel.activeSelf);
-        }
-
-    }
+   
 
     //Attiva/disattiva il inspect mode, cioè pannello descrizione e pannello continue
     protected void ToggleInspectMode(bool active)
     {
 
-        
-
-        if(m_continuePanel.activeSelf != active)
-        {
-            m_continuePanel.SetActive(!m_continuePanel.activeSelf);
-  
-        }
-
-        if (m_descriptionPanel.activeSelf != active)
-        {
-            m_descriptionText.text = m_description;
-            m_descriptionPanel.SetActive(!m_descriptionPanel.activeSelf);
-            
-
-        }
+        m_uiManager.ToggleInspectModeUI(active);
 
         m_inspectMode = active;
 
@@ -277,8 +224,6 @@ public abstract class InteractableObject_Abstract : PersistentData
         m_objectCamera.enabled = !m_objectCamera.enabled;       
 
     }
-
-
 
     protected virtual void SwitchControls()
     {

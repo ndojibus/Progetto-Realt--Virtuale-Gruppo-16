@@ -5,14 +5,12 @@ using UnityEngine;
 public class InteractableDescription : InteractableObject_Abstract
 {
 
-    GameObject m_item;
+    
 
     // Use this for initialization
     void Start()
     {
         base.Start();
-
-        m_descriptionText.text = m_description;
 
         m_equiped = true;
     }
@@ -30,12 +28,14 @@ public class InteractableDescription : InteractableObject_Abstract
     {
         if (!m_inspectMode)
         {
-            m_inspectText.text = "Premi E per Esaminare";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Esaminare");
+            m_uiManager.ToggleActionPanel(true);
+            
+            
         }
         else
         {
-            toggleInspectPanel(false);
+            m_uiManager.ToggleActionPanel(false);
 
         }
     }
@@ -51,7 +51,7 @@ public class InteractableDescription : InteractableObject_Abstract
     protected override void transitionInActions()
     {
         base.transitionInActions();
-        toggleInspectPanel(false);
+        m_uiManager.ToggleActionPanel(false);
 
 
 

@@ -219,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -219.30234}
-  m_SizeDelta: {x: 440, y: 132.86823}
+  m_AnchoredPosition: {x: 320, y: -219.5331}
+  m_SizeDelta: {x: 440, y: 133.02206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687608893
 MonoBehaviour:
@@ -915,7 +915,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1050,8 +1050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -86.43411}
-  m_SizeDelta: {x: 440, y: 132.86823}
+  m_AnchoredPosition: {x: 320, y: -86.51103}
+  m_SizeDelta: {x: 440, y: 133.02206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617820388
 MonoBehaviour:
@@ -1325,8 +1325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -348.6822}
-  m_SizeDelta: {x: 440, y: 125.89148}
+  m_AnchoredPosition: {x: 320, y: -349.10568}
+  m_SizeDelta: {x: 440, y: 126.123116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722760242
 MonoBehaviour:

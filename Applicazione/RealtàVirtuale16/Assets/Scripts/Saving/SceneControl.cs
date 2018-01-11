@@ -45,13 +45,17 @@ public class SceneControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.R)) {
+
             SceneControl.sceneControl.Save();
             SceneManager.LoadScene(m_currentSceneIndex);
         }
             
     }
 
+
+    
     public void Save() {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Create);

@@ -12,11 +12,9 @@ public class InteractablePickup : InteractableObject_Abstract
     void Start () {
         base.Start();
 
-        m_descriptionText.text = m_description;
+
 
         m_item = this.transform.Find("Rubino").gameObject;
-        
-
         if (m_item == null)
             Debug.LogError("Select an item!");
 
@@ -63,18 +61,21 @@ public class InteractablePickup : InteractableObject_Abstract
     {
         if (!m_inspectMode)
         {
-            m_inspectText.text = "Premi E per Esaminare";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Esaminare");
+            m_uiManager.ToggleActionPanel(true);
+            
         }
         else if (m_inspectMode && m_equiped)
         {
-            m_inspectText.text = "Premi E per Raccogliere il Rubino";
-            toggleInspectPanel(true);
+            m_uiManager.SetActionText("Premi E per Raccogliere il Rubino");
+            m_uiManager.ToggleActionPanel(true);
+            
 
         }
         else
         {
-            toggleInspectPanel(false);
+            m_uiManager.ToggleActionPanel(false);
+            
 
         }
     }
