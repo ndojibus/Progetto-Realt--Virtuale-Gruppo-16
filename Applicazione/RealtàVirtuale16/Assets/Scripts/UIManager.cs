@@ -132,11 +132,19 @@ public class UIManager : MonoBehaviour {
     //Attiva/disattiva il pannello Inspect
     public void ToggleActionPanel(bool active)
     {
-        if(m_actionPanel== null)
+       
+
+        if (m_actionPanel.activeSelf != active)
         {
-            Debug.Log("");
+            m_actionPanel.SetActive(!m_actionPanel.activeSelf);
+
         }
 
+    }
+
+    public void ToggleActionPanel(bool active, string actionText)
+    {
+        m_actionText.text = actionText;
         if (m_actionPanel.activeSelf != active)
         {
             m_actionPanel.SetActive(!m_actionPanel.activeSelf);
@@ -150,6 +158,7 @@ public class UIManager : MonoBehaviour {
 
         if (m_descriptionPanel.activeSelf != active)
         {
+           
             m_descriptionPanel.SetActive(!m_descriptionPanel.activeSelf);
         }
 
@@ -165,7 +174,7 @@ public class UIManager : MonoBehaviour {
 
     }
 
-    public void ToggleInspectModeUI(bool active)
+    public void ToggleInspectModeUI(bool active, string descriptionText)
     {
 
 
@@ -178,8 +187,9 @@ public class UIManager : MonoBehaviour {
 
         if (m_descriptionPanel.activeSelf != active)
         {
-            
+            m_descriptionText.text = descriptionText;
             m_descriptionPanel.SetActive(!m_descriptionPanel.activeSelf);
+
 
 
         }
