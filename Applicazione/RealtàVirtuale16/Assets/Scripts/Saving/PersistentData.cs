@@ -24,6 +24,10 @@ public class Data {
  *  GameObject che salvano valori in ciascuna. Ricapitolando: 4mln di scene con 100 oggetti da 10 valori ciascuno */
 public abstract class PersistentData : MonoBehaviour
 {
+
+    [SerializeField]
+    int objectID;
+
     int m_objectNumberKey;
 
     List<Data> m_dataValues;
@@ -39,7 +43,7 @@ public abstract class PersistentData : MonoBehaviour
 
     protected void Awake()
     {
-        m_objectNumberKey = objectCount++;
+        m_objectNumberKey = objectID;
         m_dataValues = new List<Data>();
         m_sceneIndex = SceneManager.GetActiveScene().buildIndex;
         m_actualKey = 100 * m_sceneIndex + m_objectNumberKey;

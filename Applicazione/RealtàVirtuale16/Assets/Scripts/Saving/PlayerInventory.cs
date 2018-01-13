@@ -101,8 +101,8 @@ public class PlayerInventory : PersistentData
         bool find = base.loadData(t_key, t_data);
         if (((int)t_data >= 0) && find)
         {
-            //se t_key è 0 allora sta caricando il rubito, se t_data è 1 significa che il rubino è presente nell'inventario
-            if (t_key == 0 && t_data == 1)
+            //se t_key è POI VEDIAMO allora sta caricando il rubino, se t_data è 1 significa che il rubino è presente nell'inventario
+            if (t_data == 1)
                 RubyIco.enabled = true;
         }
         return find;

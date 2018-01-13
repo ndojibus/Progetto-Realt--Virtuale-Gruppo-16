@@ -63,6 +63,7 @@ public class SceneControl : MonoBehaviour
         m_persistentDataList.Clear();
         foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList) {
             foreach (Data data in persistent.Value.objectData) {
+                //Debug.Log("Saved values of key " + data.key + " and value " + data.data + " for object " + persistent.Value.name);
                 m_persistentDataList.Add(data.key, data.data);
             }
         }
@@ -87,7 +88,7 @@ public class SceneControl : MonoBehaviour
             foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList) {
 
                 //1000 index per ogni scena di cui 10 dedicati ad oggetto
-                int minimumKey = 1000 * m_currentSceneIndex + 10 * persistent.Key;
+                int minimumKey = 1000 * m_currentSceneIndex + 10 * (persistent.Key - m_currentSceneIndex * 100);
                 int maximumKey = minimumKey + 10;
 
                 for (; 
@@ -100,7 +101,9 @@ public class SceneControl : MonoBehaviour
 
 
                     if (!persistent.Value.loadData(m_persistentDataList.Keys[i], m_persistentDataList.Values[i]))
-                        Debug.LogError("Impossible to load values of key: " + m_persistentDataList.Keys[i]);
+                        Debug.LogError("Impossible to load values of key " + m_persistentDataList.Keys[i] + " and value "+ m_persistentDataList.Values[i] + " from " + persistent.Value.name);
+                    /*else
+                        Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
                 }
             }
 
