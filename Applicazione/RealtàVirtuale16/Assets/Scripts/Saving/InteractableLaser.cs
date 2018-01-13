@@ -38,29 +38,25 @@ public class InteractableLaser : InteractableObject_Abstract {
 	protected void Update () {
 		base.Update ();
 
-        if (m_equiped != m_item.activeSelf)
-        {
-            m_item.SetActive(m_equiped);
-            m_laser.enabled = m_equiped;
 
-            m_transitors[m_transitorID].enabled = false;
-            m_transitorID = 1;
-            m_transitors[m_transitorID].enabled = true;
-            m_transitors[m_transitorID].forward = false;
-            m_transitor = m_transitors[m_transitorID];
-        }
 
         if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && m_inventory.HasRuby() && !m_camerasInTransition)
         {
 
-
             InsertRuby();
-            //SetAction();
+            UpdateUI();
 
         }
         
     }
 
+    private void EnableLaser()
+    {
+        m_item.SetActive(m_equiped);
+        m_laser.enabled = m_equiped;
+
+        
+    }
 
     private void InsertRuby()
     {
@@ -71,69 +67,92 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_item.SetActive(true);
 
         m_equiped = true;
-        m_uiManager.ToggleActionPanel(false);
-        m_uiManager.ToggleDescriptionPanel(false);
+        
 
         saveData(0, 1);     //inserisci il rubino, index 0 diventa 1
 
         
     }
 
-
-    protected override void objectControl() {
-	}
-
-    protected override void SetAction() 
+    protected override void UpdateUI()
     {
-        if(!m_equiped && !m_inspectMode)
+
+        
+
+        //***NON INSPECT MODE***
+
+        if (!m_inspectMode)
         {
-            m_uiManager.SetActionText("Premi E per Esaminare");
-            m_uiManager.ToggleActionPanel(true);
+            if (!m_equiped)
+            {
+                
+                m_actionText = "Premi E per Esaminare";
+
+            }
+            else
+            {
+                m_actionText = "Premi E per Ruotare la base";
+                             
+            }
+
+        }
+
+        base.UpdateUI();
+        
+        //***INSPECT MODE***
+        if (m_inspectMode)
+        {
             
-        }else if (m_equiped && !m_inspectMode)
-        {
-            m_uiManager.SetActionText("Premi E per Ruotare la Base");
-            m_uiManager.ToggleActionPanel(true);
+            if (m_equiped && !m_laser.enabled)
+            {
+                m_uiManager.ToggleActionPanel(false);
+                m_uiManager.ToggleDescriptionPanel(false);
+            }
+            else if (!m_equiped && m_inventory.HasRuby())
+            {
+                m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
 
+            }
+            else if (m_equiped)
+            {
+                m_uiManager.ToggleActionPanel(true, "Premi A e D per Ruotare");
+                m_uiManager.ToggleDescriptionPanel(false);
 
-        }else if (m_inspectMode && m_inventory.HasRuby())
-        {
-            m_uiManager.SetActionText("Premi E per Inserire");
-            m_uiManager.ToggleActionPanel(true);
-            
+            }
+            else
+            {
+                m_uiManager.ToggleActionPanel(false);
+            }
 
         }
-        else if (m_equiped && m_inspectMode)
-        {
-            m_uiManager.SetActionText("Premi A e D per Ruotare");
-            m_uiManager.ToggleActionPanel(true);
-            m_uiManager.ToggleDescriptionPanel(false);
+        
+        
 
-        }
-        else 
-        {
-            m_uiManager.ToggleActionPanel(false);
-        }
+        
+       
+       
+
+
     }
 
 
-    protected override void transitionOutActions()
-    {
-        base.transitionOutActions();
-        if (m_equiped != m_laser.enabled && m_equiped == true)
-        {
-            m_laser.enabled = m_equiped;
+    
 
-            m_transitors[m_transitorID].enabled = false;
-            m_transitorID = 1;
-            m_transitors[m_transitorID].enabled = true;
-            m_transitor = m_transitors[m_transitorID];
+    
+
+    protected override void TransitionOutActions()
+    {
+        base.TransitionOutActions();
+        if (m_equiped == true && m_equiped != m_laser.enabled)
+        {
+
+            EnableLaser();
+            ChangeTransitor(1);
+ 
         }
     }
 
-    protected override void EndingClickActions() {
-
-	}
+    
 
 	protected override void SwitchControls()
 	{

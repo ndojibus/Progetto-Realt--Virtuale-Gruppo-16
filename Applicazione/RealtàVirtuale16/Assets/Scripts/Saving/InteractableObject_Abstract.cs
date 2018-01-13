@@ -10,6 +10,11 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected string m_description;               //il testo descrittivo sulla GUI
 
     [SerializeField]
+    protected string m_actionText;               //il testo dell'azione della GUIs
+
+
+
+    [SerializeField]
     protected float m_cameraSwitchTime;      //quanto deve rimanere in transizione la camera prima di switchare al ritorno
 
     [SerializeField]
@@ -26,11 +31,14 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected UIManager m_uiManager;
     protected GameObject m_inventoryPanel;
     
+    
 
     protected PlayerInventory m_inventory;
 
     protected bool m_inspectMode;
     protected bool m_equiped;
+
+    private bool m_playerInCollision;
     
 
 
@@ -96,10 +104,7 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected void Start () {
         m_timer = m_cameraSwitchTime;
 
-        m_uiManager.SetDescriptionText(m_description);
         
-        
-
 
         int i;
         for (i = 0; i < m_transitors.Length; i++)
@@ -119,43 +124,53 @@ public abstract class InteractableObject_Abstract : PersistentData
         if (other.tag == "Player" && !m_inspectMode
            && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
         {
-            SetAction();
+            m_playerInCollision = true;
+            
+            UpdateUI();
+           
         }
+
+
         //Se c'è collisione con il player e viene premuto e si passa in inspect mode
         if (other.tag == "Player" && !m_inspectMode && Input.GetKeyDown(KeyCode.E) 
             && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f) )
         {
-            transitionInActions();
-
+            TransitionInActions();
             m_transitor.forward = !m_transitor.forward;
-            SetAction();
+
+            m_inspectMode = true;
+            UpdateUI();
+
+            
+            
         }
     }
-
 
     //Da Cambiare 
     protected void OnTriggerExit(Collider other)
     {
+        if(other.tag == "Player")
+        {
+            m_playerInCollision = false;
+            UpdateUI();
 
-        m_uiManager.ToggleActionPanel(false);
+            m_uiManager.ToggleActionPanel(false);
+        }
+        
 
     }
-
-    
-
-   
 
     //Attiva/disattiva il inspect mode, cioè pannello descrizione e pannello continue
     protected void ToggleInspectMode(bool active)
     {
-
-        m_uiManager.ToggleInspectModeUI(active);
+        
+        
 
         m_inspectMode = active;
 
     }
 
-    protected abstract void SetAction();
+    
 
     // Update is called once per frame
     protected void Update()
@@ -165,10 +180,13 @@ public abstract class InteractableObject_Abstract : PersistentData
         {
             
             
-            transitionOutActions();
-
+            TransitionOutActions();
             m_transitor.forward = !m_transitor.forward;
-            SetAction();
+
+            UpdateUI();
+
+            
+
         }
 
         if (m_camerasInTransition)
@@ -186,31 +204,27 @@ public abstract class InteractableObject_Abstract : PersistentData
         }
     }
 
-    protected abstract void objectControl();
+   
 
-    protected virtual void timerEndActions() {
-        
-    }
-
-    protected virtual void transitionInActions() {
+    protected virtual void TransitionInActions() {
         SwitchCameras();
         SwitchControls();
-        
-        ToggleInspectMode(true);
+
+        m_inspectMode = true;
+        //ToggleInspectMode(true);
 
 
     }
 
-    protected virtual void transitionOutActions() {
+    protected virtual void TransitionOutActions() {
 
         SwitchCameras();
         SwitchControls();
-        
-        ToggleInspectMode(false);
+
+        m_inspectMode = false;
+        //ToggleInspectMode(false);
 
     }
-
-    protected abstract void EndingClickActions();
 
     protected virtual void SwitchCameras()
     {
@@ -230,6 +244,35 @@ public abstract class InteractableObject_Abstract : PersistentData
         //switcha i controlli
         m_userControl.enabled = !m_userControl.enabled;
         m_player.SetActive(!m_player.activeSelf);
+    }
+
+    protected virtual void ChangeTransitor(int transitorID)
+    {
+
+        
+        m_transitors[m_transitorID].enabled = false;
+        m_transitorID = transitorID;
+        m_transitors[m_transitorID].enabled = true;
+        m_transitors[m_transitorID].forward = false;
+        m_transitor = m_transitors[m_transitorID];
+    }
+
+    protected virtual void UpdateUI()
+    {
+
+
+        if (m_playerInCollision)
+        {
+
+            m_uiManager.ToggleActionPanel(true, m_actionText);
+        }
+        else
+        {
+            m_uiManager.ToggleActionPanel(false);
+        }
+
+        m_uiManager.ToggleInspectModeUI(m_inspectMode, m_description);
+
     }
 
     public override bool loadData(int t_key, ulong t_data)

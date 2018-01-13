@@ -37,7 +37,8 @@ public class InteractablePickup : InteractableObject_Abstract
         {
             
             TakeRuby();
-            SetAction();
+            UpdateUI();
+            
 
         }
 
@@ -57,40 +58,34 @@ public class InteractablePickup : InteractableObject_Abstract
         saveData(0, 0);   // salva che il rubino è stato preso
     }
 
-    protected override void SetAction()
-    {
-        if (!m_inspectMode)
-        {
-            m_uiManager.SetActionText("Premi E per Esaminare");
-            m_uiManager.ToggleActionPanel(true);
-            
-        }
-        else if (m_inspectMode && m_equiped)
-        {
-            m_uiManager.SetActionText("Premi E per Raccogliere il Rubino");
-            m_uiManager.ToggleActionPanel(true);
-            
-
-        }
-        else
-        {
-            m_uiManager.ToggleActionPanel(false);
-            
-
-        }
-    }
-
-    
-    protected override void objectControl() {
-    }
-    protected override void timerEndActions()
-    {
-    }
-
     
 
-    protected override void EndingClickActions() {
+    protected override void UpdateUI()
+    {
+
+        // ***NON INSPECT MODE***
+         if (!m_inspectMode)
+        {
+           
+            m_actionText = "Premi E per Esaminare";
+            
+        }
+
+        base.UpdateUI();
+
+        // *** INSPECT MODE ***
+
+        if (m_inspectMode)
+        {
+            if(m_equiped)
+                m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
+            else
+                m_uiManager.ToggleActionPanel(false);
+        }
+      
+
     }
+    
 
     public override bool loadData(int t_key, ulong t_data)
     {

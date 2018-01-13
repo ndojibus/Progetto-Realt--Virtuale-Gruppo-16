@@ -24,42 +24,21 @@ public class InteractableDescription : InteractableObject_Abstract
 
     }
 
-    protected override void SetAction()
+    
+
+    protected override void UpdateUI()
     {
+
         if (!m_inspectMode)
-        {
-            m_uiManager.SetActionText("Premi E per Esaminare");
-            m_uiManager.ToggleActionPanel(true);
-            
-            
-        }
-        else
-        {
+            m_actionText = "Premi E per esaminare";
+
+        base.UpdateUI();
+
+        if(m_inspectMode)
             m_uiManager.ToggleActionPanel(false);
 
-        }
     }
 
-
-    protected override void objectControl()
-    {
-    }
-    protected override void timerEndActions()
-    {
-    }
-
-    protected override void transitionInActions()
-    {
-        base.transitionInActions();
-        m_uiManager.ToggleActionPanel(false);
-
-
-
-    }
-
-    protected override void EndingClickActions()
-    {
-    }
 
     public override bool loadData(int t_key, ulong t_data)
     {
