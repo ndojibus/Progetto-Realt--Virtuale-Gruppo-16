@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Cameras;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public abstract class InteractableObject_Abstract : PersistentData
@@ -22,6 +23,7 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     protected bool m_camerasInTransition = false;
     protected Camera m_mainCamera;
+    protected FreeLookCam m_cameraControls;
     protected Camera m_objectCamera;
     protected CameraTransitor[] m_transitors;
     protected CameraTransitor m_transitor;
@@ -70,6 +72,10 @@ public abstract class InteractableObject_Abstract : PersistentData
         m_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         if (m_mainCamera == null)
             Debug.LogError(this.name + ": " + "Impossible to find MainCamera!");
+
+        m_cameraControls = m_mainCamera.GetComponentInParent<FreeLookCam>();
+        if (m_cameraControls == null)
+            Debug.LogError(this.name + ": " + "Impossible to find FreeLookCam!");
 
         m_objectCamera = GetComponentInChildren<Camera>();
         if (m_objectCamera == null)
@@ -235,6 +241,7 @@ public abstract class InteractableObject_Abstract : PersistentData
 
         
         m_mainCamera.enabled = !m_mainCamera.enabled;
+        m_cameraControls.enabled = !m_cameraControls.enabled;
         m_objectCamera.enabled = !m_objectCamera.enabled;       
 
     }

@@ -8,7 +8,6 @@ public class InteractableLaser : InteractableObject_Abstract {
 	LaserBehaviour m_laser;
     GameObject m_item;
 
-
     private void Awake()
     {
 
@@ -36,7 +35,17 @@ public class InteractableLaser : InteractableObject_Abstract {
 	
 	// Update is called once per frame
 	protected void Update () {
-		base.Update ();
+
+        if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.enabled)
+        {
+
+            EnableLaser();
+            ChangeTransitor(1);
+
+        }
+
+
+        base.Update ();
 
 
 
@@ -54,6 +63,7 @@ public class InteractableLaser : InteractableObject_Abstract {
     {
         m_item.SetActive(m_equiped);
         m_laser.enabled = m_equiped;
+        m_laser.transform.gameObject.SetActive(true);
 
         
     }
@@ -76,8 +86,6 @@ public class InteractableLaser : InteractableObject_Abstract {
 
     protected override void UpdateUI()
     {
-
-        
 
         //***NON INSPECT MODE***
 
@@ -143,18 +151,11 @@ public class InteractableLaser : InteractableObject_Abstract {
     protected override void TransitionOutActions()
     {
         base.TransitionOutActions();
-        if (m_equiped == true && m_equiped != m_laser.enabled)
-        {
-
-            EnableLaser();
-            ChangeTransitor(1);
- 
-        }
     }
 
-    
 
-	protected override void SwitchControls()
+
+    protected override void SwitchControls()
 	{
 		base.SwitchControls ();
 		m_laser.controlled = !m_laser.controlled;

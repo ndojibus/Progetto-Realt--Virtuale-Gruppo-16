@@ -22,6 +22,9 @@ public class CameraTransitor : MonoBehaviour {
     [SerializeField]
     private bool m_moving = true;
 
+    [SerializeField]
+    private bool m_isCamera = false;
+
     private float m_currentTransitionPoint = 0;
     private int m_currentTransitionIndex = 0;
 
@@ -46,10 +49,24 @@ public class CameraTransitor : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (m_transitionList != null && m_transitionList.Count >= 2)
+        if (m_transitionList != null && m_transitionList.Count >= 2) {
             m_initialized = true;
+            if (m_isCamera) {
+                CameraTransition cameraTransitor;
+                cameraTransitor.transitionPoint = GameObject.FindGameObjectWithTag("MainCamera");
+                if (cameraTransitor.transitionPoint == null)
+                    Debug.LogError(this.name + ": " + "Can't find main camera!");
+                else
+                {
+                    cameraTransitor.transitionSpeed = m_transitionList[0].transitionSpeed;
+                    m_transitionList.Insert(0, cameraTransitor);
+                    m_transitionList.RemoveAt(1);
+                }
+            }
+        }
         else
             Debug.LogError(this.name + ": " + "transitionList should have at least 2 elements!");
+
     }
 
     // Update is called once per frame
