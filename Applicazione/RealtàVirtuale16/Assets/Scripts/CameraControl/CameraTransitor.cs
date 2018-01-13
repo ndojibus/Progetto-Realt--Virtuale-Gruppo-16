@@ -49,7 +49,7 @@ public class CameraTransitor : MonoBehaviour {
         if (m_transitionList != null && m_transitionList.Count >= 2)
             m_initialized = true;
         else
-            Debug.LogError("transitionList should have at least 2 elements!");
+            Debug.LogError(this.name + ": " + "transitionList should have at least 2 elements!");
     }
 
     // Update is called once per frame

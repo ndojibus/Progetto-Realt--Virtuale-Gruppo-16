@@ -26,7 +26,7 @@ public class PlayerInventory : PersistentData
             inventoryPanel = canvas.transform.Find("InventoryPanel").gameObject;
             RubyIco = inventoryPanel.GetComponentsInChildren<Image>()[1];
             if (inventoryPanel == null || RubyIco == null)
-                Debug.LogError("Impossible to find inventory!");
+                Debug.LogError(this.name + ": " + "Impossible to find inventory!");
 
             RubyIco.enabled = false;
         }

@@ -23,34 +23,34 @@ public class UIManager : MonoBehaviour {
         m_inventoryPanel = this.transform.Find("InventoryPanel").gameObject;
         if (m_inventoryPanel == null)
         {
-            Debug.Log("Impossible to find Inventory Panel");
+            Debug.Log(this.name + ": " +"Impossible to find Inventory Panel");
         }
 
         m_actionPanel = this.transform.Find("ActionPanel").gameObject;
         m_actionText = m_actionPanel.GetComponentInChildren<Text>();
         if (m_actionPanel == null)
         {
-            Debug.Log("Impossible to find ActionPanel");
+            Debug.Log(this.name + ": " + "Impossible to find ActionPanel");
         }
 
         m_continuePanel = this.transform.Find("ContinuePanel").gameObject;
         m_continueText = m_continuePanel.GetComponentInChildren<Text>();
         if (m_continuePanel == null || m_continueText== null)
         {
-            Debug.Log("Impossible to find continuePanel");
+            Debug.Log(this.name + ": " + "Impossible to find continuePanel");
         }
 
         m_descriptionPanel = this.transform.Find("DescriptionPanel").gameObject;
         m_descriptionText = m_descriptionPanel.GetComponentInChildren<Text>();
         if (m_descriptionPanel == null || m_descriptionText== null)
         {
-            Debug.Log("Impossible to find descriptionPanel");
+            Debug.Log(this.name + ": " + "Impossible to find descriptionPanel");
         }
 
         m_pausePanel = this.transform.Find("PausePanelBackground").gameObject;
         if (m_pausePanel == null)
         {
-            Debug.Log("Impossible to find pausePanel");
+            Debug.Log(this.name + ": " + "Impossible to find pausePanel");
         }
     }
 
@@ -195,7 +195,8 @@ public class UIManager : MonoBehaviour {
     public void LoadGame()
     {
 
-        SceneControl.sceneControl.Load();
+        SceneControl.sceneControl.ReloadScene();
+        ResumeGame();
     }
 
 

@@ -48,35 +48,35 @@ public abstract class InteractableObject_Abstract : PersistentData
 
             if (m_uiManager == null)
             {
-                Debug.LogError("Impossible to find UI Manager!");
+                Debug.LogError(this.name + ": " + "Impossible to find UI Manager!");
 
             }
             
             m_inventory = canvas.GetComponentInChildren<PlayerInventory>();
             if (m_inventory == null)
-                Debug.LogError("Impossible to find a PlayerInventory!");
+                Debug.LogError(this.name + ": " + "Impossible to find a PlayerInventory!");
         }
         else
-            Debug.LogError("Impossible to find a canvas!");
+            Debug.LogError(this.name + ": " + "Impossible to find a canvas!");
 
         m_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         if (m_mainCamera == null)
-            Debug.LogError("Impossible to find MainCamera!");
+            Debug.LogError(this.name + ": " + "Impossible to find MainCamera!");
 
         m_objectCamera = GetComponentInChildren<Camera>();
         if (m_objectCamera == null)
-            Debug.LogError("Impossible to find laser camera!");
+            Debug.LogError(this.name + ": " + "Impossible to find laser camera!");
 
         m_player = GameObject.FindGameObjectWithTag("Player");
         if (m_player != null)
         {
             m_userControl = m_player.GetComponent<ThirdPersonUserControl>();
             if (m_userControl == null)
-                Debug.LogError("Impossible to find ThirdPersonUserControl!");
+                Debug.LogError(this.name + ": " + "Impossible to find ThirdPersonUserControl!");
 
         }
         else
-            Debug.LogError("Impossible to find a player!");
+            Debug.LogError(this.name + ": " + "Impossible to find a player!");
 
         m_inspectMode = false;
 
@@ -86,7 +86,7 @@ public abstract class InteractableObject_Abstract : PersistentData
             
         }
         else
-            Debug.LogError("Impossible to find any transitor attached to this object children!");
+            Debug.LogError(this.name + ": " + "Impossible to find any transitor attached to this object children!");
 
 
 

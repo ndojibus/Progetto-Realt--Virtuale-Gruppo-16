@@ -35,7 +35,7 @@ public class LaserBehaviour : MonoBehaviour {
     void Awake() {
         m_laser = transform.GetChild(0).gameObject;
         if (m_laser == null)
-            Debug.LogError("Impossible to find laser!");
+            Debug.LogError(this.name + ": " + "Impossible to find laser!");
         
     }
 

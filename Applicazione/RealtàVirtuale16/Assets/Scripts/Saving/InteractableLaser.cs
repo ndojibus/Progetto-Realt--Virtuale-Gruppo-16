@@ -16,11 +16,11 @@ public class InteractableLaser : InteractableObject_Abstract {
 
         m_laser = GetComponentInChildren<LaserBehaviour>();
         if (m_laser == null)
-            Debug.LogError("Impossible to find LaserBehaviour!");
+            Debug.LogError(this.name + ": " + "Impossible to find LaserBehaviour!");
 
         m_item = this.transform.Find("LaserStart").Find("Rubino").gameObject;
         if (m_item == null)
-            Debug.LogError("Select an item!");
+            Debug.LogError(this.name + ": " + "Select an item!");
     }
 
     // Use this for initialization

@@ -27,10 +27,10 @@ public class RayActivator : TriggerActionBase
         {
             m_transitorComponent = m_doorObject.GetComponentInChildren<CameraTransitor>();
             if (m_transitorComponent == null)
-                Debug.LogError("Impossible to find animator!");
+                Debug.LogError(this.name + ": " + "Impossible to find animator!");
         }
         else
-            Debug.LogError("Impossible to find door object!");
+            Debug.LogError(this.name + ": " + "Impossible to find door object!");
     }
 
     // Update is called once per frame
