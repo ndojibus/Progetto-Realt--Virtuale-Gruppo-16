@@ -27,10 +27,13 @@ public class LaserBehaviour : MonoBehaviour {
 
     float m_rayLenght;                          //lunghezza attuale del laser
 
+    LineRenderer m_laserLine;
     GameObject m_laserObject;
     GameObject m_laser;                         //gameobject che rappresenta un cilindro con materiale emettente per fare il laser, usato per prova
     GameObject m_light;
     GameObject m_particle;
+
+    Vector3 collisionPoint;
 
     public bool controlled{ get { return m_controlled; }
                             set { m_controlled = value; }
@@ -41,6 +44,10 @@ public class LaserBehaviour : MonoBehaviour {
         m_laserObject = transform.GetChild(0).gameObject;
         if (m_laserObject == null)
             Debug.LogError(this.name + ": " + "Impossible to find laserObject!");
+
+        m_laserLine = transform.GetChild(0).GetComponent<LineRenderer>();
+        if (m_laserLine == null)
+            Debug.LogError(this.name + ": " + "Impossible to find line Renderer!");
 
         m_laser = transform.GetChild(0).GetChild(0).gameObject;
         if (m_laser == null)
@@ -59,6 +66,8 @@ public class LaserBehaviour : MonoBehaviour {
 
     }
 
+    
+
     // Nell'update chiamo 3 funzioni, controlla quello che fanno nella loro dichiarazione sotto
     void Update()
     {
@@ -67,7 +76,24 @@ public class LaserBehaviour : MonoBehaviour {
         if (m_controlled)
             InputManager();
         RayCast();
-        ChangeLaser();
+        //ChangeLaser();
+
+        Vector3 collisionPosition = new Vector3(0, 0, m_rayLenght);
+        //m_laserLine.SetPosition(0, new Vector3(0,0,this.transform.position.z + 0.1f));
+
+        m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
+        m_laserLine.SetPosition(1, collisionPoint);       
+         m_light.transform.localPosition = collisionPoint;
+         m_particle.transform.localPosition = collisionPoint;
+
+        
+        //m_laserLine.SetPosition(1, collisionPoint);
+        //m_laserLine.SetPosition(1, collisionPoint);
+       // m_light.transform.localPosition = collisionPoint;
+        //m_particle.transform.localPosition = collisionPoint;
+       
+
+
     }
 
     // Funzione usata per disegnare il gizmo della lunghezza attuale reale del raggio laser, per vederlo clicca "Gizmos" in alto a destra dalla finestra del gioco
@@ -102,6 +128,10 @@ public class LaserBehaviour : MonoBehaviour {
             var activator = hit.collider.gameObject.GetComponent<TriggerActionBase>();
             if (activator != null)                                                      //se l'oggetto colpito dal raggio è un activator
                 activator.Activate();                                                   //instanzia la funzione Activate sull'interruttore
+
+            collisionPoint = transform.InverseTransformPoint(hit.point);
+
+            
         }
         else
             m_rayLenght = m_maximumRayLenght;                                           //se no imposta la lunghezza del raggio a quella massima
