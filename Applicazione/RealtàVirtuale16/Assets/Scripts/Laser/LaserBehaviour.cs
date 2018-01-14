@@ -29,7 +29,6 @@ public class LaserBehaviour : MonoBehaviour {
 
     LineRenderer m_laserLine;
     GameObject m_laserObject;
-    GameObject m_laser;                         //gameobject che rappresenta un cilindro con materiale emettente per fare il laser, usato per prova
     GameObject m_light;
     GameObject m_particle;
 
@@ -49,15 +48,11 @@ public class LaserBehaviour : MonoBehaviour {
         if (m_laserLine == null)
             Debug.LogError(this.name + ": " + "Impossible to find line Renderer!");
 
-        m_laser = transform.GetChild(0).GetChild(0).gameObject;
-        if (m_laser == null)
-            Debug.LogError(this.name + ": " + "Impossible to find laser!");
-
-        m_light = transform.GetChild(0).GetChild(1).gameObject;
+        m_light = transform.GetChild(0).GetChild(0).gameObject;
         if (m_light == null)
             Debug.LogError(this.name + ": " + "Impossible to find light!");
 
-        m_particle = transform.GetChild(0).GetChild(2).gameObject;
+        m_particle = transform.GetChild(0).GetChild(1).gameObject;
         if (m_particle == null)
             Debug.LogError(this.name + ": " + "Impossible to find particle!");
 
@@ -76,24 +71,7 @@ public class LaserBehaviour : MonoBehaviour {
         if (m_controlled)
             InputManager();
         RayCast();
-        //ChangeLaser();
-
-        Vector3 collisionPosition = new Vector3(0, 0, m_rayLenght);
-        //m_laserLine.SetPosition(0, new Vector3(0,0,this.transform.position.z + 0.1f));
-
-        m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
-        m_laserLine.SetPosition(1, collisionPoint);       
-         m_light.transform.localPosition = collisionPoint;
-         m_particle.transform.localPosition = collisionPoint;
-
-        
-        //m_laserLine.SetPosition(1, collisionPoint);
-        //m_laserLine.SetPosition(1, collisionPoint);
-       // m_light.transform.localPosition = collisionPoint;
-        //m_particle.transform.localPosition = collisionPoint;
-       
-
-
+        ChangeLaser();
     }
 
     // Funzione usata per disegnare il gizmo della lunghezza attuale reale del raggio laser, per vederlo clicca "Gizmos" in alto a destra dalla finestra del gioco
@@ -131,13 +109,13 @@ public class LaserBehaviour : MonoBehaviour {
 
             collisionPoint = transform.InverseTransformPoint(hit.point);
 
-            
+
         }
         else
-            m_rayLenght = m_maximumRayLenght;                                           //se no imposta la lunghezza del raggio a quella massima
+            collisionPoint = new Vector3(0, 0, m_maximumRayLenght);                                           //se no imposta la lunghezza del raggio a quella massima
     }
 
-    /* Funzione che cambia l'aspetto del laser visualizzato
+    /* Funzione che cambia l'aspetto del laser visualizzato (VECCHIA VERSIONE DEL COMMENTO)
      * 
      * UN APPUNTO: il cilindro standard di unity è 2x2 ed ha il pivot nel punto centrale e non alla base,
      * per questo oltre a scalarlo di una dimensione pari alla lunghezza del raggio/2, e non solo la lunghezza del raggio,
@@ -145,14 +123,12 @@ public class LaserBehaviour : MonoBehaviour {
      */
     private void ChangeLaser()
     {
-        Vector3 newPosition = new Vector3(0, 0, m_rayLenght / 2 + m_rayDistance);
-        Vector3 newScale = new Vector3(m_rayThickness, m_rayLenght / 2 - m_rayDistance, m_rayThickness);
-        m_laser.transform.localPosition = newPosition;
-        m_laser.transform.localScale = newScale;
+        Vector3 collisionPosition = new Vector3(0, 0, m_rayLenght);
 
-        Vector3 lightPosition = new Vector3(0,0, newPosition.z + (m_rayLenght / 2) - 0.2f);
-        m_light.transform.localPosition = lightPosition;
-        m_particle.transform.localPosition = lightPosition;
+        m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
+        m_laserLine.SetPosition(1, collisionPoint);
+        m_light.transform.localPosition = collisionPoint;
+        m_particle.transform.localPosition = collisionPoint;
     }
 
 
