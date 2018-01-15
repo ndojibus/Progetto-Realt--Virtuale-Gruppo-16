@@ -27,8 +27,10 @@ public class LaserBehaviour : MonoBehaviour {
 
     float m_rayLenght;                          //lunghezza attuale del laser
 
-    LineRenderer m_laserLine;
+    
     GameObject m_laserObject;
+    LineRenderer m_laserLine;
+    ParticleSystem m_particleLaser;
     GameObject m_light;
     GameObject m_particle;
 
@@ -47,6 +49,9 @@ public class LaserBehaviour : MonoBehaviour {
         m_laserLine = transform.GetChild(0).GetComponent<LineRenderer>();
         if (m_laserLine == null)
             Debug.LogError(this.name + ": " + "Impossible to find line Renderer!");
+        m_particleLaser = transform.GetChild(0).GetComponent<ParticleSystem>();
+        if (m_particleLaser == null)
+            Debug.LogError(this.name + ": " + "Impossible to find Particle system for the laser!");
 
         m_light = transform.GetChild(0).GetChild(0).gameObject;
         if (m_light == null)
@@ -127,8 +132,12 @@ public class LaserBehaviour : MonoBehaviour {
 
         m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
         m_laserLine.SetPosition(1, collisionPoint);
+
+        m_particleLaser.startLifetime = Vector3.Distance(m_particleLaser.transform.position, collisionPoint) / m_particleLaser.startSpeed;
         m_light.transform.localPosition = collisionPoint;
         m_particle.transform.localPosition = collisionPoint;
+
+
     }
 
 
