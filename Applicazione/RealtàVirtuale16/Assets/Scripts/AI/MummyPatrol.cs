@@ -14,6 +14,13 @@ public class MummyPatrol : MummyBaseFSM
     [SerializeField]
     float m_switchProbability = 0.2f;
 
+    [SerializeField]
+    float m_backwardRange = 1f;
+
+    [Range(0, 180)]
+    [SerializeField]
+    float m_variableAngleBackward = 45;
+
     int m_currentPatrolIndex;
     bool m_travelling;
     bool m_waiting;
@@ -80,8 +87,11 @@ public class MummyPatrol : MummyBaseFSM
             }
         }
 
-        if (checkPlayerVisibility())
+        if (checkPlayerVisibility() || checkPlayerBehind())
+        {
+            m_mummyPatrolList.backwardRayDistance = 0f;
             animator.SetBool("isChasing", true);
+        }
 
     }
 
@@ -119,5 +129,26 @@ public class MummyPatrol : MummyBaseFSM
                 m_currentPatrolIndex = patrolPoints.Count - 1;
         }
 
+    }
+
+    protected bool checkPlayerBehind()
+    {
+        bool isHit = false;
+        RaycastHit playerHit;
+        Vector3 startRaycastPosition = new Vector3(m_mummy.transform.position.x, m_mummy.transform.position.y + 1f, m_mummy.transform.position.z);
+
+        float horizontalAngle = Random.Range(-m_variableAngleBackward, m_variableAngleBackward);
+        float verticalAngle = Random.Range(-m_variableAngleBackward / 2, m_variableAngleBackward / 2);
+        Vector3 rotatedVector = Quaternion.AngleAxis(horizontalAngle, m_mummy.transform.up) * (-m_mummy.transform.forward);
+        rotatedVector = Quaternion.AngleAxis(verticalAngle, m_mummy.transform.right) * rotatedVector;
+        m_mummyPatrolList.gizmoBackwardDirection = rotatedVector;
+        m_mummyPatrolList.backwardRayDistance = m_backwardRange;
+        if (Physics.Raycast(startRaycastPosition, rotatedVector, out playerHit, m_backwardRange))
+        {
+            if (playerHit.collider.tag == "Player")
+                isHit = true;
+        }
+
+        return isHit;
     }
 }
