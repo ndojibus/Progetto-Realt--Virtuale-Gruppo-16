@@ -57,9 +57,9 @@ public class LaserBehaviour : MonoBehaviour {
         if (m_light == null)
             Debug.LogError(this.name + ": " + "Impossible to find light!");
 
-        m_particle = transform.GetChild(0).GetChild(1).gameObject;
-        if (m_particle == null)
-            Debug.LogError(this.name + ": " + "Impossible to find particle!");
+        //m_particle = transform.GetChild(0).GetChild(1).gameObject;
+        //if (m_particle == null)
+        //    Debug.LogError(this.name + ": " + "Impossible to find particle!");
 
         if (m_ignoreLayers == null)
             Debug.LogError(this.name + ": " + "Impossible to find layermask!");
@@ -135,7 +135,7 @@ public class LaserBehaviour : MonoBehaviour {
 
         m_particleLaser.startLifetime = Vector3.Distance(m_particleLaser.transform.position, collisionPoint) / m_particleLaser.startSpeed;
         m_light.transform.localPosition = collisionPoint;
-        m_particle.transform.localPosition = collisionPoint;
+        //m_particle.transform.localPosition = collisionPoint;
 
 
     }
