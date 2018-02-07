@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: c68860e3b96907a4c86885d1ed6f62cb
+guid: d9da2d13bf3528b4ab93c9abf035039b
 timeCreated: 1517430272
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Busto
     100002: Cappello
@@ -172,12 +172,10 @@ ModelImporter:
     13700004: Gambe
     13700006: Giacca
     13700008: Munizioni
-  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -190,7 +188,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -215,8 +212,6 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
