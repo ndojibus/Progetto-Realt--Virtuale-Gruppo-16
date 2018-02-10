@@ -30,6 +30,8 @@ public class PlayerInventory : PersistentData
 
             RubyIco.enabled = false;
         }
+
+        
     }
     // Use this for initialization
     void Start() {
