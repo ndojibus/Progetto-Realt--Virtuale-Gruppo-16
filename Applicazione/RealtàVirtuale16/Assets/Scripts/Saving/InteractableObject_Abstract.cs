@@ -32,6 +32,7 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected Canvas m_hudCanvas;
     protected UIManager m_uiManager;
     protected GameObject m_inventoryPanel;
+    protected GameObject m_uiPosition;
     
     
 
@@ -92,7 +93,7 @@ public abstract class InteractableObject_Abstract : PersistentData
         else
             Debug.LogError(this.name + ": " + "Impossible to find a player!");
 
-        m_inspectMode = false;
+        
 
         m_transitors = GetComponentsInChildren<CameraTransitor>();
         if (m_transitors.Length > 0)
@@ -102,6 +103,10 @@ public abstract class InteractableObject_Abstract : PersistentData
         else
             Debug.LogError(this.name + ": " + "Impossible to find any transitor attached to this object children!");
 
+
+
+
+        m_inspectMode = false;
 
 
     }
@@ -122,7 +127,9 @@ public abstract class InteractableObject_Abstract : PersistentData
         if (i < m_transitors.Length)
             m_transitor = m_transitors[i];
         else
-            Debug.LogError("Impossible to find camera transitor!");     
+            Debug.LogError("Impossible to find camera transitor!");
+
+        m_uiPosition = this.transform.Find("UIPosition").gameObject;
     }
 
     protected void OnTriggerStay(Collider other)
@@ -271,7 +278,7 @@ public abstract class InteractableObject_Abstract : PersistentData
         if (m_playerInCollision)
         {
 
-            m_uiManager.ToggleActionPanel(true, m_actionText);
+            m_uiManager.ToggleActionPanel(true, m_actionText,m_uiPosition.transform);
         }
         else
         {
