@@ -76,6 +76,8 @@ public class UIManager : MonoBehaviour {
         }
 
         //nuovipannelli
+
+        
         m_actionPanel1elem = this.transform.Find("ActionPanel1elem").gameObject;
         m_actionTextNewPanel = m_actionPanel1elem.GetComponentInChildren<Text>();
         if (m_actionPanel1elem == null)
@@ -155,9 +157,13 @@ public class UIManager : MonoBehaviour {
     {
         //Disabilito tutti i pannelli 
         m_inventoryPanel.SetActive(false);
-        m_actionPanel.SetActive(false);
-        m_continuePanel.SetActive(false);
-        m_descriptionPanel.SetActive(false);
+
+        ToggleActionPanel(false);
+        ToggleContinuePanel(false);
+        ToggleDescriptionPanel(false);
+        //m_actionPanel.SetActive(false);
+        //m_continuePanel.SetActive(false);
+        //m_descriptionPanel.SetActive(false);
 
         //attivo il pause menu
         m_pausePanel.SetActive(true);
@@ -177,6 +183,11 @@ public class UIManager : MonoBehaviour {
 
         //abilito solo il pannello dell'inventario mentre gli altri vedo 
         m_inventoryPanel.SetActive(true);
+        //ToggleContinuePanel(true);
+        //ToggleDescriptionPanel(true);
+        //ToggleActionPanel(true);
+       
+        
         
 
 
