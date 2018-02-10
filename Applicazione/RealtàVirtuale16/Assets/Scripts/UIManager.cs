@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour {
 
         //nuovipannelli
         m_actionPanel1elem = this.transform.Find("ActionPanel1elem").gameObject;
-        m_actionTextNewPanel = m_actionPanel.GetComponentInChildren<Text>();
+        m_actionTextNewPanel = m_actionPanel1elem.GetComponentInChildren<Text>();
         if (m_actionPanel1elem == null)
         {
             Debug.Log(this.name + ": " + "Impossible to find ActionPanel1elem");
