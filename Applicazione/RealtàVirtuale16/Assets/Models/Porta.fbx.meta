@@ -1,65 +1,34 @@
 fileFormatVersion: 2
-guid: f72c855d15e535f45b84d5bccef78ef0
-timeCreated: 1515522880
+guid: 592268d498abf514984f56ff95a5ee1c
+timeCreated: 1518362152
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Camera
-    100004: Cube.000
-    100006: Cube.001
-    100008: Cube.002
-    100010: Lamp
-    100012: Point
-    100014: Spot
-    100016: Sun
-    400000: //RootNode
-    400002: Camera
-    400004: Cube.000
-    400006: Cube.001
-    400008: Cube.002
-    400010: Lamp
-    400012: Point
-    400014: Spot
-    400016: Sun
-    2000000: Camera
-    2300000: //RootNode
-    2300002: Cube.000
-    2300004: Cube.001
-    2300006: Cube.002
-    3300000: //RootNode
-    3300002: Cube.000
-    3300004: Cube.001
-    3300006: Cube.002
-    4300000: Cube.002
-    4300002: Cube.000
-    4300004: Cube.001
-    10800000: Lamp
-    10800002: Point
-    10800004: Spot
-    10800006: Sun
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 397ec8262c250d74a81ddb96ee15bf9e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 397ec8262c250d74a81ddb96ee15bf9e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: f9a770b13d9722a4299491d9cf3b29ba, type: 2}
+    100000: Cube.000
+    100002: Cube.001
+    100004: Cube.002
+    100006: //RootNode
+    400000: Cube.000
+    400002: Cube.001
+    400004: Cube.002
+    400006: //RootNode
+    2100000: Material
+    2300000: Cube.000
+    2300002: Cube.001
+    2300004: Cube.002
+    3300000: Cube.000
+    3300002: Cube.001
+    3300004: Cube.002
+    4300000: Cube.001
+    4300002: Cube.002
+    4300004: Cube.000
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -97,6 +66,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
