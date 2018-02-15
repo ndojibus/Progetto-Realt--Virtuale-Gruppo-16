@@ -200,6 +200,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -340,13 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fad2a3255a30848a620915bb42224f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_transitorID: 0
   m_transitionList:
   - transitionPoint: {fileID: 0}
     transitionSpeed: 1
   - transitionPoint: {fileID: 1199010292759420}
     transitionSpeed: 1
   m_forward: 0
-  m_active: 1
+  m_moving: 1
+  m_isCamera: 0
 --- !u!114 &114498878007610226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,6 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13eb253114017734f9876e2cf1c091a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectID: 0
+  m_item: {fileID: 0}
+  m_description: 
+  m_action: 
   m_timerTime: 1
   m_laserHeadID: 2
   m_hasHead: 0
@@ -375,6 +382,11 @@ MonoBehaviour:
   m_maximumRayLenght: 50
   m_angularVelocity: 45
   m_controlled: 0
+  m_rayDistance: 0.2
+  m_rayThickness: 0.2
+  m_ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!124 &124846769452177634
 Behaviour:
   m_ObjectHideFlags: 1
