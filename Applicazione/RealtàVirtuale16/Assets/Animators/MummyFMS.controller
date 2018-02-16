@@ -38,10 +38,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76717bf5d3876540906b14985034abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_visibilityRange: 10
+  m_visibilityRange: 15
+  m_variableAngleFoward: 25
   m_patrolWaiting: 0
   m_totalWaitTime: 3
   m_switchProbability: 0
+  m_backwardRange: 0
+  m_variableAngleBackward: 45
 --- !u!114 &114935081066627362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,6 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visibilityRange: 10
+  m_variableAngleFoward: 45
   m_timeoutTime: 3
   m_speedFactor: 2
 --- !u!1101 &1101710678599665988
@@ -125,7 +129,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 827ad6a97a128df4d81b8f1acaa5d06f, type: 3}
+  m_Motion: {fileID: 7400000, guid: d3d0accc37364aa4f8cfc7b331f73145, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -146,7 +146,10 @@ public class UIManager : MonoBehaviour {
         */
         if (m_actionPanel1elem.activeSelf)
         {
-            m_actionPanel1elem.transform.position = Camera.main.WorldToScreenPoint(m_targetobject.position);
+            if (Camera.main != null)
+                m_actionPanel1elem.transform.position = Camera.main.WorldToScreenPoint(m_targetobject.position);
+            else
+                Debug.Log(this.name + ": ERRORE CAMERA NULL");
         }
 
 

@@ -40,8 +40,10 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     protected bool m_inspectMode;
     protected bool m_equiped;
+    protected bool m_finishedTransition = false;
 
     private bool m_playerInCollision;
+    
     
 
 
@@ -142,6 +144,11 @@ public abstract class InteractableObject_Abstract : PersistentData
             UpdateUI();
            
         }
+        else
+        {
+            m_playerInCollision = false;
+            UpdateUI();
+        }
 
 
         //Se c'è collisione con il player e viene premuto e si passa in inspect mode
@@ -154,9 +161,10 @@ public abstract class InteractableObject_Abstract : PersistentData
             m_inspectMode = true;
             UpdateUI();
 
-            
-            
+
+
         }
+        
     }
 
     //Da Cambiare 
@@ -191,9 +199,8 @@ public abstract class InteractableObject_Abstract : PersistentData
 
         if (m_inspectMode && Input.GetKeyDown(KeyCode.Escape))
         {
-            
-            
             TransitionOutActions();
+            
             m_transitor.forward = !m_transitor.forward;
 
             UpdateUI();
@@ -210,9 +217,20 @@ public abstract class InteractableObject_Abstract : PersistentData
             if (m_timer <= 0f)
             {
 
-
                 m_timer = m_cameraSwitchTime;
                 m_camerasInTransition = false;
+                m_player.SetActive(!m_player.activeSelf);
+
+                //switcha la camera
+                if (!m_inspectMode)
+                {
+                    m_mainCamera.enabled = !m_mainCamera.enabled;
+                    m_cameraControls.enabled = !m_cameraControls.enabled;
+                    m_objectCamera.enabled = !m_objectCamera.enabled;
+                }
+               
+
+                //appena finito transizione
             }
         }
     }
@@ -220,10 +238,11 @@ public abstract class InteractableObject_Abstract : PersistentData
    
 
     protected virtual void TransitionInActions() {
+        m_inspectMode = true;
         SwitchCameras();
         SwitchControls();
 
-        m_inspectMode = true;
+        
         //ToggleInspectMode(true);
 
 
@@ -231,33 +250,36 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     protected virtual void TransitionOutActions() {
 
+        m_inspectMode = false;
         SwitchCameras();
         SwitchControls();
 
-        m_inspectMode = false;
+        
         //ToggleInspectMode(false);
 
     }
 
     protected virtual void SwitchCameras()
     {
-
-        m_camerasInTransition = true;
-
-        //switcha la camera
-
         
-        m_mainCamera.enabled = !m_mainCamera.enabled;
-        m_cameraControls.enabled = !m_cameraControls.enabled;
-        m_objectCamera.enabled = !m_objectCamera.enabled;       
+        m_camerasInTransition = true;
+        if (m_inspectMode)
+        {
+            m_mainCamera.enabled = !m_mainCamera.enabled;
+            m_cameraControls.enabled = !m_cameraControls.enabled;
+            m_objectCamera.enabled = !m_objectCamera.enabled;
+        }
+
+
 
     }
 
     protected virtual void SwitchControls()
     {
         //switcha i controlli
-        m_userControl.enabled = !m_userControl.enabled;
-        m_player.SetActive(!m_player.activeSelf);
+        m_userControl.canMove = !m_userControl.canMove;
+        //m_player.SetActive(!m_player.activeSelf);
+        
     }
 
     protected virtual void ChangeTransitor(int transitorID)
@@ -267,14 +289,14 @@ public abstract class InteractableObject_Abstract : PersistentData
         m_transitors[m_transitorID].enabled = false;
         m_transitorID = transitorID;
         m_transitors[m_transitorID].enabled = true;
-        m_transitors[m_transitorID].forward = false;
+        //m_transitors[m_transitorID].forward = false;
         m_transitor = m_transitors[m_transitorID];
     }
 
     protected virtual void UpdateUI()
     {
 
-
+        
         if (m_playerInCollision)
         {
 
@@ -286,6 +308,12 @@ public abstract class InteractableObject_Abstract : PersistentData
         }
 
         m_uiManager.ToggleInspectModeUI(m_inspectMode, m_description);
+
+        if (m_camerasInTransition)
+        {
+            m_uiManager.ToggleActionPanel(false);
+
+        }
 
     }
 

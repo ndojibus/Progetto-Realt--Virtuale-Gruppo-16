@@ -36,7 +36,7 @@ public class InteractableLaser : InteractableObject_Abstract {
 	// Update is called once per frame
 	protected void Update () {
 
-        if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.enabled)
+        if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.enabled && !m_camerasInTransition)
         {
 
             EnableLaser();
