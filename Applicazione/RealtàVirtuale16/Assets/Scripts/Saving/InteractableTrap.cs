@@ -7,6 +7,15 @@ public class InteractableTrap : InteractableObject_Abstract
     CameraTransitor m_trapTransitor;
     GameObject m_item;
 
+    private void Awake()
+    {
+        base.Awake();
+
+        m_item = this.transform.Find("Rubino").gameObject;
+        if (m_item == null)
+            Debug.LogError(this.name + ": " + "Select an item!");
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -24,11 +33,8 @@ public class InteractableTrap : InteractableObject_Abstract
         else
             Debug.LogError(this.name + ": " + "Can't find a trap transitor!");
 
-        m_item = this.transform.Find("Rubino").gameObject;
-        if (m_item == null)
-            Debug.LogError(this.name + ": " + "Select an item!");
-
-        m_equiped = true;
+        m_equiped = false;
+        m_inspectMode = false;
 
         createData(1);  //index 0, 1 significa che il rubino è ancora incastonato
     }
@@ -37,33 +43,33 @@ public class InteractableTrap : InteractableObject_Abstract
     void Update()
     {
 
-
         base.Update();
 
-        if (m_equiped != m_item.activeSelf)
-            m_item.SetActive(m_equiped);
 
 
-        if (m_inspectMode && m_equiped && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+        if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && m_inventory.HasRuby() && !m_camerasInTransition)
         {
 
-            TakeTreasure();
+            InsertRuby();
             UpdateUI();
 
-
         }
-
     }
 
-    private void TakeTreasure()
+    private void InsertRuby()
     {
+        //preso dall'inventario
+        m_inventory.UseRuby();
 
-        //cancellato dalla scena
 
-        m_item.SetActive(false);
-        m_equiped = false;
+        m_item.SetActive(true);
 
-        saveData(0, 0);   // salva che il rubino è stato preso
+        m_equiped = true;
+
+
+        saveData(0, 1);     //inserisci il rubino, index 0 diventa 1
+
+
     }
 
 
@@ -71,27 +77,46 @@ public class InteractableTrap : InteractableObject_Abstract
     protected override void UpdateUI()
     {
 
-        // ***NON INSPECT MODE***
+        //***NON INSPECT MODE***
+
         if (!m_inspectMode)
         {
+            if (!m_equiped)
+            {
 
-            m_actionText = "Premi E per Esaminare";
+                m_actionText = "Premi E per Esaminare";
+
+            }
+            else
+            {
+                m_actionText = "";
+
+            }
 
         }
 
         base.UpdateUI();
 
-        // *** INSPECT MODE ***
-
+        //***INSPECT MODE***
         if (m_inspectMode)
         {
+
             if (m_equiped)
-                m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
-            else
+            {
                 m_uiManager.ToggleActionPanel(false);
+                m_uiManager.ToggleDescriptionPanel(false);
+            }
+            else if (!m_equiped && m_inventory.HasRuby())
+            {
+                m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
+
+            }
+            else
+            {
+                m_uiManager.ToggleActionPanel(false);
+            }
+
         }
-
-
     }
 
     protected override void TransitionOutActions()
@@ -99,7 +124,7 @@ public class InteractableTrap : InteractableObject_Abstract
         base.TransitionOutActions();
 
         //attiva il transitor della botola
-        if (!m_equiped) {
+        if (m_equiped) {
             m_trapTransitor.forward = !m_trapTransitor.forward;
         }
 
