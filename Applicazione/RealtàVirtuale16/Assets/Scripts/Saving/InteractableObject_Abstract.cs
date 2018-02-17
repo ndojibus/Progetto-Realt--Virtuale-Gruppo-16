@@ -136,7 +136,7 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && !m_inspectMode)
+        if (other.tag == "Player" && !m_inspectMode && !m_camerasInTransition)
         {
 
             if ((Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
@@ -152,7 +152,7 @@ public abstract class InteractableObject_Abstract : PersistentData
 
 
         //Se c'è collisione con il player e viene premuto e si passa in inspect mode
-        if (m_playerInCollision && Input.GetKeyDown(KeyCode.E))
+        if (m_playerInCollision && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
         {
             TransitionInActions();
             m_transitor.forward = !m_transitor.forward;
