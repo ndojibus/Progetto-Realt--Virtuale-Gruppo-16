@@ -12,8 +12,9 @@ public class PlayerInventory : PersistentData
     List<UInt64> m_itemIDList;
 
 
-    GameObject inventoryPanel;
-    Image RubyIco;
+    GameObject m_inventoryPanel;
+    Image m_RubyIco;
+    Image m_KeyIcon;
 
     void Awake()
     {
@@ -23,12 +24,15 @@ public class PlayerInventory : PersistentData
         if (canvas != null)
         {
 
-            inventoryPanel = canvas.transform.Find("InventoryPanel").gameObject;
-            RubyIco = inventoryPanel.GetComponentsInChildren<Image>()[1];
-            if (inventoryPanel == null || RubyIco == null)
+            m_inventoryPanel = canvas.transform.Find("InventoryPanel").gameObject;
+            m_RubyIco = m_inventoryPanel.GetComponentsInChildren<Image>()[1];
+            m_KeyIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[2];
+            
+            if (m_inventoryPanel == null || m_RubyIco == null || m_KeyIcon == null)
                 Debug.LogError(this.name + ": " + "Impossible to find inventory!");
 
-            RubyIco.enabled = false;
+            m_RubyIco.enabled = false;
+            m_KeyIcon.enabled = false;
         }
 
         
@@ -48,19 +52,35 @@ public class PlayerInventory : PersistentData
 
     public bool HasRuby()
     {
-        return RubyIco.enabled;
+        return m_RubyIco.enabled;
+    }
+
+    public bool HasKey()
+    {
+
+        return m_KeyIcon.enabled;
     }
 
     public void PickRuby()
     {
-        RubyIco.enabled = true;
+        m_RubyIco.enabled = true;
         saveData(0, 1);
     }
 
     public void UseRuby()
     {
-        RubyIco.enabled = false;
+        m_RubyIco.enabled = false;
         saveData(0, 0);
+    }
+
+    public void PickKey()
+    {
+        m_KeyIcon.enabled = true;
+    }
+
+    public void UseKey()
+    {
+        m_RubyIco.enabled = false;
     }
     
 
@@ -75,7 +95,7 @@ public class PlayerInventory : PersistentData
     public void deleteItem(UInt64 t_itemID)
     {
 
-        RubyIco.enabled = false;
+        m_RubyIco.enabled = false;
         m_itemIDList.Remove(t_itemID);
 
         for (int i = 0; i < m_itemIDList.Count; i++) {
@@ -105,7 +125,7 @@ public class PlayerInventory : PersistentData
         {
             //se t_key è POI VEDIAMO allora sta caricando il rubino, se t_data è 1 significa che il rubino è presente nell'inventario
             if (t_data == 1)
-                RubyIco.enabled = true;
+                m_RubyIco.enabled = true;
         }
         return find;
     }
