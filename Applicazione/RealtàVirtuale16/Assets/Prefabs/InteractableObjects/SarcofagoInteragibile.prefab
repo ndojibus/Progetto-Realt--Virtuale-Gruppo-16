@@ -1483,7 +1483,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1714,7 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e25afbfd5a6d184ebbbabc44e01c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 0
+  objectID: 5
   m_description: UNA MUMMIAAAAAAA
   m_actionText: 
   m_cameraSwitchTime: 1

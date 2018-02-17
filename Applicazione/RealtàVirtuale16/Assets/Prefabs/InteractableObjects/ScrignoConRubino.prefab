@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355484566035430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.869, y: -0.191, z: -1.315}
+  m_LocalPosition: {x: 0.999, y: 0.00000035762787, z: -0.325665}
   m_LocalScale: {x: 0.42, y: 0.42, z: 0.42}
   m_Children:
   - {fileID: 4551615437761750}
@@ -286,7 +286,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -481,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d7a02673085a748975e1170287f1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 0
+  objectID: 1
   m_description: Un antico rubino
   m_actionText: 
   m_cameraSwitchTime: 1

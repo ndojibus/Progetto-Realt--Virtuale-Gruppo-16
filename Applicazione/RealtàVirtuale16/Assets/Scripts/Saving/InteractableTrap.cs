@@ -11,7 +11,7 @@ public class InteractableTrap : InteractableObject_Abstract
     {
         base.Awake();
 
-        m_item = this.transform.Find("Rubino").gameObject;
+        m_item = this.transform.Find("Hank").gameObject;
         if (m_item == null)
             Debug.LogError(this.name + ": " + "Select an item!");
     }
@@ -47,7 +47,7 @@ public class InteractableTrap : InteractableObject_Abstract
 
 
 
-        if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && m_inventory.HasRuby() && !m_camerasInTransition)
+        if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && m_inventory.HasKey() && !m_camerasInTransition)
         {
 
             InsertRuby();
@@ -59,7 +59,7 @@ public class InteractableTrap : InteractableObject_Abstract
     private void InsertRuby()
     {
         //preso dall'inventario
-        m_inventory.UseRuby();
+        m_inventory.UseKey();
 
 
         m_item.SetActive(true);
@@ -106,7 +106,7 @@ public class InteractableTrap : InteractableObject_Abstract
                 m_uiManager.ToggleActionPanel(false);
                 m_uiManager.ToggleDescriptionPanel(false);
             }
-            else if (!m_equiped && m_inventory.HasRuby())
+            else if (!m_equiped && m_inventory.HasKey())
             {
                 m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
 
