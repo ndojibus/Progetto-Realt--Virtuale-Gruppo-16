@@ -71,7 +71,7 @@ public class InteractableOpenSarcofago : InteractableObject_Abstract
     {
 
         
-        var toPosition = new Vector3(m_coperchio.transform.localPosition.x, m_coperchio.transform.localPosition.y, m_coperchio.transform.localPosition.z + 0.7f);
+        var toPosition = new Vector3(m_coperchio.transform.localPosition.x + 0.55f, m_coperchio.transform.localPosition.y , m_coperchio.transform.localPosition.z );
         //var toPosition = Vector3(m_coperchio.transform.position - new Vector3(0f,0f,-0.7f) );
         for (var t = 0f; t < 1; t += Time.deltaTime / inTime)
         {

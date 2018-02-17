@@ -74,14 +74,18 @@ public class InteractablePickup : InteractableObject_Abstract
         base.UpdateUI();
 
         // *** INSPECT MODE ***
-
-        if (m_inspectMode)
+        if (!m_camerasInTransition)
         {
-            if(m_equiped)
-                m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
-            else
-                m_uiManager.ToggleActionPanel(false);
+            if (m_inspectMode)
+            {
+                if (m_equiped)
+                    m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
+                else
+                    m_uiManager.ToggleActionPanel(false);
+            }
+
         }
+        
       
 
     }

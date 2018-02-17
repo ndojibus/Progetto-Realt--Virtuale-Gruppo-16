@@ -28,13 +28,13 @@ public class InteractableDescription : InteractableObject_Abstract
 
     protected override void UpdateUI()
     {
+        if (!m_inspectMode)
+            m_actionText = "Premi E per esaminare";
 
-        
 
         base.UpdateUI();
 
-        if (!m_inspectMode)
-            m_actionText = "Premi E per esaminare";
+        
 
         if (m_inspectMode)
             m_uiManager.ToggleActionPanel(false);

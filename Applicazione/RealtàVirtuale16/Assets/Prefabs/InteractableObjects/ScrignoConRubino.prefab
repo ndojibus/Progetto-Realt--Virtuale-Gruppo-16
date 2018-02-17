@@ -150,8 +150,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1990958022098470}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.75, z: 0.0000013709068}
+  m_LocalRotation: {x: -0.50000006, y: -0.49999997, z: -0.50000006, w: 0.49999997}
+  m_LocalPosition: {x: -0, y: 0.75, z: 0}
   m_LocalScale: {x: 100, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4331062030306646}
@@ -163,9 +163,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446313544698972}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.009523811, y: 1.0119048, z: 0.0023810626}
-  m_LocalScale: {x: 30.901476, y: 15.338251, z: 25.334616}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0023810635, y: 1.0119048, z: 0.009523687}
+  m_LocalScale: {x: 30.901484, y: 15.33825, z: 25.334621}
   m_Children: []
   m_Father: {fileID: 4331062030306646}
   m_RootOrder: 2
@@ -176,8 +176,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363745849598246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.7499999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4331062030306646}
@@ -189,7 +189,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355484566035430}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.869, y: -0.191, z: -1.315}
   m_LocalScale: {x: 0.42, y: 0.42, z: 0.42}
   m_Children:
@@ -201,28 +201,28 @@ Transform:
   - {fileID: 4410628972692350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4410628972692350
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879447641508592}
-  m_LocalRotation: {x: 0.22044426, y: -0.6718663, z: 0.22044426, w: 0.6718663}
-  m_LocalPosition: {x: -0, y: 2.959, z: 1.448}
-  m_LocalScale: {x: 2.3809528, y: 2.3809524, z: 2.3809528}
+  m_LocalRotation: {x: 0.2204438, y: 0.6718665, z: -0.2204438, w: 0.6718665}
+  m_LocalPosition: {x: -1.4480001, y: 2.9589999, z: 0}
+  m_LocalScale: {x: 2.3809545, y: 2.3809524, z: 2.3809543}
   m_Children: []
   m_Father: {fileID: 4331062030306646}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 36.33, y: -90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.33, y: 90, z: 0}
 --- !u!4 &4551615437761750
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051250353829828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0.5}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.49999994, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4663459773957984}
@@ -235,13 +235,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499275348844382}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2.037, z: 2.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8000002, y: 2.037, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4331062030306646}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4663459773957984
 Transform:
   m_ObjectHideFlags: 1
@@ -286,6 +286,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
