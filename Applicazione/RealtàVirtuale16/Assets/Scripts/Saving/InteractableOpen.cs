@@ -8,10 +8,8 @@ public class InteractableOpen : InteractableObject_Abstract
 
 
     GameObject m_item;
-    GameObject m_rotateAround;
     GameObject m_coperchio;
 
-    private float m_speed;
     private bool is_opened=false;
 
     
@@ -114,6 +112,8 @@ public class InteractableOpen : InteractableObject_Abstract
     protected override void UpdateUI()
     {
 
+        
+
         // ***NON INSPECT MODE***
         if (!m_inspectMode)
         {
@@ -125,13 +125,19 @@ public class InteractableOpen : InteractableObject_Abstract
         base.UpdateUI();
 
         // *** INSPECT MODE ***
-
-        if (m_inspectMode)
+        if (!m_camerasInTransition)
         {
-            if (m_equiped)
-                m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
-            else
-                m_uiManager.ToggleActionPanel(false);
+
+
+        
+            if (m_inspectMode)
+            {
+                if (m_equiped)
+                    m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere il Rubino");
+                else
+                    m_uiManager.ToggleActionPanel(false);
+            }
+
         }
 
 

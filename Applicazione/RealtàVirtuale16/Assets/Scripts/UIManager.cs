@@ -177,8 +177,6 @@ public class UIManager : MonoBehaviour {
 
     }
 
-
-
     public void ResumeGame()
     {
         //disabilito il pause menu
@@ -231,11 +229,18 @@ public class UIManager : MonoBehaviour {
         }
         */
 
+
+
         if (inspectmode)
         {
 
 
-            m_actionPanel1elem.SetActive(false);
+            if (m_actionPanel1elem.activeSelf != active)
+            {
+                m_actionPanel1elem.SetActive(!m_actionPanel1elem.activeSelf);
+
+            }
+            
             ToggleContinuePanel(!active);
             //m_actionText2.text = actionText;
 

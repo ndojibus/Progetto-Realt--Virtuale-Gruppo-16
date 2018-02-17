@@ -106,39 +106,42 @@ public class InteractableLaser : InteractableObject_Abstract {
         }
 
         base.UpdateUI();
-        
+
         //***INSPECT MODE***
-        if (m_inspectMode)
-        {
+
+        if (!m_camerasInTransition) { 
+            if (m_inspectMode)
+            {
             
-            if (m_equiped && !m_laser.enabled)
-            {
-                m_uiManager.ToggleActionPanel(false);
-                m_uiManager.ToggleDescriptionPanel(false);
-            }
-            else if (!m_equiped && m_inventory.HasRuby())
-            {
-                m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
+                if (m_equiped && !m_laser.enabled)
+                {
+                    m_uiManager.ToggleActionPanel(false);
+                    m_uiManager.ToggleDescriptionPanel(false);
+                }
+                else if (!m_equiped && m_inventory.HasRuby())
+                {
+                    m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
+
+                }
+                else if (m_equiped)
+                {
+                    m_uiManager.ToggleActionPanel(true, "Premi A e D per Ruotare");
+                    m_uiManager.ToggleDescriptionPanel(false);
+
+                }
+                else
+                {
+                    m_uiManager.ToggleActionPanel(false);
+                }
 
             }
-            else if (m_equiped)
-            {
-                m_uiManager.ToggleActionPanel(true, "Premi A e D per Ruotare");
-                m_uiManager.ToggleDescriptionPanel(false);
-
-            }
-            else
-            {
-                m_uiManager.ToggleActionPanel(false);
-            }
-
         }
-        
-        
 
-        
-       
-       
+
+
+
+
+
 
 
     }

@@ -82,7 +82,7 @@ public abstract class InteractableObject_Abstract : PersistentData
 
         m_objectCamera = GetComponentInChildren<Camera>();
         if (m_objectCamera == null)
-            Debug.LogError(this.name + ": " + "Impossible to find laser camera!");
+            Debug.LogError(this.name + ": " + "Impossible to find object camera!");
 
         m_player = GameObject.FindGameObjectWithTag("Player");
         if (m_player != null)
@@ -136,24 +136,23 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && !m_inspectMode
-           && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
+        if (other.tag == "Player" && !m_inspectMode)
         {
-            m_playerInCollision = true;
-            
+
+            if ((Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f))
+                m_playerInCollision = true;
+            else
+            {
+                m_playerInCollision = false;
+            }
             UpdateUI();
            
         }
-        else
-        {
-            m_playerInCollision = false;
-            UpdateUI();
-        }
+        
 
 
         //Se c'è collisione con il player e viene premuto e si passa in inspect mode
-        if (other.tag == "Player" && !m_inspectMode && Input.GetKeyDown(KeyCode.E) 
-            && (Vector3.Angle(other.transform.forward, this.transform.position - other.transform.position) < 90f) )
+        if (m_playerInCollision && Input.GetKeyDown(KeyCode.E))
         {
             TransitionInActions();
             m_transitor.forward = !m_transitor.forward;
@@ -175,7 +174,7 @@ public abstract class InteractableObject_Abstract : PersistentData
             m_playerInCollision = false;
             UpdateUI();
 
-            m_uiManager.ToggleActionPanel(false);
+            
         }
         
 
@@ -211,7 +210,8 @@ public abstract class InteractableObject_Abstract : PersistentData
 
         if (m_camerasInTransition)
         {
-  
+            UpdateUI();
+
             m_timer -= Time.deltaTime;
 
             if (m_timer <= 0f)
@@ -228,6 +228,8 @@ public abstract class InteractableObject_Abstract : PersistentData
                     m_cameraControls.enabled = !m_cameraControls.enabled;
                     m_objectCamera.enabled = !m_objectCamera.enabled;
                 }
+
+                UpdateUI();
                
 
                 //appena finito transizione
@@ -296,24 +298,33 @@ public abstract class InteractableObject_Abstract : PersistentData
     protected virtual void UpdateUI()
     {
 
-        
-        if (m_playerInCollision)
-        {
-
-            m_uiManager.ToggleActionPanel(true, m_actionText,m_uiPosition.transform);
-        }
-        else
-        {
-            m_uiManager.ToggleActionPanel(false);
-        }
-
-        m_uiManager.ToggleInspectModeUI(m_inspectMode, m_description);
-
         if (m_camerasInTransition)
         {
             m_uiManager.ToggleActionPanel(false);
+            m_uiManager.ToggleInspectModeUI(false, m_description);
 
         }
+        else
+        {
+            if (m_playerInCollision)
+            {
+
+                m_uiManager.ToggleActionPanel(true, m_actionText, m_uiPosition.transform);
+            }
+            else
+            {
+                m_uiManager.ToggleActionPanel(false);
+            }
+
+
+            m_uiManager.ToggleInspectModeUI(m_inspectMode, m_description);
+
+
+        }
+
+
+        
+        
 
     }
 
