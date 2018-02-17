@@ -61,7 +61,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
     {
         // Update position based on animation movement using navigation surface height
         Vector3 position = anim.rootPosition;
-        //position.y = -0.05f;
+        position.y = -0.05f;
         transform.position = position;
     }
 }

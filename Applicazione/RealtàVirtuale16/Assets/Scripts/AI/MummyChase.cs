@@ -25,6 +25,9 @@ public class MummyChase : MummyBaseFSM
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        animator.SetFloat("PlayerDistance", Vector3.Distance(m_mummy.transform.position, m_player.transform.position) );
+
         if (initialized)
         {
             Vector3 targetVector = player.transform.position;
@@ -46,3 +49,4 @@ public class MummyChase : MummyBaseFSM
         navMeshAgent.speed = m_originalSpeed;
     }
 }
+
