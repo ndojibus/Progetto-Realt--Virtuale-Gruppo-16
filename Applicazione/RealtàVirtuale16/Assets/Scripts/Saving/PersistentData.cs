@@ -32,7 +32,7 @@ public abstract class PersistentData : MonoBehaviour
 
     List<Data> m_dataValues;
     public static int objectCount = 0;
-    int m_sceneIndex;
+    protected int m_sceneIndex;
     int m_actualKey;
     int m_indexKey = 0;
 

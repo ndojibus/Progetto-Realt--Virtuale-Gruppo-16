@@ -134,7 +134,8 @@ public class SceneControl : MonoBehaviour
         PersistentData[] persistentList = FindObjectsOfType<PersistentData>();
         foreach (PersistentData persistent in persistentList)
         {
-            m_persistentObjectList.Add(persistent.objectKey, persistent);
+            Debug.Log(persistent.objectKey + " " + persistent.name);
+            m_persistentObjectList.Add(persistent.objectKey, persistent);        
         }
 
         Invoke("Load", 0.1f);

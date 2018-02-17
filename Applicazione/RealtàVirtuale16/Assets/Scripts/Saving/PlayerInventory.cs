@@ -45,7 +45,7 @@ public class PlayerInventory : PersistentData
         m_itemIDList.Add(2); 
         createData(0);  //index 0
         
-        //createData(0);  //index 1
+        createData(0);  //index 1
         //createData(0);  //index 2
         //createData(0);  //index 3
     }
@@ -76,11 +76,13 @@ public class PlayerInventory : PersistentData
     public void PickKey()
     {
         m_KeyIcon.enabled = true;
+        saveData(1, 1);
     }
 
     public void UseKey()
     {
         m_RubyIco.enabled = false;
+        saveData(1, 0);
     }
     
 
@@ -123,9 +125,13 @@ public class PlayerInventory : PersistentData
         bool find = base.loadData(t_key, t_data);
         if (((int)t_data >= 0) && find)
         {
+            int inventoryNumber = t_key - (m_sceneIndex * 1000);
             //se t_key è POI VEDIAMO allora sta caricando il rubino, se t_data è 1 significa che il rubino è presente nell'inventario
-            if (t_data == 1)
+            if (inventoryNumber == 0 && t_data == 1)
                 m_RubyIco.enabled = true;
+
+            if (inventoryNumber == 1 && t_data == 1)
+                m_KeyIcon.enabled = true;
         }
         return find;
     }
