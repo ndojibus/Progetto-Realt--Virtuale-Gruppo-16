@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1229627527900358}
   m_IsPrefabParent: 1
+--- !u!1 &1073159179956922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4991197885281790}
+  m_Layer: 0
+  m_Name: Transitor2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1229627527900358
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,9 +100,9 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4991197885281790}
+  - component: {fileID: 4079039463561706}
   m_Layer: 0
-  m_Name: Transitor
+  m_Name: Transitor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,19 +159,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4079039463561706
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567627235003624}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: -0.4209524, y: 3.8933334, z: 0.10500011}
+  m_LocalScale: {x: 2.3809545, y: 2.3809524, z: 2.3809543}
+  m_Children: []
+  m_Father: {fileID: 4553028501478552}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4104689451837474
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523960093274428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8000002, y: 2.037, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.04, y: 4.06, z: 0.10500011}
+  m_LocalScale: {x: 2.3809524, y: 2.3809524, z: 2.3809524}
   m_Children: []
   m_Father: {fileID: 4553028501478552}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4246134247166196
 Transform:
   m_ObjectHideFlags: 1
@@ -199,6 +227,7 @@ Transform:
   - {fileID: 4917602263519210}
   - {fileID: 4663068216899640}
   - {fileID: 4104689451837474}
+  - {fileID: 4079039463561706}
   - {fileID: 4991197885281790}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -247,14 +276,14 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567627235003624}
-  m_LocalRotation: {x: 0.2204438, y: 0.6718665, z: -0.2204438, w: 0.6718665}
-  m_LocalPosition: {x: -1.4480001, y: 2.9589999, z: 0}
+  m_GameObject: {fileID: 1073159179956922}
+  m_LocalRotation: {x: 0.4858298, y: 0.5137796, z: -0.4858298, w: 0.5137796}
+  m_LocalPosition: {x: -0.4209524, y: 3.8933334, z: 0.10500011}
   m_LocalScale: {x: 2.3809545, y: 2.3809524, z: 2.3809543}
   m_Children: []
   m_Father: {fileID: 4553028501478552}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 36.33, y: 90, z: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 86.797005, y: 90.00001, z: 0}
 --- !u!20 &20785660028628998
 Camera:
   m_ObjectHideFlags: 1
@@ -423,8 +452,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3917267, y: 2.1524045, z: 2.176889}
-  m_Center: {x: 0.023195574, y: 1.048275, z: 0.35648763}
+  m_Size: {x: 2, y: 2.1524045, z: 1}
+  m_Center: {x: -0.5, y: 1.048275, z: 0}
 --- !u!65 &65555215901818518
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -463,7 +492,7 @@ MonoBehaviour:
   objectID: 1
   m_description: Un antico rubino
   m_actionText: 
-  m_cameraSwitchTime: 1
+  m_cameraSwitchTime: 2
   m_transitorID: 4
 --- !u!114 &114508803294876334
 MonoBehaviour:
@@ -481,6 +510,8 @@ MonoBehaviour:
   - transitionPoint: {fileID: 0}
     transitionSpeed: 1
   - transitionPoint: {fileID: 1567627235003624}
+    transitionSpeed: 1
+  - transitionPoint: {fileID: 1073159179956922}
     transitionSpeed: 1
   m_forward: 0
   m_moving: 1
