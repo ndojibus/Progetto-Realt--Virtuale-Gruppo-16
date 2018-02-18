@@ -98,25 +98,31 @@ public class InteractableTrap : InteractableObject_Abstract
         base.UpdateUI();
 
         //***INSPECT MODE***
-        if (m_inspectMode)
+
+        if (!m_camerasInTransition)
         {
+            if (m_inspectMode)
+            {
 
-            if (m_equiped)
-            {
-                m_uiManager.ToggleActionPanel(false);
-                m_uiManager.ToggleDescriptionPanel(false);
-            }
-            else if (!m_equiped && m_inventory.HasKey())
-            {
-                m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
+                if (m_equiped)
+                {
+                    m_uiManager.ToggleActionPanel(false);
+                    m_uiManager.ToggleDescriptionPanel(false);
+                }
+                else if (!m_equiped && m_inventory.HasKey())
+                {
+                    m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
 
-            }
-            else
-            {
-                m_uiManager.ToggleActionPanel(false);
+                }
+                else
+                {
+                    m_uiManager.ToggleActionPanel(false);
+                }
+
             }
 
         }
+        
     }
 
     protected override void TransitionOutActions()
