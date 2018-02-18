@@ -64,8 +64,15 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_item.SetActive(m_equiped);
         m_laser.enabled = m_equiped;
         m_laser.transform.gameObject.SetActive(true);
-
-        
+        BoxCollider currentTrigger = this.GetComponent<BoxCollider>();
+        if (currentTrigger != null && currentTrigger.isTrigger)
+        {
+            currentTrigger.size = new Vector3(5f, 3f, 5f);
+            currentTrigger.center = new Vector3(0f, 1.5f, -1f);
+        }
+        else {
+            Debug.LogError(this.name + ": couldn't find any trigger");
+        }
     }
 
     private void InsertRuby()
