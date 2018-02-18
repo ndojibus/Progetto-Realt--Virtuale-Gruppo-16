@@ -81,7 +81,7 @@ public class PlayerInventory : PersistentData
 
     public void UseKey()
     {
-        m_RubyIco.enabled = false;
+        m_KeyIcon.enabled = false;
         saveData(1, 0);
     }
     
