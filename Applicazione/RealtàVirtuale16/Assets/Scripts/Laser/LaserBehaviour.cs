@@ -25,9 +25,9 @@ public class LaserBehaviour : MonoBehaviour {
     [SerializeField]
     LayerMask m_ignoreLayers;             //IMPOSTABILE VIA EDITOR: seleziona i layer da ignorare
 
-    float m_rayLenght;                          //lunghezza attuale del laser
+    float m_rayLenght = 0f;                          //lunghezza attuale del laser
 
-    
+
     GameObject m_laserObject;
     LineRenderer m_laserLine;
     ParticleSystem m_particleLaser;
@@ -133,7 +133,7 @@ public class LaserBehaviour : MonoBehaviour {
         m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
         m_laserLine.SetPosition(1, collisionPoint);
 
-        m_particleLaser.startLifetime = Vector3.Distance(m_particleLaser.transform.position, collisionPoint) / m_particleLaser.startSpeed;
+        m_particleLaser.startLifetime = (Vector3.Distance(m_particleLaser.transform.position, collisionPoint) - 3.5f) / m_particleLaser.startSpeed;
         m_light.transform.localPosition = collisionPoint;
         //m_particle.transform.localPosition = collisionPoint;
 
