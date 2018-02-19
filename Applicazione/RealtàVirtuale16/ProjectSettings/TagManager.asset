@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - Rubino
+  - Enemy
   layers:
   - Default
   - TransparentFX

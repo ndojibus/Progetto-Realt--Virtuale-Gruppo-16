@@ -8,7 +8,7 @@ public class ChangeScene : MonoBehaviour {
     [SerializeField]
     private string m_newSceneName;
 
-    protected void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
             SceneManager.LoadScene(m_newSceneName);
