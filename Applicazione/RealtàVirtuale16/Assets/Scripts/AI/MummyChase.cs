@@ -22,6 +22,12 @@ public class MummyChase : MummyBaseFSM
         m_actualTimer = m_timeoutTime;
         m_originalSpeed = navMeshAgent.speed;
         navMeshAgent.speed *= m_speedFactor;
+
+        AudioSource mummyScream = m_mummy.GetComponent<AudioSource>();
+        if (mummyScream != null)
+            mummyScream.PlayOneShot(mummyScream.clip);
+        else
+            Debug.LogError(this.name + ": Impossible to find audio source!");
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
