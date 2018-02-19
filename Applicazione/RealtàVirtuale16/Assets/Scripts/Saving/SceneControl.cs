@@ -61,6 +61,7 @@ public class SceneControl : MonoBehaviour
         FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Create);
 
         m_persistentDataList.Clear();
+        m_persistentDataList.Add(-1, (ulong) SceneManager.GetActiveScene().buildIndex);
         foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList) {
             foreach (Data data in persistent.Value.objectData) {
                 //Debug.Log("Saved values of key " + data.key + " and value " + data.data + " for object " + persistent.Value.name);
@@ -83,7 +84,10 @@ public class SceneControl : MonoBehaviour
             m_persistentDataList.Clear();
             m_persistentDataList = (SortedList<int, UInt64>)bf.Deserialize(file);
 
-            int i = 0;
+            if (m_persistentDataList.Values[0] != (ulong)SceneManager.GetActiveScene().buildIndex)
+                SceneManager.LoadScene((int)m_persistentDataList.Values[0]);
+
+            int i = 1;
             //modifica i valori corrispondenti dei vari gameobject
             foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList) {
 
