@@ -48,10 +48,13 @@ public class CrackFloor : MonoBehaviour {
     {
         if(other.tag == "Player" && !broken)
         {
-            m_FixedFloor.SetActive(false);
             anim.SetBool("Break", true);
             broken = true;
-
+            Invoke("disableUpperFloor", 0.25f);
         }
+    }
+
+    private void disableUpperFloor() {
+        m_FixedFloor.SetActive(false);
     }
 }
