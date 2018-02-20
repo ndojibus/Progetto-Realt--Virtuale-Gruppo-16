@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableLaser : InteractableObject_Abstract {
+public class InteractableReflectingLaser : InteractableObject_Abstract
+{
+    [SerializeField]
+    private bool m_isActive = false;
 
-	LaserBehaviour m_laser;
-    GameObject m_item;
+    LaserBehaviour m_laser;
 
     private void Awake()
     {
@@ -17,24 +18,21 @@ public class InteractableLaser : InteractableObject_Abstract {
         if (m_laser == null)
             Debug.LogError(this.name + ": " + "Impossible to find LaserBehaviour!");
 
-        m_item = this.transform.Find("LaserStart").Find("Rubino").gameObject;
-        if (m_item == null)
-            Debug.LogError(this.name + ": " + "Select an item!");
     }
 
     // Use this for initialization
-    protected void Start () {
-		base.Start ();
-      
-        //m_item.SetActive(true);
-        m_equiped = false;
-        m_inspectMode = false;
+    protected void Start()
+    {
+        base.Start();
 
-        createData(0);      //index 0, inizializzato a 0 perché non c'è il rubino
-	}
-	
-	// Update is called once per frame
-	protected void Update () {
+        //m_item.SetActive(true);
+        m_equiped = m_isActive;
+        m_inspectMode = false;
+    }
+
+    // Update is called once per frame
+    protected void Update()
+    {
 
         if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.laserActive && !m_camerasInTransition)
         {
@@ -43,51 +41,46 @@ public class InteractableLaser : InteractableObject_Abstract {
             ChangeTransitor(1);
 
         }
-
-
-        base.Update ();
-
-
-
-        if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && m_inventory.HasRuby() && !m_camerasInTransition)
+        else if (m_inspectMode == false && m_equiped == false && m_equiped != m_laser.laserActive && !m_camerasInTransition)
         {
 
-            InsertRuby();
-            UpdateUI();
+            DisableLaser();
+            ChangeTransitor(0);
 
         }
-        
+
+        base.Update();
+
     }
 
     private void EnableLaser()
     {
-        m_item.SetActive(m_equiped);
         m_laser.laserActive = m_equiped;
         BoxCollider currentTrigger = this.GetComponent<BoxCollider>();
         if (currentTrigger != null && currentTrigger.isTrigger)
         {
-            currentTrigger.size = new Vector3(5f, 3f, 5f);
-            currentTrigger.center = new Vector3(0f, 1.5f, -1f);
+            currentTrigger.size = new Vector3(5f, 0.5f, 5f);
+            currentTrigger.center = new Vector3(0f, 0.5f, -1f);
         }
-        else {
+        else
+        {
             Debug.LogError(this.name + ": couldn't find any trigger");
         }
     }
 
-    private void InsertRuby()
+    private void DisableLaser()
     {
-        //preso dall'inventario
-        m_inventory.UseRuby();
-
-
-        m_item.SetActive(true);
-
-        m_equiped = true;
-        
-
-        saveData(0, 1);     //inserisci il rubino, index 0 diventa 1
-
-        
+        m_laser.laserActive = m_equiped;
+        BoxCollider currentTrigger = this.GetComponent<BoxCollider>();
+        if (currentTrigger != null && currentTrigger.isTrigger)
+        {
+            currentTrigger.size = new Vector3(1f, 0.5f, 4f);
+            currentTrigger.center = new Vector3(0f, 0.5f, 2f);
+        }
+        else
+        {
+            Debug.LogError(this.name + ": couldn't find any trigger");
+        }
     }
 
     protected override void UpdateUI()
@@ -99,14 +92,14 @@ public class InteractableLaser : InteractableObject_Abstract {
         {
             if (!m_equiped)
             {
-                
+
                 m_actionText = "Premi E per Esaminare";
 
             }
             else
             {
                 m_actionText = "Premi E per Ruotare la base";
-                             
+
             }
 
         }
@@ -115,19 +108,15 @@ public class InteractableLaser : InteractableObject_Abstract {
 
         //***INSPECT MODE***
 
-        if (!m_camerasInTransition) { 
+        if (!m_camerasInTransition)
+        {
             if (m_inspectMode)
             {
-            
+
                 if (m_equiped && !m_laser.laserActive)
                 {
                     m_uiManager.ToggleActionPanel(false);
                     m_uiManager.ToggleDescriptionPanel(false);
-                }
-                else if (!m_equiped && m_inventory.HasRuby())
-                {
-                    m_uiManager.ToggleActionPanel(true, "Premi E per Inserire");
-
                 }
                 else if (m_equiped)
                 {
@@ -153,9 +142,9 @@ public class InteractableLaser : InteractableObject_Abstract {
     }
 
 
-    
 
-    
+
+
 
     protected override void TransitionOutActions()
     {
@@ -165,10 +154,10 @@ public class InteractableLaser : InteractableObject_Abstract {
 
 
     protected override void SwitchControls()
-	{
-		base.SwitchControls ();
-		m_laser.controlled = !m_laser.controlled;
-	}
+    {
+        base.SwitchControls();
+        m_laser.controlled = !m_laser.controlled;
+    }
 
     public override bool loadData(int t_key, ulong t_data)
     {

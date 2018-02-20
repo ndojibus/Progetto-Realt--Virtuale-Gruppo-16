@@ -23,10 +23,14 @@ public class LaserBehaviour : MonoBehaviour {
     float m_rayThickness = 0.2f;                //IMPOSTABILE VIA EDITOR: spessore del raggio laser
 
     [SerializeField]
+    float m_rayStartingHigh = 0f;                //IMPOSTABILE VIA EDITOR: altezza del raggio laser
+
+    [SerializeField]
     LayerMask m_ignoreLayers;             //IMPOSTABILE VIA EDITOR: seleziona i layer da ignorare
 
     float m_rayLenght = 0f;                          //lunghezza attuale del laser
 
+    private bool m_laserActive = false;
 
     GameObject m_laserObject;
     LineRenderer m_laserLine;
@@ -34,7 +38,10 @@ public class LaserBehaviour : MonoBehaviour {
     GameObject m_light;
     GameObject m_particle;
 
-    Vector3 collisionPoint;
+    Vector3 m_collisionPoint;
+    Vector3 m_newStartingPosition;
+
+    public bool laserActive { get { return m_laserActive; } set { m_laserActive = value; } }
 
     public bool controlled{ get { return m_controlled; }
                             set { m_controlled = value; }
@@ -71,18 +78,29 @@ public class LaserBehaviour : MonoBehaviour {
     // Nell'update chiamo 3 funzioni, controlla quello che fanno nella loro dichiarazione sotto
     void Update()
     {
-        if(!m_laserObject.activeSelf)
+        m_newStartingPosition = this.transform.position + this.transform.forward * m_rayDistance;
+        m_newStartingPosition += this.transform.up * m_rayStartingHigh;
+        if (!m_laserObject.activeSelf && m_laserActive)
             m_laserObject.SetActive(true);
-        if (m_controlled)
-            InputManager();
-        RayCast();
-        ChangeLaser();
+        else if (m_laserObject.activeSelf && !m_laserActive)
+            m_laserObject.SetActive(false);
+
+        if (m_laserActive)
+        {
+            if (m_controlled)
+                InputManager();
+            RayCast();
+            ChangeLaser();
+        }
     }
 
     // Funzione usata per disegnare il gizmo della lunghezza attuale reale del raggio laser, per vederlo clicca "Gizmos" in alto a destra dalla finestra del gioco
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(this.transform.position, this.transform.forward * m_rayLenght);
+        Gizmos.DrawRay(m_newStartingPosition, this.transform.forward * m_rayLenght);
+        Gizmos.DrawWireSphere(m_newStartingPosition, 0.1f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(m_collisionPoint, 0.5f);
     }
 
     /* Funzione che gestisce la rotazione del laser in base alla pressione delle frecce destra-sinistra o i tasti a-d
@@ -104,20 +122,29 @@ public class LaserBehaviour : MonoBehaviour {
     // Emette il raggio e se incontra un interruttore lo attiva
     private void RayCast() {
         RaycastHit hit;     //contiene informazioni sulla collisione del raggio
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, 10f, m_ignoreLayers))  //se raggio che va dalla posizione dell'oggetto verso avanti colpisce qualcosa
+        if (Physics.Raycast(m_newStartingPosition, this.transform.forward, out hit, 10f, m_ignoreLayers))  //se raggio che va dalla posizione dell'oggetto verso avanti colpisce qualcosa
         {
-            m_rayLenght = Vector3.Distance(this.transform.position, hit.point);         //imposta la lunghezza del raggio come la distanza fra l'oggetto e il punto di collisione    
+            m_rayLenght = Vector3.Distance(m_newStartingPosition, hit.point);         //imposta la lunghezza del raggio come la distanza fra l'oggetto e il punto di collisione    
 
             var activator = hit.collider.gameObject.GetComponent<TriggerActionBase>();
-            if (activator != null)                                                      //se l'oggetto colpito dal raggio è un activator
-                activator.Activate();                                                   //instanzia la funzione Activate sull'interruttore
+            if (activator != null)                                                                      //se l'oggetto colpito dal raggio è un activator
+            {
 
-            collisionPoint = transform.InverseTransformPoint(hit.point);
+                Debug.Log(hit.collider.gameObject.name + " è attivato dal raggio");
+                activator.Activate();
+            }//instanzia la funzione Activate sull'interruttore
+            else
+                Debug.Log(hit.collider.gameObject.name + " è colpito dal raggio");
+            m_collisionPoint = /*transform.InverseTransformPoint(*/hit.point;
 
 
         }
         else
-            collisionPoint = new Vector3(0, 0, m_maximumRayLenght);                                           //se no imposta la lunghezza del raggio a quella massima
+        {
+            m_collisionPoint = this.transform.position + this.transform.forward * m_maximumRayLenght;
+            m_collisionPoint += this.transform.up * m_rayStartingHigh;                                           //se no imposta la lunghezza del raggio a quella massima
+            m_rayLenght = m_maximumRayLenght;
+        }
     }
 
     /* Funzione che cambia l'aspetto del laser visualizzato (VECCHIA VERSIONE DEL COMMENTO)
@@ -128,13 +155,13 @@ public class LaserBehaviour : MonoBehaviour {
      */
     private void ChangeLaser()
     {
-        Vector3 collisionPosition = new Vector3(0, 0, m_rayLenght);
-
+        
+        m_laserLine.transform.position = m_newStartingPosition;
         m_laserLine.SetPosition(0, new Vector3(0, 0, 0));
-        m_laserLine.SetPosition(1, collisionPoint);
+        m_laserLine.SetPosition(1, m_laserLine.transform.InverseTransformPoint(m_collisionPoint));
 
-        m_particleLaser.startLifetime = (Vector3.Distance(m_particleLaser.transform.position, collisionPoint) - 3.5f) / m_particleLaser.startSpeed;
-        m_light.transform.localPosition = collisionPoint;
+        m_particleLaser.startLifetime = Vector3.Distance(m_particleLaser.transform.position, m_collisionPoint) / m_particleLaser.startSpeed;
+        m_light.transform.position = m_collisionPoint - transform.forward * 0.1f;
         //m_particle.transform.localPosition = collisionPoint;
 
 

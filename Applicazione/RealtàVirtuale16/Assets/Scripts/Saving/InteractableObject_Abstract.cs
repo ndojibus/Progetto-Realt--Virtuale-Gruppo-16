@@ -49,6 +49,8 @@ public abstract class InteractableObject_Abstract : PersistentData
 
     float m_timer;
 
+    public bool equiped { get { return m_equiped; } set { m_equiped = value; } }
+
     protected void Awake()
     {
         base.Awake();
