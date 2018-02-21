@@ -24,7 +24,7 @@ public class Spuntoni : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        FilaSpuntoni.transform.localPosition = new Vector3(Mathf.PingPong(Time.time*velocity, 1.65f) + 0.18f, FilaSpuntoni.transform.localPosition.y, FilaSpuntoni.transform.localPosition.z);
+        FilaSpuntoni.transform.localPosition = new Vector3(Mathf.PingPong(Time.time*velocity, 1.65f), FilaSpuntoni.transform.localPosition.y, FilaSpuntoni.transform.localPosition.z);
         
         
 
