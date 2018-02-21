@@ -8,6 +8,7 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
     private bool m_isActive = false;
 
     LaserBehaviour m_laser;
+    GameObject m_blueLight;
 
     private void Awake()
     {
@@ -18,6 +19,9 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
         if (m_laser == null)
             Debug.LogError(this.name + ": " + "Impossible to find LaserBehaviour!");
 
+        m_blueLight = this.transform.Find("BlueLight").gameObject;
+        if (m_blueLight == null)
+            Debug.LogError(this.name + ": " + "Impossible to find blue light!");
     }
 
     // Use this for initialization
@@ -56,6 +60,7 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
     private void EnableLaser()
     {
         m_laser.laserActive = m_equiped;
+        m_blueLight.SetActive(m_equiped);
         BoxCollider currentTrigger = this.GetComponent<BoxCollider>();
         if (currentTrigger != null && currentTrigger.isTrigger)
         {
@@ -71,6 +76,7 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
     private void DisableLaser()
     {
         m_laser.laserActive = m_equiped;
+        m_blueLight.SetActive(m_equiped);
         BoxCollider currentTrigger = this.GetComponent<BoxCollider>();
         if (currentTrigger != null && currentTrigger.isTrigger)
         {

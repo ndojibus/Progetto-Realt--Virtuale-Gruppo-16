@@ -98,9 +98,6 @@ public class LaserBehaviour : MonoBehaviour {
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(m_newStartingPosition, this.transform.forward * m_rayLenght);
-        Gizmos.DrawWireSphere(m_newStartingPosition, 0.1f);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(m_collisionPoint, 0.5f);
     }
 
     /* Funzione che gestisce la rotazione del laser in base alla pressione delle frecce destra-sinistra o i tasti a-d
@@ -128,14 +125,9 @@ public class LaserBehaviour : MonoBehaviour {
 
             var activator = hit.collider.gameObject.GetComponent<TriggerActionBase>();
             if (activator != null)                                                                      //se l'oggetto colpito dal raggio è un activator
-            {
-
-                Debug.Log(hit.collider.gameObject.name + " è attivato dal raggio");
                 activator.Activate();
-            }//instanzia la funzione Activate sull'interruttore
-            else
-                Debug.Log(hit.collider.gameObject.name + " è colpito dal raggio");
-            m_collisionPoint = /*transform.InverseTransformPoint(*/hit.point;
+
+            m_collisionPoint = hit.point;
 
 
         }
