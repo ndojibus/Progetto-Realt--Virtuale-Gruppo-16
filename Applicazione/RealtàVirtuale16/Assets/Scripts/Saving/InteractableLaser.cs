@@ -31,6 +31,7 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_inspectMode = false;
 
         createData(0);      //index 0, inizializzato a 0 perché non c'è il rubino
+        createData(0);      //index 1, rotazione del laser
 	}
 	
 	// Update is called once per frame
@@ -160,6 +161,9 @@ public class InteractableLaser : InteractableObject_Abstract {
     protected override void TransitionOutActions()
     {
         base.TransitionOutActions();
+
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 180f) * 100f;
+        saveData(1, (ulong)angleToLong);
     }
 
 
@@ -173,9 +177,16 @@ public class InteractableLaser : InteractableObject_Abstract {
     public override bool loadData(int t_key, ulong t_data)
     {
         bool find = base.loadData(t_key, t_data);
-        if (t_data == 1 && find)
+        if ((int)t_data >= 0 && find)
         {
-            m_equiped = true;
+            int inventoryNumber = t_key - (objectKey * 10);
+            if (t_data == 1 && inventoryNumber == 0)
+                m_equiped = true;
+            else if (inventoryNumber == 1)
+            {
+                float newRotation = (float)(t_data * 0.01 - 180);
+                m_laser.transform.RotateAround(m_laser.transform.position, m_laser.transform.up, newRotation);
+            }
         }
         return find;
     }

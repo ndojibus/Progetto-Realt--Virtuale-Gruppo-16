@@ -125,12 +125,11 @@ public class PlayerInventory : PersistentData
         bool find = base.loadData(t_key, t_data);
         if (((int)t_data >= 0) && find)
         {
-            int inventoryNumber = t_key - (m_sceneIndex * 1000);
+            int inventoryNumber = t_key - (objectKey * 10);
             //se t_key è POI VEDIAMO allora sta caricando il rubino, se t_data è 1 significa che il rubino è presente nell'inventario
             if (inventoryNumber == 0 && t_data == 1)
                 m_RubyIco.enabled = true;
-
-            if (inventoryNumber == 1 && t_data == 1)
+            else if (inventoryNumber == 1 && t_data == 1)
                 m_KeyIcon.enabled = true;
         }
         return find;

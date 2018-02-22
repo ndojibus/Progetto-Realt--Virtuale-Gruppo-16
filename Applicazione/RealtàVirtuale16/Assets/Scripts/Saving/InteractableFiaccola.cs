@@ -43,7 +43,9 @@ public class InteractableFiaccola : InteractableObject_Abstract
 
         if (m_equiped && m_fiaccolaTransitor.forward != true)
             m_fiaccolaTransitor.forward = true;
-            
+
+        if (m_equiped && m_doorTransitor.forward != true)
+            m_doorTransitor.forward = true;
 
 
         if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
@@ -58,10 +60,6 @@ public class InteractableFiaccola : InteractableObject_Abstract
     {
 
         base.TransitionOutActions();
-
-        if(m_equiped && m_doorTransitor.forward != true)
-            m_doorTransitor.forward = true;
-
     }
 
     protected override void UpdateUI()

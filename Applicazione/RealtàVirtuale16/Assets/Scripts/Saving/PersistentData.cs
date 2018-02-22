@@ -24,9 +24,7 @@ public class Data {
  *  GameObject che salvano valori in ciascuna. Ricapitolando: 4mln di scene con 100 oggetti da 10 valori ciascuno */
 public abstract class PersistentData : MonoBehaviour
 {
-
-    [SerializeField]
-    int objectID;
+    public int objectID;
 
     int m_objectNumberKey;
 
