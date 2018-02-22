@@ -49,6 +49,7 @@ public class MummyPatrol : MummyBaseFSM
 
 
             m_currentPatrolIndex = nearestIndex;
+            Debug.Log(this.name + ": index " + m_currentPatrolIndex);
             float nextDistance = Vector3.Distance(patrolPoints[(m_currentPatrolIndex + 1) % patrolPoints.Count].transform.position, mummy.transform.position);
             float previousDistance = Vector3.Distance(patrolPoints[(m_currentPatrolIndex + patrolPoints.Count - 1) % patrolPoints.Count].transform.position, mummy.transform.position);
             if ( nextDistance < previousDistance)
@@ -59,6 +60,8 @@ public class MummyPatrol : MummyBaseFSM
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+
         if (m_travelling && navMeshAgent.remainingDistance <= 1.0f)
         {
             m_travelling = false;
@@ -92,6 +95,7 @@ public class MummyPatrol : MummyBaseFSM
             m_mummyPatrolList.backwardRayDistance = 0f;
             animator.SetBool("isChasing", true);
         }
+
 
     }
 

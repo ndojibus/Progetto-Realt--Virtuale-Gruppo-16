@@ -62,6 +62,13 @@ public class MummyBaseFSM : StateMachineBehaviour
         }
     }
 
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (!m_mummyPatrolList.canChase) {
+            animator.SetBool("canChase", false);
+        }
+    }
+
     protected bool checkPlayerVisibility()
     {
         bool isHit = false;

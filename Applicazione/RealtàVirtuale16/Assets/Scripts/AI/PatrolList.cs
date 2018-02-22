@@ -12,7 +12,7 @@ public class PatrolList : MonoBehaviour
     float m_backwardRayDistance = 0f;
     Vector3 m_gizmoBackwardDirection;
     Color m_gizmoColor = Color.cyan;
-
+    protected bool m_canChase = true;
 
     public List<Waypoint> patrolPoints { get { return m_patrolPoints; } }
     public float fowardRayDistance { set { m_fowardRayDistance = value; } }
@@ -20,6 +20,7 @@ public class PatrolList : MonoBehaviour
     public float backwardRayDistance { set { m_backwardRayDistance = value; } }
     public Vector3 gizmoBackwardDirection { set { m_gizmoBackwardDirection = value; } }
     public Color gizmoColor { set { m_gizmoColor = value; } }
+    public bool canChase { get { return m_canChase; } set { m_canChase = value; } }
 
     public virtual void OnDrawGizmos()
     {

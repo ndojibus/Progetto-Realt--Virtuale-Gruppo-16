@@ -31,6 +31,7 @@ public class MummyChase : MummyBaseFSM
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         animator.SetFloat("PlayerDistance", Vector3.Distance(m_mummy.transform.position, m_player.transform.position) );
 

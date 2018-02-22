@@ -16,6 +16,7 @@ public class MummyAttack : MummyBaseFSM
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         if (stateInfo.normalizedTime >= 0.9)
         {
