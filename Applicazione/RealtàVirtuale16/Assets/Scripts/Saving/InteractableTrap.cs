@@ -142,7 +142,7 @@ public class InteractableTrap : InteractableObject_Abstract
         bool find = base.loadData(t_key, t_data);
         if (t_data == 0 && find)
         {
-            m_equiped = false;
+            //m_equiped = false;
 
         }
         return find;

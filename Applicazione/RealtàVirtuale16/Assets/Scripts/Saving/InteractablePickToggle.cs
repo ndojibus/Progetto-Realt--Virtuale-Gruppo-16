@@ -11,6 +11,8 @@ public class InteractablePickToggle : InteractableObject_Abstract
 
     GameObject m_pickup1;
     GameObject m_pickup2;
+
+    bool m_noMorePick = false;
     // Use this for initialization
     void Start () {
         base.Start();
@@ -38,28 +40,30 @@ public class InteractablePickToggle : InteractableObject_Abstract
 
         base.Update();
 
-
-        if (m_inspectMode && m_equiped && !m_inventory.HasKey() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+        if (!m_noMorePick)
         {
+            if (m_inspectMode && m_equiped && !m_inventory.HasKey() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+            {
 
-            TakeKey();
-            UpdateUI();
-        }
-        else if (m_inspectMode && !m_equiped && m_inventory.HasRuby() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
-        {
+                TakeKey();
+                UpdateUI();
+            }
+            else if (m_inspectMode && !m_equiped && m_inventory.HasRuby() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+            {
 
-            PlaceRuby();
-            UpdateUI();
-
-
-        }
-        else if (m_inspectMode && !m_equiped && m_inventory.HasKey() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
-        {
-
-            PlaceKey();
-            UpdateUI();
+                PlaceRuby();
+                UpdateUI();
 
 
+            }
+            else if (m_inspectMode && !m_equiped && m_inventory.HasKey() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+            {
+
+                PlaceKey();
+                UpdateUI();
+
+
+            }
         }
 
     }
@@ -102,6 +106,7 @@ public class InteractablePickToggle : InteractableObject_Abstract
 
         m_pickup2.SetActive(true);
         m_equiped = true;
+        m_noMorePick = true;
 
         saveData(0, 2);   // salva che il primo oggetto è stato tolto
     }
@@ -144,10 +149,17 @@ public class InteractablePickToggle : InteractableObject_Abstract
     public override bool loadData(int t_key, ulong t_data)
     {
         bool find = base.loadData(t_key, t_data);
+
         if (t_data == 0 && find)
         {
             m_equiped = false;
-            
+
+        }
+        else if (t_data == 2 && find) {
+            m_pickup1.SetActive(false);
+            m_pickup2.SetActive(true);
+            m_equiped = true;
+            m_noMorePick = true;
         }
         return find;
     }

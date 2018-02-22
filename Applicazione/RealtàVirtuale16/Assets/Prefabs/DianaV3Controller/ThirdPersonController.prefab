@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 136942001575869864}
   - component: {fileID: 114040063711540214}
   - component: {fileID: 114643309367704598}
+  - component: {fileID: 114207814517699744}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Player
@@ -2059,7 +2060,7 @@ Transform:
   m_GameObject: {fileID: 1604469848004394}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4283478839430720}
   m_RootOrder: 0
@@ -2176,6 +2177,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+--- !u!114 &114207814517699744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604027881577192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34ee4a0575aef2489c748152596eae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 50
+  m_saveOrigin: 0
 --- !u!114 &114643309367704598
 MonoBehaviour:
   m_ObjectHideFlags: 1
