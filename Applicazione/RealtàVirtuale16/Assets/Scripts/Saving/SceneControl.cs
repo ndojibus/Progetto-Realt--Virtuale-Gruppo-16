@@ -77,6 +77,11 @@ public class SceneControl : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Load() {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
             BinaryFormatter bf = new BinaryFormatter();
