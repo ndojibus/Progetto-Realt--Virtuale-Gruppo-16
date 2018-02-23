@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class InteractableLaser : InteractableObject_Abstract {
 
+    [SerializeField]
+    bool m_active = false;
+
 	LaserBehaviour m_laser;
     GameObject m_item;
 
@@ -27,7 +30,7 @@ public class InteractableLaser : InteractableObject_Abstract {
 		base.Start ();
       
         //m_item.SetActive(true);
-        m_equiped = false;
+        m_equiped = m_active;
         m_inspectMode = false;
 
         createData(0);      //index 0, inizializzato a 0 perché non c'è il rubino

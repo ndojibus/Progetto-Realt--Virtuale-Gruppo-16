@@ -15,9 +15,13 @@ public class RayActivator : TriggerActionBase
     [SerializeField]
     GameObject m_doorObject;        //RICORDATI DI IMPOSTARLO VIA EDITOR: la porta
 
+    [SerializeField]
+    List<CameraTransitor> m_optionalTransitors;
+
     float m_actualTimer;            //timer decrescente
     bool m_activated = false;       //interruttore attivo/disattivo
     CameraTransitor m_transitorComponent;   //animatore della porta
+    
 
     // inizializza il timer e l'animatore collegato alla porta, ricorda di impostare qual è la porta via editor
     public void Awake()
@@ -45,6 +49,11 @@ public class RayActivator : TriggerActionBase
                 m_activated = false;                                                //disattiva l'interruttore
                 m_actualTimer = m_disableTime;                                      //resetta il timer
                 m_transitorComponent.forward = !m_transitorComponent.forward;       //attiva l'animazione che chiude la porta
+
+                if (m_optionalTransitors != null && m_optionalTransitors.Count > 0)
+                    foreach (CameraTransitor transitor in m_optionalTransitors)
+                        transitor.forward = !transitor.forward;
+
             }
         }
     }
@@ -55,6 +64,10 @@ public class RayActivator : TriggerActionBase
         {
             m_activated = true;                                                         //lo attivi         
             m_transitorComponent.forward = !m_transitorComponent.forward;               //attiva l'animazione che apre la porta
+
+            if (m_optionalTransitors != null && m_optionalTransitors.Count > 0)
+                foreach (CameraTransitor transitor in m_optionalTransitors)
+                    transitor.forward = !transitor.forward;
         }
 
         m_actualTimer = m_disableTime;                                                  //in ogni caso resetta il timer
