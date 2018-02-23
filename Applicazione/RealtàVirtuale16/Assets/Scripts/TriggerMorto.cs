@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TriggerMorto : MonoBehaviour {
 
+    public UIManager m_UIManager;
+    
+
+
     private void OnTriggerEnter(Collider other)
     {
+
+        
         if (other.tag == "Player")
         {
-            Debug.Log("MORTOOOOO");
+            m_UIManager.DeathScreen();
         }
     }
 }

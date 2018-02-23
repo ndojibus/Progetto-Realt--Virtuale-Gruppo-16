@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour {
 
     bool GamePaused = false;
 
+    
+
     private GameObject m_inventoryPanel;
     private GameObject m_actionPanel;
     private GameObject m_continuePanel;
@@ -22,6 +24,8 @@ public class UIManager : MonoBehaviour {
     private GameObject m_actionPanel1elem;
     private GameObject m_actionPanel2elem;
     private GameObject m_continuePanelV2;
+
+    private GameObject m_GameOverPanel;
 
     private Text m_continueTextV2;
     private Text m_actionTextNewPanel;
@@ -61,6 +65,8 @@ public class UIManager : MonoBehaviour {
         {
             Debug.Log(this.name + ": " +"Impossible to find Inventory Panel");
         }
+
+
 
         
 
@@ -103,6 +109,7 @@ public class UIManager : MonoBehaviour {
         //poi ci metto i controlli
 
         m_introPanel = this.transform.Find("IntroPanel").gameObject;
+        m_GameOverPanel = this.transform.Find("GameOverPanel").gameObject;
 
 
 
@@ -134,6 +141,23 @@ public class UIManager : MonoBehaviour {
         
 
 
+    }
+
+
+    public void DeathScreen()
+    {
+        m_GameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+        
+
+
+    }
+
+    public void BackToGame()
+    {
+        LoadGame();
+        m_GameOverPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 
