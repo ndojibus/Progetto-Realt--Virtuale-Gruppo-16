@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour {
     private Text m_actionText1;
     private Text m_actionText2;
 
+    private GameObject m_introPanel;
+
+    public bool m_isIntro;
+
     private bool inspectmode;
 
 
@@ -98,6 +102,11 @@ public class UIManager : MonoBehaviour {
 
         //poi ci metto i controlli
 
+        m_introPanel = this.transform.Find("IntroPanel").gameObject;
+
+
+
+
 
 
 
@@ -119,6 +128,9 @@ public class UIManager : MonoBehaviour {
         ToggleInspectModeUI(false,"");
 
         m_actionText2.text = "Esc per Continuare";
+        m_introPanel.SetActive(false);
+
+        m_isIntro = false;
         
 
 
@@ -152,8 +164,37 @@ public class UIManager : MonoBehaviour {
                 Debug.Log(this.name + ": ERRORE CAMERA NULL");
         }
 
+        if(m_isIntro && !m_introPanel.activeSelf)
+        {
+            activeIntro();
+        }
+        if(m_isIntro && Input.GetKeyDown(KeyCode.Escape))
+        {
+            disactiveIntro();
+        }
+
+        if(!m_isIntro && m_inventoryPanel.activeSelf)
+        {
+            disactiveIntro();
+        }
 
 
+
+    }
+
+    private void activeIntro()
+    {
+        m_introPanel.SetActive(true);
+        Time.timeScale = 0f;
+        GamePaused = true;
+    }
+
+    private void disactiveIntro()
+    {
+        m_introPanel.SetActive(false);
+        m_isIntro = false;
+        Time.timeScale = 1f;
+        GamePaused = false;
     }
 
     public void PauseGame()
