@@ -538,6 +538,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114493789066120770, guid: 5809b519ae7225846939a409e06978d1,
+        type: 2}
+      propertyPath: m_description
+      value: La bocca della statua ha le stesse dimensioni della gemma
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493789066120770, guid: 5809b519ae7225846939a409e06978d1,
+        type: 2}
+      propertyPath: m_description2
+      value: "La luce pu\xF2 essere direzionata manualmente sulla parete"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5809b519ae7225846939a409e06978d1, type: 2}
   m_IsPrefabParent: 0
@@ -1189,6 +1199,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114471722642484476, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_description
+      value: Dopo la morte del faraone, la sua tomba venne utilizzata come santuario
+        per le cerimonie in onore di Anubi per oltre un secolo, fino a quando venne
+        edificato un nuovo tempio
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb5fa23b26b60bf4e868f6d059a7bb7f, type: 2}
   m_IsPrefabParent: 0
@@ -1230,6 +1247,12 @@ Prefab:
     - target: {fileID: 4553028501478552, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497658819553442, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_description
+      value: "La gemma riflette i raggi di luce, ma \xE8 inutile se non viene usata
+        con qualcos'altro"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
@@ -1283,6 +1306,11 @@ Prefab:
       propertyPath: m_doorObject
       value: 
       objectReference: {fileID: 2058006568}
+    - target: {fileID: 114632495577354342, guid: b7007a0e972608e48aa159c9c9505c31,
+        type: 2}
+      propertyPath: m_description
+      value: L'Occhio di Ra reagisce alla luce
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7007a0e972608e48aa159c9c9505c31, type: 2}
   m_IsPrefabParent: 0
@@ -1324,6 +1352,11 @@ Prefab:
     - target: {fileID: 4676304722478446, guid: fe81a28dd3cfab9458ddee8cd02cbfaa, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114338351522472790, guid: fe81a28dd3cfab9458ddee8cd02cbfaa,
+        type: 2}
+      propertyPath: m_description
+      value: Il faraone regge in mano la chiave per arrivare al tesoro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe81a28dd3cfab9458ddee8cd02cbfaa, type: 2}
@@ -1408,6 +1441,13 @@ Prefab:
     - target: {fileID: 4568975857024890, guid: 6a537bbe8bc899e4aa2c3892c5788628, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961145683276964, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_description
+      value: "Il faraone Tutankhamon II regn\xF2 per circa 20 anni, succedendo al
+        padre Ramses V. Durante il suo regno l\u2019Egitto raggiunse l\u2019apice
+        del suo splendore politico e militare"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a537bbe8bc899e4aa2c3892c5788628, type: 2}

@@ -8,7 +8,10 @@ public class InteractableLaser : InteractableObject_Abstract {
     [SerializeField]
     bool m_active = false;
 
-	LaserBehaviour m_laser;
+    [SerializeField]
+    string m_description2 = "";
+
+    LaserBehaviour m_laser;
     GameObject m_item;
 
     private void Awake()
@@ -44,6 +47,9 @@ public class InteractableLaser : InteractableObject_Abstract {
         {
 
             EnableLaser();
+
+            m_description = m_description2;
+            
             ChangeTransitor(1);
 
         }
