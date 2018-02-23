@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour {
         m_actionText2.text = "Esc per Continuare";
         m_introPanel.SetActive(false);
 
-        m_isIntro = false;
+        
         
 
 
@@ -173,7 +173,7 @@ public class UIManager : MonoBehaviour {
             disactiveIntro();
         }
 
-        if(!m_isIntro && m_inventoryPanel.activeSelf)
+        if(!m_isIntro && m_introPanel.activeSelf)
         {
             disactiveIntro();
         }
