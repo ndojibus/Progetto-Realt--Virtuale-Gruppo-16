@@ -2310,7 +2310,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 432226950}
-  m_LocalRotation: {x: -0.000000030034077, y: -0.9295514, z: 0.000000075721395, w: 0.36869258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: 0.978, z: -1.27}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children:
@@ -2320,7 +2320,7 @@ Transform:
   - {fileID: 268770597}
   m_Father: {fileID: 1896849135}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -136.73001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &432226952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24178,6 +24178,7 @@ GameObject:
   - component: {fileID: 1896849135}
   - component: {fileID: 1896849138}
   - component: {fileID: 1896849137}
+  - component: {fileID: 1896849139}
   - component: {fileID: 1896849136}
   m_Layer: 0
   m_Name: LaserGatto
@@ -24245,6 +24246,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1896849134}
   m_Mesh: {fileID: 4300002, guid: df4796b594b970842b69211cb0078c5d, type: 3}
+--- !u!114 &1896849139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896849134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa357609c6f9fc46bb1ae8e40b11808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 20
+  m_alreadySaved: 0
 --- !u!1 &1902172012
 GameObject:
   m_ObjectHideFlags: 0

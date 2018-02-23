@@ -47,9 +47,6 @@ public class InteractableLaser : InteractableObject_Abstract {
 
         if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.laserActive && !m_camerasInTransition)
         {
-            float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
-            saveData(1, (ulong)angleToLong);
-
             EnableLaser();
 
             m_description = m_description2;
@@ -186,6 +183,11 @@ public class InteractableLaser : InteractableObject_Abstract {
 		base.SwitchControls ();
 		m_laser.controlled = !m_laser.controlled;
 	}
+
+    public void saveRotation() {
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
+        saveData(1, (ulong)angleToLong);
+    }
 
     public override bool loadData(int t_key, ulong t_data)
     {
