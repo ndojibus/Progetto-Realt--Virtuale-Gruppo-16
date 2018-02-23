@@ -13,8 +13,9 @@ public class PlayerInventory : PersistentData
 
 
     GameObject m_inventoryPanel;
-    Image m_RubyIco;
+    Image m_RubyIcon;
     Image m_KeyIcon;
+    Image m_MoneyBagIcon;
 
     void Awake()
     {
@@ -25,20 +26,24 @@ public class PlayerInventory : PersistentData
         {
 
             m_inventoryPanel = canvas.transform.Find("InventoryPanel").gameObject;
-            m_RubyIco = m_inventoryPanel.GetComponentsInChildren<Image>()[1];
+            m_RubyIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[1];
             m_KeyIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[2];
+            m_MoneyBagIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[3];
             
-            if (m_inventoryPanel == null || m_RubyIco == null || m_KeyIcon == null)
+            if (m_inventoryPanel == null || m_RubyIcon == null || m_KeyIcon == null || m_MoneyBagIcon)
                 Debug.LogError(this.name + ": " + "Impossible to find inventory!");
 
-            m_RubyIco.enabled = false;
-            m_KeyIcon.enabled = false;
+            
         }
 
         
     }
     // Use this for initialization
     void Start() {
+
+        m_RubyIcon.enabled = false;
+        m_KeyIcon.enabled = false;
+        m_MoneyBagIcon.enabled = false;
         m_itemIDList = new List<UInt64>(4);
 
         //il primo item è il rubino
@@ -52,7 +57,7 @@ public class PlayerInventory : PersistentData
 
     public bool HasRuby()
     {
-        return m_RubyIco.enabled;
+        return m_RubyIcon.enabled;
     }
 
     public bool HasKey()
@@ -61,15 +66,20 @@ public class PlayerInventory : PersistentData
         return m_KeyIcon.enabled;
     }
 
+    public bool HasMoneyBag()
+    {
+        return m_MoneyBagIcon.enabled;
+    }
+
     public void PickRuby()
     {
-        m_RubyIco.enabled = true;
+        m_RubyIcon.enabled = true;
         saveData(0, 1);
     }
 
     public void UseRuby()
     {
-        m_RubyIco.enabled = false;
+        m_RubyIcon.enabled = false;
         saveData(0, 0);
     }
 
@@ -84,7 +94,19 @@ public class PlayerInventory : PersistentData
         m_KeyIcon.enabled = false;
         saveData(1, 0);
     }
-    
+
+    public void PickMoneyBag()
+    {
+        m_MoneyBagIcon.enabled= true;
+        saveData(2, 1);
+    }
+
+    public void UseMoneyBag()
+    {
+        m_MoneyBagIcon.enabled = false;
+        saveData(2, 0);
+    }
+
 
     public void addItem(UInt64 t_itemID)
     {
@@ -97,7 +119,7 @@ public class PlayerInventory : PersistentData
     public void deleteItem(UInt64 t_itemID)
     {
 
-        m_RubyIco.enabled = false;
+        m_RubyIcon.enabled = false;
         m_itemIDList.Remove(t_itemID);
 
         for (int i = 0; i < m_itemIDList.Count; i++) {
@@ -128,7 +150,7 @@ public class PlayerInventory : PersistentData
             int inventoryNumber = t_key - (objectKey * 10);
             //se t_key è POI VEDIAMO allora sta caricando il rubino, se t_data è 1 significa che il rubino è presente nell'inventario
             if (inventoryNumber == 0 && t_data == 1)
-                m_RubyIco.enabled = true;
+                m_RubyIcon.enabled = true;
             else if (inventoryNumber == 1 && t_data == 1)
                 m_KeyIcon.enabled = true;
         }
