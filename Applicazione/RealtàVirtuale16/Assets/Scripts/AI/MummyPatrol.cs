@@ -49,7 +49,6 @@ public class MummyPatrol : MummyBaseFSM
 
 
             m_currentPatrolIndex = nearestIndex;
-            Debug.Log(this.name + ": index " + m_currentPatrolIndex);
             float nextDistance = Vector3.Distance(patrolPoints[(m_currentPatrolIndex + 1) % patrolPoints.Count].transform.position, mummy.transform.position);
             float previousDistance = Vector3.Distance(patrolPoints[(m_currentPatrolIndex + patrolPoints.Count - 1) % patrolPoints.Count].transform.position, mummy.transform.position);
             if ( nextDistance < previousDistance)

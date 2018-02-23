@@ -78,7 +78,7 @@ public class MummyBaseFSM : StateMachineBehaviour
         float horizontalAngle = Random.Range(-m_variableAngleFoward, m_variableAngleFoward);
         float verticalAngle = Random.Range(-m_variableAngleFoward/2, m_variableAngleFoward/2);
         Vector3 rotatedVector = Quaternion.AngleAxis(horizontalAngle, m_mummy.transform.up) * m_mummy.transform.forward;
-        rotatedVector = Quaternion.AngleAxis(verticalAngle, m_mummy.transform.right) * rotatedVector;
+        //rotatedVector = Quaternion.AngleAxis(verticalAngle, m_mummy.transform.right) * rotatedVector;
         m_mummyPatrolList.gizmoFowardDirection = rotatedVector;
         if (Physics.Raycast(startRaycastPosition, rotatedVector, out playerHit, m_visibilityRange))
         {
