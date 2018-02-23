@@ -33,7 +33,8 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
         m_equiped = m_isActive;
         m_inspectMode = false;
 
-        createData(0);      //index 0, rotazione del laser
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
+        createData((ulong)angleToLong);      //index 0, rotazione del laser
     }
 
     // Update is called once per frame
@@ -158,7 +159,7 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
     {
         base.TransitionOutActions();
 
-        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 180f) * 100f;
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
         saveData(0, (ulong)angleToLong);
     }
 
@@ -175,7 +176,7 @@ public class InteractableReflectingLaser : InteractableObject_Abstract
         bool find = base.loadData(t_key, t_data);
         if (t_data >= 0 && find)
         {
-            float newRotation = (float)(t_data * 0.01 - 180);
+            float newRotation = (float)(t_data * 0.01f - 3600f);
             m_laser.transform.RotateAround(m_laser.transform.position, m_laser.transform.up, newRotation);
         }
         return find;

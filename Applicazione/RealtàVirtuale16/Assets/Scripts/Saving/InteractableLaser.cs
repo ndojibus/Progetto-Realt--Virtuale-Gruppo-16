@@ -36,8 +36,10 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_equiped = m_active;
         m_inspectMode = false;
 
-        createData(0);      //index 0, inizializzato a 0 perché non c'è il rubino
-        createData(0);      //index 1, rotazione del laser
+        createData((ulong)(m_equiped ? 1 : 0));      //index 0, inizializzato a 0 perché non c'è il rubino
+
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
+        createData((ulong)angleToLong);      //index 1, rotazione del laser
 	}
 	
 	// Update is called once per frame
@@ -45,6 +47,8 @@ public class InteractableLaser : InteractableObject_Abstract {
 
         if (m_inspectMode == false && m_equiped == true && m_equiped != m_laser.laserActive && !m_camerasInTransition)
         {
+            float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
+            saveData(1, (ulong)angleToLong);
 
             EnableLaser();
 
@@ -171,7 +175,7 @@ public class InteractableLaser : InteractableObject_Abstract {
     {
         base.TransitionOutActions();
 
-        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 180f) * 100f;
+        float angleToLong = (m_laser.transform.rotation.eulerAngles.y + 3600f) * 100f;
         saveData(1, (ulong)angleToLong);
     }
 
@@ -193,7 +197,7 @@ public class InteractableLaser : InteractableObject_Abstract {
                 m_equiped = true;
             else if (inventoryNumber == 1)
             {
-                float newRotation = (float)(t_data * 0.01 - 180);
+                float newRotation = (float)(t_data * 0.01f - 3600f);
                 m_laser.transform.RotateAround(m_laser.transform.position, m_laser.transform.up, newRotation);
             }
         }

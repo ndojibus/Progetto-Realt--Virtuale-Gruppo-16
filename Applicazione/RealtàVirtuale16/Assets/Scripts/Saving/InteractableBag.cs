@@ -36,7 +36,7 @@ public class InteractableBag : InteractableObject_Abstract
         if (m_inspectMode && m_equiped && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
         {
             
-            TakeRuby();
+            TakeBag();
             UpdateUI();
             
 
@@ -44,11 +44,11 @@ public class InteractableBag : InteractableObject_Abstract
 
 	}
 
-    private void TakeRuby()
+    private void TakeBag()
     {
 
         //inserito nell'inventario
-        m_inventory.PickRuby();
+        m_inventory.PickMoneyBag();
 
         //cancellato dalla scena
 

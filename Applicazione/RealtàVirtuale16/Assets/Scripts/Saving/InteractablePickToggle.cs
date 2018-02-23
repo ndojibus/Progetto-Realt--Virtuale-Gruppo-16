@@ -48,10 +48,10 @@ public class InteractablePickToggle : InteractableObject_Abstract
                 TakeKey();
                 UpdateUI();
             }
-            else if (m_inspectMode && !m_equiped && m_inventory.HasRuby() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
+            else if (m_inspectMode && !m_equiped && m_inventory.HasMoneyBag() && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
             {
 
-                PlaceRuby();
+                PlaceBag();
                 UpdateUI();
 
 
@@ -96,11 +96,11 @@ public class InteractablePickToggle : InteractableObject_Abstract
         saveData(0, 1);   // salva che il primo oggetto è stato tolto
     }
 
-    private void PlaceRuby()
+    private void PlaceBag()
     {
 
         //inserito nell'inventario
-        m_inventory.UseRuby() ;
+        m_inventory.UseMoneyBag() ;
 
         //cancellato dalla scena
 
@@ -149,17 +149,18 @@ public class InteractablePickToggle : InteractableObject_Abstract
     public override bool loadData(int t_key, ulong t_data)
     {
         bool find = base.loadData(t_key, t_data);
-
-        if (t_data == 0 && find)
+        if ((int)t_data >= 0 && find)
         {
-            m_equiped = false;
-
-        }
-        else if (t_data == 2 && find) {
-            m_pickup1.SetActive(false);
-            m_pickup2.SetActive(true);
-            m_equiped = true;
-            m_noMorePick = true;
+            int inventoryNumber = t_key - (objectKey * 10);
+            if (t_data == 0 && inventoryNumber == 0)
+                m_equiped = false;
+            else if (inventoryNumber == 1)
+            {
+                m_pickup1.SetActive(false);
+                m_pickup2.SetActive(true);
+                m_equiped = true;
+                m_noMorePick = true;
+            }
         }
         return find;
     }
