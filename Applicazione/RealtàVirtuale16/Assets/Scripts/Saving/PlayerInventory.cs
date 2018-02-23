@@ -30,7 +30,7 @@ public class PlayerInventory : PersistentData
             m_KeyIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[2];
             m_MoneyBagIcon = m_inventoryPanel.GetComponentsInChildren<Image>()[3];
             
-            if (m_inventoryPanel == null || m_RubyIcon == null || m_KeyIcon == null || m_MoneyBagIcon)
+            if (m_inventoryPanel == null || m_RubyIcon == null || m_KeyIcon == null || m_MoneyBagIcon == null)
                 Debug.LogError(this.name + ": " + "Impossible to find inventory!");
 
             
