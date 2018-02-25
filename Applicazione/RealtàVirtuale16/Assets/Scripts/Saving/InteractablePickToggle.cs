@@ -131,10 +131,10 @@ public class InteractablePickToggle : InteractableObject_Abstract
             {
                 if (m_equiped && !m_inventory.HasKey())
                     m_uiManager.ToggleActionPanel(true, "Premi E per Raccogliere la chiave");
-                else if(!m_equiped && m_inventory.HasKey() && !m_inventory.HasRuby())
+                else if(!m_equiped && m_inventory.HasKey() && !m_inventory.HasMoneyBag())
                     m_uiManager.ToggleActionPanel(true, "Premi E per mettere la chiave");
-                else if(!m_equiped && m_inventory.HasRuby())
-                    m_uiManager.ToggleActionPanel(true, "Premi E per mettere il rubino");
+                else if(!m_equiped && m_inventory.HasMoneyBag())
+                    m_uiManager.ToggleActionPanel(true, "Premi E per mettere il sacco");
                 else
                     m_uiManager.ToggleActionPanel(false);
             }

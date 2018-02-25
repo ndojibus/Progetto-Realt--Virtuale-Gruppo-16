@@ -2730,6 +2730,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4825642294725278, guid: 1be4e7adb3dae7047bdceceda3f6f1cb,
     type: 2}
   m_PrefabInternal: {fileID: 1661464657}
+--- !u!1001 &224142235
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879568916576496, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 155080c2c46aa4e46b3699b640e29cb9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &225872671 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4825642294725278, guid: 1be4e7adb3dae7047bdceceda3f6f1cb,
@@ -11807,6 +11849,11 @@ Prefab:
       propertyPath: m_doorTransitor
       value: 
       objectReference: {fileID: 1053132311}
+    - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
+        type: 2}
+      propertyPath: objectID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
   m_IsPrefabParent: 0
@@ -14228,6 +14275,11 @@ Prefab:
         type: 2}
       propertyPath: m_description
       value: Un altro interruttore... Devo scappare subito
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
+        type: 2}
+      propertyPath: objectID
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
@@ -17726,7 +17778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1560870955
 Transform:
   m_ObjectHideFlags: 0
@@ -17962,11 +18014,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4423120387777356, guid: c77f1383d2ec56f409b38fea498618b6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.2
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 4423120387777356, guid: c77f1383d2ec56f409b38fea498618b6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.000007748604
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 4423120387777356, guid: c77f1383d2ec56f409b38fea498618b6, type: 2}
       propertyPath: m_LocalPosition.z

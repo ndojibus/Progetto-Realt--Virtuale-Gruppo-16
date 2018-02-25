@@ -24,14 +24,14 @@ public class InteractableEnd : InteractableObject_Abstract
         if (m_pickup1 == null)
             Debug.LogError(this.name + ": There is no pickup1!");
 
-        m_equiped = true;
+        m_equiped = false;
 
         createData(0);  //index 0, 1 significa che l'oggetto da prendere è ancora inserito
     }
 
     // Update is called once per frame
     void Update () {
-        if (m_equiped)
+        if (m_equiped && m_equiped != m_doorTransitor.forward)
             m_doorTransitor.forward = !m_doorTransitor.forward;
 
         base.Update();

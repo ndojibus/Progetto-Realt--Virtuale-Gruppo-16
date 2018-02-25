@@ -51,7 +51,7 @@ public class PlayerInventory : PersistentData
         createData(0);  //index 0
         
         createData(0);  //index 1
-        //createData(0);  //index 2
+        createData(0);  //index 2
         //createData(0);  //index 3
     }
 
@@ -153,6 +153,8 @@ public class PlayerInventory : PersistentData
                 m_RubyIcon.enabled = true;
             else if (inventoryNumber == 1 && t_data == 1)
                 m_KeyIcon.enabled = true;
+            else if (inventoryNumber == 2 && t_data == 1)
+                m_MoneyBagIcon.enabled = true;
         }
         return find;
     }

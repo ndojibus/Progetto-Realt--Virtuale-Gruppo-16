@@ -51,7 +51,6 @@ public class InteractableBag : InteractableObject_Abstract
         m_inventory.PickMoneyBag();
 
         //cancellato dalla scena
-
         m_item.SetActive(false);
         m_equiped = false;
 

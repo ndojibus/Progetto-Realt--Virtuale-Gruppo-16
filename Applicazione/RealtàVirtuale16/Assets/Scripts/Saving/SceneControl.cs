@@ -51,7 +51,14 @@ public class SceneControl : MonoBehaviour
             SceneControl.sceneControl.Save();
             SceneManager.LoadScene(m_currentSceneIndex);
         }
-            
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+
+            DeleteSave();
+            SceneManager.LoadScene(m_currentSceneIndex);
+        }
+
     }
 
 
@@ -80,6 +87,12 @@ public class SceneControl : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void DeleteSave() {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+            File.Delete(Application.persistentDataPath + "/playerInfo.dat");
+        }
     }
 
     public void Load() {
