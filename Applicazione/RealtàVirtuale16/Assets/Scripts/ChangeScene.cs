@@ -11,6 +11,8 @@ public class ChangeScene : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-            SceneManager.LoadScene(m_newSceneName);
+        {
+            SceneControl.sceneControl.LoadNewScene(m_newSceneName);
+        }
     }
 }

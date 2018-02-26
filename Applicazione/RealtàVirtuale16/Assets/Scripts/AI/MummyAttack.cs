@@ -7,11 +7,17 @@ public class MummyAttack : MummyBaseFSM
     [SerializeField]
     private float m_playerKillDistance;
 
+    private UIManager m_deathScreen;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
         mummyPatrolList.gizmoColor = Color.red;        //gizmo
+
+        m_deathScreen = FindObjectOfType<UIManager>();
+        if (m_deathScreen == null)
+            Debug.LogError("Impossible to find death screen");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +28,7 @@ public class MummyAttack : MummyBaseFSM
         {
             float currentDistance = Vector3.Distance(m_mummy.transform.position, m_player.transform.position);
             if (currentDistance < m_playerKillDistance)
-                Debug.Log("PLAYER IS DEAD");
+                m_deathScreen.DeathScreen();
             else
                 animator.SetFloat("PlayerDistance", currentDistance);
         }

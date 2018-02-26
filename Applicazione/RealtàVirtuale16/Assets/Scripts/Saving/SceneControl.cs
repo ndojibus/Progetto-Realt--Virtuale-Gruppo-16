@@ -23,6 +23,8 @@ public class SceneControl : MonoBehaviour
     SortedList<int, UInt64> m_persistentDataList;
     int m_currentSceneIndex;
 
+    bool m_newSceneLoading = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -95,6 +97,12 @@ public class SceneControl : MonoBehaviour
         }
     }
 
+    public void LoadNewScene(string name)
+    {
+        SceneManager.LoadScene(name);
+        m_newSceneLoading = true;
+    }
+
     public void Load() {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
             BinaryFormatter bf = new BinaryFormatter();
@@ -102,34 +110,42 @@ public class SceneControl : MonoBehaviour
             m_persistentDataList.Clear();
             m_persistentDataList = (SortedList<int, UInt64>)bf.Deserialize(file);
 
-            if (m_persistentDataList.Values[0] != (ulong)SceneManager.GetActiveScene().buildIndex)
-                SceneManager.LoadScene((int)m_persistentDataList.Values[0]);
+            if (!m_newSceneLoading)
+            {
+                if (m_persistentDataList.Values[0] != (ulong)SceneManager.GetActiveScene().buildIndex)
+                    SceneManager.LoadScene((int)m_persistentDataList.Values[0]);
 
-            int i = 1;
-            //modifica i valori corrispondenti dei vari gameobject
-            foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList) {
+                int i = 1;
+                //modifica i valori corrispondenti dei vari gameobject
+                foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList)
+                {
 
-                //1000 index per ogni scena di cui 10 dedicati ad oggetto
-                int minimumKey = 1000 * m_currentSceneIndex + 10 * (persistent.Key - m_currentSceneIndex * 100);
-                int maximumKey = minimumKey + 10;
+                    //1000 index per ogni scena di cui 10 dedicati ad oggetto
+                    int minimumKey = 1000 * m_currentSceneIndex + 10 * (persistent.Key - m_currentSceneIndex * 100);
+                    int maximumKey = minimumKey + 10;
 
-                for (; 
-                    (i < m_persistentDataList.Count) && 
-                    ( 
-                        (m_persistentDataList.Keys[i] >= minimumKey) && 
-                        (m_persistentDataList.Keys[i] < maximumKey)
-                    ); 
-                    i++) {
+                    for (;
+                        (i < m_persistentDataList.Count) &&
+                        (
+                            (m_persistentDataList.Keys[i] >= minimumKey) &&
+                            (m_persistentDataList.Keys[i] < maximumKey)
+                        );
+                        i++)
+                    {
 
 
-                    if (!persistent.Value.loadData(m_persistentDataList.Keys[i], m_persistentDataList.Values[i]))
-                        Debug.LogError("Impossible to load values of key " + m_persistentDataList.Keys[i] + " and value "+ m_persistentDataList.Values[i] + " from " + persistent.Value.name);
-                    /*else
-                        Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
+                        if (!persistent.Value.loadData(m_persistentDataList.Keys[i], m_persistentDataList.Values[i]))
+                            Debug.LogError("Impossible to load values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);
+                        /*else
+                            Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
+                    }
                 }
-            }
 
-            file.Close();
+                file.Close();
+            }
+            else {
+                m_newSceneLoading = false;
+                Save(); }
         }
         else
             Debug.Log("Impossible to load save data");

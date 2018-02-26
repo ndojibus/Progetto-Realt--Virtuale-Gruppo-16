@@ -153,6 +153,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 1622846608602644, guid: 3f2b8e2957339a047ac01cbecde7787f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f2b8e2957339a047ac01cbecde7787f, type: 2}
   m_IsPrefabParent: 0
@@ -1150,7 +1154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1746879644646194, guid: 4754a3c26a50ed24bac2c1aefb5c46ed, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4754a3c26a50ed24bac2c1aefb5c46ed, type: 2}
@@ -1253,6 +1257,66 @@ Prefab:
         per le cerimonie in onore di Anubi per oltre un secolo, fino a quando venne
         edificato un nuovo tempio
       objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.62552905
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.684092
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.7761194
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 0.019607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: far clip plane
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: field of view
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: orthographic size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
+    - target: {fileID: 20291356074282078, guid: cb5fa23b26b60bf4e868f6d059a7bb7f,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb5fa23b26b60bf4e868f6d059a7bb7f, type: 2}
   m_IsPrefabParent: 0
@@ -1300,6 +1364,94 @@ Prefab:
       propertyPath: m_description
       value: "La gemma riflette i raggi di luce, ma \xE8 inutile se non viene usata
         con qualcos'altro"
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.62552905
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.684092
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.7761194
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 0.019607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: far clip plane
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: field of view
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: orthographic size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
+    - target: {fileID: 20785660028628998, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991197885281790, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079039463561706, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
@@ -1495,6 +1647,66 @@ Prefab:
       value: "Il faraone Tutankhamon II regn\xF2 per circa 20 anni, succedendo al
         padre Ramses V. Durante il suo regno l\u2019Egitto raggiunse l\u2019apice
         del suo splendore politico e militare"
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.62552905
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.684092
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.7761194
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 0.019607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: far clip plane
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: field of view
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: orthographic size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
+    - target: {fileID: 20723440918786638, guid: 6a537bbe8bc899e4aa2c3892c5788628,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a537bbe8bc899e4aa2c3892c5788628, type: 2}
@@ -1776,6 +1988,61 @@ Prefab:
     - target: {fileID: 4827569256978486, guid: 012da7951379b9142a936c9616122cc0, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.62552905
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.684092
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.7761194
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 0.019607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: far clip plane
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: field of view
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: orthographic size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294966783
+      objectReference: {fileID: 0}
+    - target: {fileID: 20087387982182578, guid: 012da7951379b9142a936c9616122cc0,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 012da7951379b9142a936c9616122cc0, type: 2}
