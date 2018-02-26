@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -916,6 +916,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 20434684358651842, guid: 39343d45162fe4d4fbfd01c567765bbc,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39343d45162fe4d4fbfd01c567765bbc, type: 2}
   m_IsPrefabParent: 0
@@ -1154,7 +1159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1746879644646194, guid: 4754a3c26a50ed24bac2c1aefb5c46ed, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4754a3c26a50ed24bac2c1aefb5c46ed, type: 2}
@@ -1557,6 +1562,16 @@ Prefab:
       propertyPath: m_description
       value: Il faraone regge in mano la chiave per arrivare al tesoro
       objectReference: {fileID: 0}
+    - target: {fileID: 23673325710688612, guid: fe81a28dd3cfab9458ddee8cd02cbfaa,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be0b204a4ddb0444baaa6fe733999950, type: 2}
+    - target: {fileID: 23381675908399454, guid: fe81a28dd3cfab9458ddee8cd02cbfaa,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 755f1a1f824167e4389558f597b3cdd2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe81a28dd3cfab9458ddee8cd02cbfaa, type: 2}
   m_IsPrefabParent: 0
