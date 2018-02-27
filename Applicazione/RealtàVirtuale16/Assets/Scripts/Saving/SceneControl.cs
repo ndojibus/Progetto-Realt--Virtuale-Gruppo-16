@@ -19,10 +19,14 @@ class AscendingComparer<TKey> : IComparer<int>
 public class SceneControl : MonoBehaviour
 {
     public static SceneControl sceneControl;
+
     SortedList<int, PersistentData> m_persistentObjectList;
     SortedList<int, UInt64> m_persistentDataList;
     int m_currentSceneIndex;
 
+    UIManager m_uiManager;
+
+    string m_newSceneName;
     bool m_newSceneLoading = false;
 
     // Use this for initialization
@@ -99,8 +103,14 @@ public class SceneControl : MonoBehaviour
 
     public void LoadNewScene(string name)
     {
-        SceneManager.LoadScene(name);
+        m_uiManager.ActiveLoadingPanel(0.3f);
+        m_newSceneName = name;
+        Invoke("LoadSceneByName", 0.3f);
         m_newSceneLoading = true;
+    }
+
+    private void LoadSceneByName() {
+        SceneManager.LoadScene(m_newSceneName);
     }
 
     public void Load() {
@@ -140,16 +150,20 @@ public class SceneControl : MonoBehaviour
                             Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
                     }
                 }
+                file.Close();
 
-                
             }
             else {
                 m_newSceneLoading = false;
+                file.Close();
                 Save(); }
-            file.Close();
+            
         }
         else
             Debug.Log("Impossible to load save data");
+
+
+        m_uiManager.DeactiveLoadingPanel(0.5f);
     }
 
     //scene loading
@@ -167,6 +181,10 @@ public class SceneControl : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        m_uiManager = FindObjectOfType<UIManager>();
+        if (m_uiManager == null)
+            Debug.LogError("Impossible to find UImanager");
+
         PersistentData.objectCount = 0;
 
         m_persistentObjectList.Clear();

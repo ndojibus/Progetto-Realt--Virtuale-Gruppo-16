@@ -168,14 +168,14 @@ public class UIManager : MonoBehaviour {
 
     }
 
-    public void ActiveLoadingPanel()
+    public void ActiveLoadingPanel(float timeToFade)
     {
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 1));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 1, timeToFade));
     }
 
-    public void DeactiveLoadingPanel()
+    public void DeactiveLoadingPanel(float timeToFade)
     {
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 0));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 0, timeToFade));
     }
 
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float lerpTime= 0.5f)
