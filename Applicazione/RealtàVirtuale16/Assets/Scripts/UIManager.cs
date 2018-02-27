@@ -261,7 +261,7 @@ public class UIManager : MonoBehaviour {
 
         if(m_isIntro && !m_introPanel.activeSelf)
         {
-            activeIntro();
+            Invoke ("activeIntro", 0.25f);
         }
         if(m_isIntro && Input.GetKeyDown(KeyCode.Escape))
         {
