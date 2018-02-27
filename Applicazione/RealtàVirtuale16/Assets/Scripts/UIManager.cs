@@ -153,12 +153,16 @@ public class UIManager : MonoBehaviour {
 
     }
 
+
+    
     
     public void DeathScreen()
     {
         //m_GameOverPanel.SetActive(true);
 
         StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 1));
+        m_canvasGroupGameOver.interactable = true;
+        m_canvasGroupGameOver.blocksRaycasts = true;
         
 
         //StartCoroutine(FadeGameOver(false));
@@ -168,9 +172,26 @@ public class UIManager : MonoBehaviour {
 
     }
 
+    public void ResumeAfterGameOver()
+    {
+        LoadGame();
+        
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 0));
+        m_canvasGroupGameOver.interactable = false;
+        m_canvasGroupGameOver.blocksRaycasts = false;
+
+        Time.timeScale = 1f;
+    }
+
     public void ActiveLoadingPanel(float timeToFade)
     {
         StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 1, timeToFade));
+    }
+
+    public void QuitScene()
+    {
+        Time.timeScale = 1f;
+        SceneControl.sceneControl.LoadMainMenu();
     }
 
     public void DeactiveLoadingPanel(float timeToFade)
@@ -233,14 +254,7 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void BackToGame()
-    {
-        LoadGame();
-        //m_GameOverPanel.SetActive(false);
-
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 0));
-        Time.timeScale = 1f;
-    }
+   
 
     // Update is called once per frame
     void Update () {

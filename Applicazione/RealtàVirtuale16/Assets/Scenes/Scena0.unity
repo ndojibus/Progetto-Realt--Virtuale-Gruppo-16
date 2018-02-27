@@ -1100,16 +1100,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114856251570253292, guid: 017637aca5e41ac499c2696e749ec4ce,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1899953354}
-    - target: {fileID: 225770684033936374, guid: 017637aca5e41ac499c2696e749ec4ce,
-        type: 2}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 017637aca5e41ac499c2696e749ec4ce, type: 2}
   m_IsPrefabParent: 0
@@ -1621,12 +1611,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1931778583016634, guid: 017637aca5e41ac499c2696e749ec4ce,
     type: 2}
   m_PrefabInternal: {fileID: 1497435351}
---- !u!114 &1899953354 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114059832681152848, guid: 155080c2c46aa4e46b3699b640e29cb9,
-    type: 2}
-  m_PrefabInternal: {fileID: 721663365}
-  m_Script: {fileID: 11500000, guid: 1b6ea85daa31a1c49b5cc4a3740367dc, type: 3}
 --- !u!1001 &1912963342
 Prefab:
   m_ObjectHideFlags: 0
