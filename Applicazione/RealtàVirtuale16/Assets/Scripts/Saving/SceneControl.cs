@@ -121,7 +121,7 @@ public class SceneControl : MonoBehaviour
             m_persistentDataList.Clear();
             m_persistentDataList = (SortedList<int, UInt64>)bf.Deserialize(file);
 
-            if (m_currentSceneIndex == 0)
+            if (m_currentSceneIndex != 0)
             {
                 if (!m_newSceneLoading)
                 {
