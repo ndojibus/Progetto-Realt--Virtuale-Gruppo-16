@@ -6875,6 +6875,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1022290993880284, guid: 017637aca5e41ac499c2696e749ec4ce, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 017637aca5e41ac499c2696e749ec4ce, type: 2}
   m_IsPrefabParent: 0
@@ -14345,6 +14349,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1be4e7adb3dae7047bdceceda3f6f1cb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1217031856 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1022290993880284, guid: 017637aca5e41ac499c2696e749ec4ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 582832182}
+--- !u!225 &1217031858
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1217031856}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1218910021
 Prefab:
   m_ObjectHideFlags: 0

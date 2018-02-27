@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour {
     private GameObject m_continuePanelV2;
 
     private GameObject m_GameOverPanel;
+    private Image m_imageGameOver;
+    private CanvasGroup m_canvasGroupGameOver;
 
     private Text m_continueTextV2;
     private Text m_actionTextNewPanel;
@@ -111,6 +113,8 @@ public class UIManager : MonoBehaviour {
         m_introPanel = this.transform.Find("IntroPanel").gameObject;
         m_GameOverPanel = this.transform.Find("GameOverPanel").gameObject;
 
+        m_imageGameOver = m_GameOverPanel.GetComponent<Image>();
+        m_canvasGroupGameOver = m_GameOverPanel.GetComponent<CanvasGroup>();
 
 
 
@@ -143,20 +147,87 @@ public class UIManager : MonoBehaviour {
 
     }
 
-
+    
     public void DeathScreen()
     {
-        m_GameOverPanel.SetActive(true);
+        //m_GameOverPanel.SetActive(true);
+
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 1));
+        
+
+        //StartCoroutine(FadeGameOver(false));
         Time.timeScale = 0f;
         
 
 
     }
 
+    IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float lerpTime= 0.5f)
+    {
+        float timeStartedLerping = Time.realtimeSinceStartup;
+        float timeSinceStarted = Time.realtimeSinceStartup - timeStartedLerping;
+        float percentageComplete = timeSinceStarted / lerpTime;
+
+        while (true)
+        {
+            timeSinceStarted = Time.realtimeSinceStartup- timeStartedLerping;
+            percentageComplete = timeSinceStarted / lerpTime;
+
+            cg.alpha = Mathf.Lerp(start, end, percentageComplete);
+
+            if (percentageComplete >= 1) break;
+
+            yield return new WaitForEndOfFrame();
+
+            
+
+        }
+
+        if (end == 1.0)
+            cg.interactable = true;
+        else
+            cg.interactable = false;
+        Debug.Log("done");
+    }
+
+
+
+
+
+
+    //vecchia versione non worka
+    IEnumerator FadeGameOver(bool fadeAway)
+    {
+        // fade from opaque to transparent
+        if (fadeAway)
+        {
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                m_imageGameOver.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+        // fade from transparent to opaque
+        else
+        {
+            // loop over 1 second
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                // set color with i as alpha
+                m_imageGameOver.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+    }
+
     public void BackToGame()
     {
         LoadGame();
-        m_GameOverPanel.SetActive(false);
+        //m_GameOverPanel.SetActive(false);
+
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 0));
         Time.timeScale = 1f;
     }
 
