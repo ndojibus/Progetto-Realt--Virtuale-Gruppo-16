@@ -141,11 +141,12 @@ public class SceneControl : MonoBehaviour
                     }
                 }
 
-                file.Close();
+                
             }
             else {
                 m_newSceneLoading = false;
                 Save(); }
+            file.Close();
         }
         else
             Debug.Log("Impossible to load save data");
