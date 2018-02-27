@@ -114,54 +114,59 @@ public class SceneControl : MonoBehaviour
     }
 
     public void Load() {
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             m_persistentDataList.Clear();
             m_persistentDataList = (SortedList<int, UInt64>)bf.Deserialize(file);
 
-            if (!m_newSceneLoading)
+            if (m_currentSceneIndex == 0)
             {
-                if (m_persistentDataList.Values[0] != (ulong)SceneManager.GetActiveScene().buildIndex)
-                    SceneManager.LoadScene((int)m_persistentDataList.Values[0]);
-
-                int i = 1;
-                //modifica i valori corrispondenti dei vari gameobject
-                foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList)
+                if (!m_newSceneLoading)
                 {
+                    if (m_persistentDataList.Values[0] != (ulong)SceneManager.GetActiveScene().buildIndex)
+                        SceneManager.LoadScene((int)m_persistentDataList.Values[0]);
 
-                    //1000 index per ogni scena di cui 10 dedicati ad oggetto
-                    int minimumKey = 1000 * m_currentSceneIndex + 10 * (persistent.Key - m_currentSceneIndex * 100);
-                    int maximumKey = minimumKey + 10;
-
-                    for (;
-                        (i < m_persistentDataList.Count) &&
-                        (
-                            (m_persistentDataList.Keys[i] >= minimumKey) &&
-                            (m_persistentDataList.Keys[i] < maximumKey)
-                        );
-                        i++)
+                    int i = 1;
+                    //modifica i valori corrispondenti dei vari gameobject
+                    foreach (KeyValuePair<int, PersistentData> persistent in m_persistentObjectList)
                     {
 
+                        //1000 index per ogni scena di cui 10 dedicati ad oggetto
+                        int minimumKey = 1000 * m_currentSceneIndex + 10 * (persistent.Key - m_currentSceneIndex * 100);
+                        int maximumKey = minimumKey + 10;
 
-                        if (!persistent.Value.loadData(m_persistentDataList.Keys[i], m_persistentDataList.Values[i]))
-                            Debug.LogError("Impossible to load values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);
-                        /*else
-                            Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
+                        for (;
+                            (i < m_persistentDataList.Count) &&
+                            (
+                                (m_persistentDataList.Keys[i] >= minimumKey) &&
+                                (m_persistentDataList.Keys[i] < maximumKey)
+                            );
+                            i++)
+                        {
+
+
+                            if (!persistent.Value.loadData(m_persistentDataList.Keys[i], m_persistentDataList.Values[i]))
+                                Debug.LogError("Impossible to load values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);
+                            /*else
+                                Debug.Log("Loaded values of key " + m_persistentDataList.Keys[i] + " and value " + m_persistentDataList.Values[i] + " from " + persistent.Value.name);*/
+                        }
                     }
+                    file.Close();
+
                 }
-                file.Close();
+                else
+                {
+                    m_newSceneLoading = false;
+                    file.Close();
+                    Save();
+                }
 
             }
-            else {
-                m_newSceneLoading = false;
-                file.Close();
-                Save(); }
-            
+            else
+                Debug.Log("Impossible to load save data");
         }
-        else
-            Debug.Log("Impossible to load save data");
-
 
         m_uiManager.DeactiveLoadingPanel(0.5f);
     }
@@ -184,6 +189,8 @@ public class SceneControl : MonoBehaviour
         m_uiManager = FindObjectOfType<UIManager>();
         if (m_uiManager == null)
             Debug.LogError("Impossible to find UImanager");
+
+        m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         PersistentData.objectCount = 0;
 
