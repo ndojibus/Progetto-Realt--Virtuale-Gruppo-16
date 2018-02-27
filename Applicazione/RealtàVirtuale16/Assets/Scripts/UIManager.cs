@@ -180,7 +180,7 @@ public class UIManager : MonoBehaviour {
         m_canvasGroupGameOver.interactable = false;
         m_canvasGroupGameOver.blocksRaycasts = false;
 
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     public void ActiveLoadingPanel(float timeToFade)
@@ -604,9 +604,9 @@ public class UIManager : MonoBehaviour {
 
     public void LoadGame()
     {
-
-        SceneControl.sceneControl.ReloadScene();
         ResumeGame();
+        SceneControl.sceneControl.ReloadScene();
+        
     }
 
 

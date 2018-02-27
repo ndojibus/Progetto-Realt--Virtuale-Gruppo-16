@@ -87,7 +87,9 @@ public class SceneControl : MonoBehaviour
     }
 
 	public void ReloadScene(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        m_uiManager.ActiveLoadingPanel(0.3f);
+        m_newSceneName = SceneManager.GetActiveScene().name;
+        Invoke("LoadSceneByName", 0.3f);
 	}
 
     public void LoadMainMenu()

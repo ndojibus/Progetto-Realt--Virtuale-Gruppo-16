@@ -31,4 +31,5 @@ public class PatrolList : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(startRaycastPosition, m_gizmoBackwardDirection * m_backwardRayDistance);
     }
+
 }

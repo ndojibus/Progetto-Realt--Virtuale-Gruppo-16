@@ -22,7 +22,7 @@ public class SavePlayerPosition : PersistentData
 
 	void Start () {
         initVal.initialX = (ulong)(this.transform.position.x + 1000f) * 100;
-        initVal.initialY = 0;
+        initVal.initialY = (ulong)((0.05f + 1000f) * 100f);
         initVal.initialZ = (ulong)(this.transform.position.z + 1000f) * 100;
         float angleToLong = (this.transform.rotation.eulerAngles.y + 180f) * 100f;
         initVal.initialR = (ulong) angleToLong;
