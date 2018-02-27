@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour {
     private Image m_imageGameOver;
     private CanvasGroup m_canvasGroupGameOver;
 
+    private GameObject m_loadingPanel;
+    private CanvasGroup m_canvasGroupLoading;
+
     private Text m_continueTextV2;
     private Text m_actionTextNewPanel;
     private Text m_actionText1;
@@ -116,6 +119,9 @@ public class UIManager : MonoBehaviour {
         m_imageGameOver = m_GameOverPanel.GetComponent<Image>();
         m_canvasGroupGameOver = m_GameOverPanel.GetComponent<CanvasGroup>();
 
+        m_loadingPanel = this.transform.Find("LoadingPanel").gameObject;
+        m_canvasGroupLoading = m_loadingPanel.GetComponent<CanvasGroup>();
+
 
 
 
@@ -162,6 +168,16 @@ public class UIManager : MonoBehaviour {
 
     }
 
+    public void ActiveLoadingPanel()
+    {
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 1));
+    }
+
+    public void DeactiveLoadingPanel()
+    {
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 0));
+    }
+
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float lerpTime= 0.5f)
     {
         float timeStartedLerping = Time.realtimeSinceStartup;
@@ -189,11 +205,6 @@ public class UIManager : MonoBehaviour {
             cg.interactable = false;
         Debug.Log("done");
     }
-
-
-
-
-
 
     //vecchia versione non worka
     IEnumerator FadeGameOver(bool fadeAway)
@@ -230,9 +241,6 @@ public class UIManager : MonoBehaviour {
         StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 0));
         Time.timeScale = 1f;
     }
-
-
-
 
     // Update is called once per frame
     void Update () {

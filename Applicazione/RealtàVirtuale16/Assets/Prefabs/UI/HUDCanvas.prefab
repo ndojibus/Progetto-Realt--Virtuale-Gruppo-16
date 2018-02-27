@@ -593,13 +593,14 @@ GameObject:
   - component: {fileID: 224719861302035112}
   - component: {fileID: 222543008033192772}
   - component: {fileID: 114350459952368612}
+  - component: {fileID: 225770684033936374}
   m_Layer: 5
   m_Name: LoadingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1956175560181624
 GameObject:
   m_ObjectHideFlags: 1
@@ -1347,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cde35e7cdb2c4147b335c6bfe1dc5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isIntro: 1
+  m_isIntro: 0
 --- !u!114 &114464760672378506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2281,8 +2282,8 @@ RectTransform:
   - {fileID: 224646178352396924}
   - {fileID: 224096855098890162}
   - {fileID: 224257742128218122}
-  - {fileID: 224204138045946782}
   - {fileID: 224700111680271242}
+  - {fileID: 224204138045946782}
   - {fileID: 224719861302035112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2343,7 +2344,7 @@ RectTransform:
   - {fileID: 224756469066869480}
   - {fileID: 224340297064160638}
   m_Father: {fileID: 224037638477824782}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2756,7 +2757,7 @@ RectTransform:
   - {fileID: 224891920836706322}
   - {fileID: 224498112740580478}
   m_Father: {fileID: 224037638477824782}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2957,4 +2958,15 @@ CanvasGroup:
   m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225770684033936374
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931778583016634}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
