@@ -177,5 +177,7 @@ public class SceneControl : MonoBehaviour
         }
 
         Invoke("Load", 0.1f);
+        if (Time.timeScale != 1f)
+            Time.timeScale = 1f;
     }
 }
