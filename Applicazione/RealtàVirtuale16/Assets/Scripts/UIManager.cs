@@ -160,7 +160,7 @@ public class UIManager : MonoBehaviour {
     {
         //m_GameOverPanel.SetActive(true);
 
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 1));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, 0, 1));
         m_canvasGroupGameOver.interactable = true;
         m_canvasGroupGameOver.blocksRaycasts = true;
         
@@ -176,7 +176,7 @@ public class UIManager : MonoBehaviour {
     {
         LoadGame();
         
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, m_canvasGroupGameOver.alpha, 0));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, 1, 0));
         m_canvasGroupGameOver.interactable = false;
         m_canvasGroupGameOver.blocksRaycasts = false;
 
@@ -185,7 +185,7 @@ public class UIManager : MonoBehaviour {
 
     public void ActiveLoadingPanel(float timeToFade)
     {
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 1, timeToFade));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, 0, 1, timeToFade));
     }
 
     public void QuitScene()
@@ -196,7 +196,7 @@ public class UIManager : MonoBehaviour {
 
     public void DeactiveLoadingPanel(float timeToFade)
     {
-        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, m_canvasGroupLoading.alpha, 0, timeToFade));
+        StartCoroutine(FadeCanvasGroup(m_canvasGroupLoading, 1, 0, timeToFade));
     }
 
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end, float lerpTime= 0.5f)
