@@ -9,7 +9,7 @@ public class FootstepTrigger : MonoBehaviour {
 
         AudioSource footstep = this.GetComponent<AudioSource>();
         if (footstep != null)
-        {   if (!footstep.isPlaying)
+        {   if (footstep.time<0.1f)
                 footstep.PlayOneShot(footstep.clip);
         }
         else

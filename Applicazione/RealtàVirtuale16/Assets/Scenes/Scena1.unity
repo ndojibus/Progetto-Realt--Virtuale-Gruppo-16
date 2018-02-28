@@ -59,8 +59,8 @@ LightmapSettings:
     m_BakeResolution: 40
     m_TextureWidth: 1024
     m_TextureHeight: 1024
-    m_AO: 0
-    m_AOMaxDistance: 1
+    m_AO: 1
+    m_AOMaxDistance: 100
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
     m_Padding: 2
@@ -72,7 +72,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 0
+    m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
@@ -1454,6 +1454,91 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.5, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &175684661 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1932418770026418, guid: 240211321a1ab344aaaa6bf9b3e6966b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1925228919}
+--- !u!82 &175684665
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175684661}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e82aa848aca1fc7458372c1ba7127c08, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 200
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &176629204
 Prefab:
   m_ObjectHideFlags: 0
@@ -13614,14 +13699,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4951687178963850, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4951687178963850, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
   m_IsPrefabParent: 0
@@ -13874,6 +13951,26 @@ Prefab:
     - target: {fileID: 4667812977829862, guid: 240211321a1ab344aaaa6bf9b3e6966b, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342388355813228, guid: 240211321a1ab344aaaa6bf9b3e6966b,
+        type: 2}
+      propertyPath: crackingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e82aa848aca1fc7458372c1ba7127c08, type: 3}
+    - target: {fileID: 65407073923458340, guid: 240211321a1ab344aaaa6bf9b3e6966b,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 21.481161
+      objectReference: {fileID: 0}
+    - target: {fileID: 65407073923458340, guid: 240211321a1ab344aaaa6bf9b3e6966b,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.086190954
+      objectReference: {fileID: 0}
+    - target: {fileID: 65407073923458340, guid: 240211321a1ab344aaaa6bf9b3e6966b,
+        type: 2}
+      propertyPath: m_Center.z
+      value: -5.7405806
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 240211321a1ab344aaaa6bf9b3e6966b, type: 2}

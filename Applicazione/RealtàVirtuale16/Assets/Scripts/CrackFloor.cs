@@ -10,10 +10,13 @@ public class CrackFloor : MonoBehaviour {
     private GameObject m_CrackedFloor;
     private bool broken=false;
 
-    // Use this for initialization
-    void Start () {
+    private AudioSource source;
+    public AudioClip crackingSound;
 
+    private void Awake()
+    {
 
+        source = this.GetComponent<AudioSource>();
         m_FixedFloor = this.transform.Find("FixedFloor").gameObject;
 
         if (m_FixedFloor == null)
@@ -22,7 +25,7 @@ public class CrackFloor : MonoBehaviour {
         }
 
         m_CrackedFloor = this.transform.Find("CrackedFloor").gameObject;
-        
+
         if (m_FixedFloor == null)
         {
             Debug.LogError(this.name + ": " + "Impossible to find any CrackedFloor!");
@@ -31,23 +34,23 @@ public class CrackFloor : MonoBehaviour {
         }
 
         anim = m_CrackedFloor.GetComponent<Animator>();
-  
-        if (anim== null)
+
+        if (anim == null)
         {
             Debug.LogError(this.name + ": " + "Impossible to find any animator!");
         }
 
     }
+
+    
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && !broken)
         {
+            source.PlayOneShot(crackingSound, 1f);
             anim.SetBool("Break", true);
             broken = true;
             Invoke("disableUpperFloor", 0.25f);

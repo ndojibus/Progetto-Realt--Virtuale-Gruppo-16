@@ -12,7 +12,19 @@ public class InteractableOpen : InteractableObject_Abstract
 
     private bool is_opened=false;
 
-    
+    public AudioClip openSound;
+    private AudioSource source;
+
+    private float volLowRange = .5f;
+    private float volHighRange = 1.0f;
+
+
+    private void Awake()
+    {
+        base.Awake();
+        source = this.GetComponent<AudioSource>();
+
+    }
 
     // Use this for initialization
     void Start()
@@ -28,7 +40,11 @@ public class InteractableOpen : InteractableObject_Abstract
         //m_rotateAround = this.transform.Find("RotateAround").gameObject;
         m_coperchio = this.transform.Find("Coperchio").gameObject;
 
+        
+
         m_equiped = true;
+
+
 
         createData(1);  //index 0, 1 significa che il rubino è ancora incastonato
     }
@@ -56,6 +72,7 @@ public class InteractableOpen : InteractableObject_Abstract
    
         if (m_inspectMode && !is_opened)
         {
+            source.PlayOneShot(openSound, 1f);
             //m_coperchio.transform.Rotate(-90, 0, 0);
             //m_coperchio.transform.RotateAround(m_rotateAround.transform.position, new Vector3(0, 0, 1), -2);
             StartCoroutine(ApriChiudiCoperchio(new Vector3(1,0,0) * -90, m_cameraSwitchTime));
@@ -67,6 +84,7 @@ public class InteractableOpen : InteractableObject_Abstract
         {
             StartCoroutine(ApriChiudiCoperchio(new Vector3(1, 0, 0) * 90, m_cameraSwitchTime));
             //m_coperchio.transform.RotateAround(m_rotateAround.transform.position, new Vector3(0, 0, 1), 2);
+            source.PlayOneShot(openSound, 1f);
             is_opened = false;
 
         }

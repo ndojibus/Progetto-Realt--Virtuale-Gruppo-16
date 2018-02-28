@@ -21,7 +21,8 @@ public class RayActivator : TriggerActionBase
     float m_actualTimer;            //timer decrescente
     bool m_activated = false;       //interruttore attivo/disattivo
     CameraTransitor m_transitorComponent;   //animatore della porta
-    
+
+    private AudioSource source;
 
     // inizializza il timer e l'animatore collegato alla porta, ricorda di impostare qual è la porta via editor
     public void Awake()
@@ -35,6 +36,8 @@ public class RayActivator : TriggerActionBase
         }
         else
             Debug.LogError(this.name + ": " + "Impossible to find door object!");
+
+        source = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,9 @@ public class RayActivator : TriggerActionBase
         {                                                          //se l'interruttore è attivo
             m_actualTimer -= Time.deltaTime;                                        //decrementa il timer con il tempo passato nell'ultimo frame 
             if (m_actualTimer <= 0f)
-            {                                              //se il timer è scaduto
+            {
+                source.PlayOneShot(source.clip);
+                //se il timer è scaduto
                 m_activated = false;                                                //disattiva l'interruttore
                 m_actualTimer = m_disableTime;                                      //resetta il timer
                 m_transitorComponent.forward = !m_transitorComponent.forward;       //attiva l'animazione che chiude la porta
@@ -64,7 +69,7 @@ public class RayActivator : TriggerActionBase
         {
             m_activated = true;                                                         //lo attivi         
             m_transitorComponent.forward = !m_transitorComponent.forward;               //attiva l'animazione che apre la porta
-
+            source.PlayOneShot(source.clip);
             if (m_optionalTransitors != null && m_optionalTransitors.Count > 0)
                 foreach (CameraTransitor transitor in m_optionalTransitors)
                     transitor.forward = !transitor.forward;
