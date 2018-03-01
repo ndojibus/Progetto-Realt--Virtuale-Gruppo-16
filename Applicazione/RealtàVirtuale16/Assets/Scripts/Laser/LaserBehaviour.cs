@@ -41,6 +41,10 @@ public class LaserBehaviour : MonoBehaviour {
     Vector3 m_collisionPoint;
     Vector3 m_newStartingPosition;
 
+    public AudioClip rotationSound;
+    private AudioSource source;
+    private bool isPlaying = false;
+
     public bool laserActive { get { return m_laserActive; } set { m_laserActive = value; } }
 
     public bool controlled{ get { return m_controlled; }
@@ -70,6 +74,9 @@ public class LaserBehaviour : MonoBehaviour {
 
         if (m_ignoreLayers == null)
             Debug.LogError(this.name + ": " + "Impossible to find layermask!");
+
+
+        source = this.GetComponent<AudioSource>();
 
     }
 
@@ -112,6 +119,19 @@ public class LaserBehaviour : MonoBehaviour {
 
             if (Input.GetAxis("Horizontal") > 0)
                 this.transform.RotateAround(this.transform.position, this.transform.up, m_angularVelocity * Time.deltaTime);
+
+            if (!isPlaying)
+            {
+                source.Play();
+                source.loop = true;
+                isPlaying = true;
+            }
+                
+        }
+        else
+        {
+            source.Stop();
+            isPlaying = false;
         }
 
     }
