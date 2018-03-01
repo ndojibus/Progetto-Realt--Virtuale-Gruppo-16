@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 public class LoadSceneOnClick : MonoBehaviour {
 
 
-    public void LoadByIndex(int sceneIndex)
+    public void NewGame()
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneControl.sceneControl.DeleteSave();
+        SceneManager.LoadScene(1);
+        
+
     }
+
+
+    
 }
