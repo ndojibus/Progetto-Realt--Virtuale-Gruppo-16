@@ -635,7 +635,7 @@ MonoBehaviour:
   m_actionText: 
   m_cameraSwitchTime: 1
   m_transitorID: 0
-  putInSound: {fileID: 8300000, guid: 822d02ed2a4d5724fbde8a8a01247d93, type: 3}
+  putInSound: {fileID: 8300000, guid: 2d9c8146ddb49154d848befcb49ecbe8, type: 3}
 --- !u!114 &114670409405844390
 MonoBehaviour:
   m_ObjectHideFlags: 1
