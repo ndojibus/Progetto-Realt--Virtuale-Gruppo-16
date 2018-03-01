@@ -7167,46 +7167,6 @@ Prefab:
       propertyPath: m_doorTransitor
       value: 
       objectReference: {fileID: 1053132311}
-    - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: objectID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.a
-      value: 0.9411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294966783
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
   m_IsPrefabParent: 0
@@ -8696,6 +8656,16 @@ Prefab:
       propertyPath: m_UIManager
       value: 
       objectReference: {fileID: 449943219}
+    - target: {fileID: 82328835189830412, guid: 7d6fac9b7969fb24c9831d56582c88b4,
+        type: 2}
+      propertyPath: MaxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 82328835189830412, guid: 7d6fac9b7969fb24c9831d56582c88b4,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6fac9b7969fb24c9831d56582c88b4, type: 2}
   m_IsPrefabParent: 0
@@ -8848,59 +8818,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 1120313965017286, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
-      propertyPath: m_Name
-      value: FiaccolaInterruttore (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
         type: 2}
       propertyPath: m_doorTransitor
       value: 
       objectReference: {fileID: 965311863}
-    - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_description
-      value: Un altro interruttore... Devo scappare subito
-      objectReference: {fileID: 0}
-    - target: {fileID: 114618812731717376, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: objectID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_BackGroundColor.a
-      value: 0.9411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 20939019843045894, guid: dc9a485239f803b49b2b4ae7aadc4a19,
-        type: 2}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294966783
+    - target: {fileID: 1120313965017286, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
+      propertyPath: m_Name
+      value: FiaccolaInterruttore (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc9a485239f803b49b2b4ae7aadc4a19, type: 2}
@@ -9123,11 +9048,6 @@ Prefab:
       propertyPath: m_Name
       value: MummiaV3 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114771139440138174, guid: 7d6fac9b7969fb24c9831d56582c88b4,
-        type: 2}
-      propertyPath: m_UIManager
-      value: 
-      objectReference: {fileID: 449943219}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6fac9b7969fb24c9831d56582c88b4, type: 2}
   m_IsPrefabParent: 0

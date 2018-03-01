@@ -14,6 +14,9 @@ public class InteractableLaser : InteractableObject_Abstract {
     LaserBehaviour m_laser;
     GameObject m_item;
 
+    public AudioClip putInSound;
+    private AudioSource source;
+
     private void Awake()
     {
 
@@ -26,6 +29,8 @@ public class InteractableLaser : InteractableObject_Abstract {
         m_item = this.transform.Find("LaserStart").Find("Rubino").gameObject;
         if (m_item == null)
             Debug.LogError(this.name + ": " + "Select an item!");
+
+        source = this.GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -87,6 +92,8 @@ public class InteractableLaser : InteractableObject_Abstract {
 
     private void InsertRuby()
     {
+
+        source.PlayOneShot(putInSound, 1f);
         //preso dall'inventario
         m_inventory.UseRuby();
 

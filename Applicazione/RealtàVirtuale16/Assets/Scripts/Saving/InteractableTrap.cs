@@ -7,6 +7,9 @@ public class InteractableTrap : InteractableObject_Abstract
     CameraTransitor m_trapTransitor;
     GameObject m_item;
 
+    public AudioClip putInSound;
+    private AudioSource source;
+
     private void Awake()
     {
         base.Awake();
@@ -14,6 +17,8 @@ public class InteractableTrap : InteractableObject_Abstract
         m_item = this.transform.Find("Hank").gameObject;
         if (m_item == null)
             Debug.LogError(this.name + ": " + "Select an item!");
+
+        source = this.GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -58,6 +63,8 @@ public class InteractableTrap : InteractableObject_Abstract
 
     private void InsertRuby()
     {
+
+        source.PlayOneShot(putInSound, 1f);
         //preso dall'inventario
         m_inventory.UseKey();
 

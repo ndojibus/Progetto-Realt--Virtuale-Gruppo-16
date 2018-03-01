@@ -7,8 +7,19 @@ public class InteractableFiaccola : InteractableObject_Abstract
     [SerializeField]
     CameraTransitor m_doorTransitor;
     
-        GameObject m_fiaccola;
+    GameObject m_fiaccola;
     CameraTransitor m_fiaccolaTransitor;
+
+    
+    public AudioClip levaSound;
+    public AudioClip doorSound;
+    private AudioSource source;
+
+    private void Awake()
+    {
+        base.Awake();
+        source = this.GetComponent<AudioSource>();
+    }
 
 
 
@@ -45,11 +56,18 @@ public class InteractableFiaccola : InteractableObject_Abstract
             m_fiaccolaTransitor.forward = true;
 
         if (m_equiped && m_doorTransitor.forward != true)
+        {
+            source.PlayOneShot(doorSound);
             m_doorTransitor.forward = true;
+        }
+            
 
 
         if (m_inspectMode && !m_equiped && Input.GetKeyDown(KeyCode.E) && !m_camerasInTransition)
         {
+
+            source.PlayOneShot(levaSound);
+
             m_equiped = true;
             UpdateUI();
         }

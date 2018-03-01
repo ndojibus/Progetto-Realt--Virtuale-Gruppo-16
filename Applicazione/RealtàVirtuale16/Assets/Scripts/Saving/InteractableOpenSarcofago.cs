@@ -9,12 +9,20 @@ public class InteractableOpenSarcofago : InteractableObject_Abstract
     
     GameObject m_coperchio;
 
-    
+    public AudioClip openSound;
+    public AudioClip pickUpSound;
+    private AudioSource source;
+
+
     private bool is_opened = false;
 
+    private void Awake()
+    {
+        base.Awake();
+        source = this.GetComponent<AudioSource>();
 
+    }
 
-    // Use this for initialization
     void Start()
     {
         base.Start();
@@ -58,6 +66,8 @@ public class InteractableOpenSarcofago : InteractableObject_Abstract
         {
             //m_coperchio.transform.Rotate(-90, 0, 0);
             //m_coperchio.transform.RotateAround(m_rotateAround.transform.position, new Vector3(0, 0, 1), -2);
+
+            source.PlayOneShot(openSound, 1f);
             StartCoroutine(ApriChiudiCoperchio( m_cameraSwitchTime));
            
             is_opened = true;
@@ -83,6 +93,8 @@ public class InteractableOpenSarcofago : InteractableObject_Abstract
 
     private void TakeKey()
     {
+
+        source.PlayOneShot(pickUpSound);
 
         //inserito nell'inventario
         m_inventory.PickKey();

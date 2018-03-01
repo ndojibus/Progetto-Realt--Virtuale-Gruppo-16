@@ -13,10 +13,10 @@ public class InteractableOpen : InteractableObject_Abstract
     private bool is_opened=false;
 
     public AudioClip openSound;
+    public AudioClip pickUpSound;
     private AudioSource source;
 
-    private float volLowRange = .5f;
-    private float volHighRange = 1.0f;
+   
 
 
     private void Awake()
@@ -113,6 +113,8 @@ public class InteractableOpen : InteractableObject_Abstract
 
     private void TakeRuby()
     {
+
+        source.PlayOneShot(pickUpSound);
 
         //inserito nell'inventario
         m_inventory.PickRuby();
