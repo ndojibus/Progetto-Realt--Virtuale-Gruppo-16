@@ -49,7 +49,7 @@ public class RayActivator : TriggerActionBase
             m_actualTimer -= Time.deltaTime;                                        //decrementa il timer con il tempo passato nell'ultimo frame 
             if (m_actualTimer <= 0f)
             {
-                source.PlayOneShot(source.clip);
+                
                 //se il timer è scaduto
                 m_activated = false;                                                //disattiva l'interruttore
                 m_actualTimer = m_disableTime;                                      //resetta il timer
@@ -58,6 +58,8 @@ public class RayActivator : TriggerActionBase
                 if (m_optionalTransitors != null && m_optionalTransitors.Count > 0)
                     foreach (CameraTransitor transitor in m_optionalTransitors)
                         transitor.forward = !transitor.forward;
+
+                source.PlayOneShot(source.clip);
 
             }
         }
@@ -69,10 +71,12 @@ public class RayActivator : TriggerActionBase
         {
             m_activated = true;                                                         //lo attivi         
             m_transitorComponent.forward = !m_transitorComponent.forward;               //attiva l'animazione che apre la porta
-            source.PlayOneShot(source.clip);
+            
             if (m_optionalTransitors != null && m_optionalTransitors.Count > 0)
                 foreach (CameraTransitor transitor in m_optionalTransitors)
                     transitor.forward = !transitor.forward;
+
+            source.PlayOneShot(source.clip);
         }
 
         m_actualTimer = m_disableTime;                                                  //in ogni caso resetta il timer
