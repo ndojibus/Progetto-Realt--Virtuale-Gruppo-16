@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 33468836337723488}
   - component: {fileID: 65939197864151616}
   - component: {fileID: 114493789066120770}
+  - component: {fileID: 82979731080508240}
   m_Layer: 0
   m_Name: LaserGatto
   m_TagString: Untagged
@@ -155,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4531233780460860}
   - component: {fileID: 114672582220874208}
+  - component: {fileID: 82183395596037314}
   m_Layer: 0
   m_Name: LaserStart
   m_TagString: Untagged
@@ -289,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154552180203168}
   m_LocalRotation: {x: 0.00000008146034, y: 4.190976e-24, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -3.277, y: 0, z: -2.219}
   m_LocalScale: {x: 0.25, y: 1, z: 0.25}
   m_Children:
   - {fileID: 4769055731627416}
@@ -635,6 +637,168 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169334164824910}
   m_Enabled: 0
+--- !u!82 &82183395596037314
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614090508617702}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243149638093295334, guid: 1447d5a28ced407438d164fdb7d210f8,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: dfad9e8599cbf3544a5542e67313c466, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82979731080508240
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154552180203168}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243149638093295334, guid: 1447d5a28ced407438d164fdb7d210f8,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108387073780154308
 Light:
   m_ObjectHideFlags: 1
@@ -683,10 +847,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 2
-  m_description: La bocca sembra poter contenere qualcosa ...
+  m_description: La bocca della statua ha le stesse dimensioni della gemma
   m_actionText: 
   m_cameraSwitchTime: 1
   m_transitorID: 0
+  m_active: 0
+  m_description2: "La luce pu\xF2 essere direzionata manualmente sulla parete"
+  putInSound: {fileID: 8300000, guid: 324e5f28f40b1164bad4efa0856937e4, type: 3}
 --- !u!114 &114672582220874208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,6 +874,7 @@ MonoBehaviour:
   m_ignoreLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  rotationSound: {fileID: 8300000, guid: dfad9e8599cbf3544a5542e67313c466, type: 3}
 --- !u!114 &114735194815283842
 MonoBehaviour:
   m_ObjectHideFlags: 1

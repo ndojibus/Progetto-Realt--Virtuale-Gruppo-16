@@ -40,6 +40,9 @@ public class UIManager : MonoBehaviour {
     private bool inspectmode;
     bool GamePaused = false;
 
+    public AudioClip gameOverSound;
+    private AudioSource source;
+
 
     private void Awake()
     {
@@ -67,13 +70,7 @@ public class UIManager : MonoBehaviour {
         {
             Debug.Log(this.name + ": " +"Impossible to find Inventory Panel");
         }
-
-
-
-        
-
-        
-
+ 
         m_descriptionPanel = this.transform.Find("DescriptionPanel").gameObject;
         m_descriptionText = m_descriptionPanel.GetComponentInChildren<Text>();
         if (m_descriptionPanel == null || m_descriptionText== null)
@@ -119,6 +116,8 @@ public class UIManager : MonoBehaviour {
         m_loadingPanel = this.transform.Find("LoadingPanel").gameObject;
         m_canvasGroupLoading = m_loadingPanel.GetComponent<CanvasGroup>();
 
+        source = this.GetComponent<AudioSource>();
+
     }
 
     private void Start()
@@ -149,6 +148,8 @@ public class UIManager : MonoBehaviour {
     public void DeathScreen()
     {
         //m_GameOverPanel.SetActive(true);
+
+        source.PlayOneShot(gameOverSound, 1f);
 
         StartCoroutine(FadeCanvasGroup(m_canvasGroupGameOver, 0, 1));
         m_canvasGroupGameOver.interactable = true;

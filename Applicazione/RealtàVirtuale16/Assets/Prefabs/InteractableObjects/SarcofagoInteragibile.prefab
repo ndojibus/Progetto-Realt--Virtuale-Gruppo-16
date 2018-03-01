@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 4676304722478446}
   - component: {fileID: 65406887213265628}
   - component: {fileID: 114338351522472790}
+  - component: {fileID: 82200013946343162}
   m_Layer: 0
   m_Name: SarcofagoInteragibile
   m_TagString: Untagged
@@ -1270,7 +1271,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580047168702144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9099998, y: 0, z: 14.274}
+  m_LocalPosition: {x: -1.4, y: 0, z: 14.274}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4454116815344910}
@@ -1502,7 +1503,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 234b8d002d8ed604cb67acb669b5ca6b, type: 2}
+  - {fileID: 2100000, guid: 755f1a1f824167e4389558f597b3cdd2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1536,7 +1537,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 234b8d002d8ed604cb67acb669b5ca6b, type: 2}
+  - {fileID: 2100000, guid: be0b204a4ddb0444baaa6fe733999950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1686,6 +1687,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000006, y: 0.020000001, z: 0.020000001}
   m_Center: {x: -0.0049999994, y: 0, z: 0}
+--- !u!82 &82200013946343162
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580047168702144}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243149638093295334, guid: 1447d5a28ced407438d164fdb7d210f8,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95947847418901592
 Animator:
   serializedVersion: 3
@@ -1735,10 +1817,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 5
-  m_description: Il faraone ha visto tempi migliori... Tiene qualcosa in mano!
+  m_description: Il faraone regge in mano la chiave per arrivare al tesoro
   m_actionText: 
   m_cameraSwitchTime: 1
   m_transitorID: 5
+  openSound: {fileID: 8300000, guid: 76b32db582259534a94018dbb63aed50, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 4ef2e7cbc427abf46ab3f1f9af34d31e, type: 3}
 --- !u!124 &124583532404613030
 Behaviour:
   m_ObjectHideFlags: 1
