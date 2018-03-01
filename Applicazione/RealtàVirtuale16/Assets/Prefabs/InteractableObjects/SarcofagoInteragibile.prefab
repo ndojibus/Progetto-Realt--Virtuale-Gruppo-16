@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_cameraSwitchTime: 1
   m_transitorID: 5
   openSound: {fileID: 8300000, guid: 76b32db582259534a94018dbb63aed50, type: 3}
-  pickUpSound: {fileID: 8300000, guid: 4ef2e7cbc427abf46ab3f1f9af34d31e, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 8f94cdf84f4e0f748b407fa9dadf7226, type: 3}
 --- !u!124 &124583532404613030
 Behaviour:
   m_ObjectHideFlags: 1
