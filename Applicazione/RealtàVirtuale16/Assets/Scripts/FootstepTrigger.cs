@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class FootstepTrigger : MonoBehaviour {
 
+
+    private AudioSource footstep;
+
+    private float timerReset = 0.18f;
+
+    private bool once= false;
+
+
+
+    private void Awake()
+    {
+        footstep = this.GetComponent<AudioSource>();
+        if (footstep == null)
+        {
+            Debug.LogError(this.name + ": Impossible to find audio source!");
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
-        AudioSource footstep = this.GetComponent<AudioSource>();
-        if (footstep != null)
-        {   if (footstep.time<0.1f)
-                footstep.PlayOneShot(footstep.clip);
+        if (!once)
+        {
+            footstep.PlayOneShot(footstep.clip);
+            once = true;
+            Invoke("ResetFootStep", timerReset);
         }
-        else
-            Debug.LogError(this.name + ": Impossible to find audio source!");
+        
+ 
+    }
+
+    private void ResetFootStep()
+    {
+        once = false;
     }
 }

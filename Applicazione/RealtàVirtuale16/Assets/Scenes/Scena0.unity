@@ -532,6 +532,12 @@ Prefab:
       propertyPath: m_Name
       value: FiaccolaDaMuro (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 82593371222256446, guid: 48f2c030754228d469132fdf3a80be37,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243626509690165098, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
   m_IsPrefabParent: 0
@@ -831,6 +837,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 82459529717621376, guid: 644a9eafa645ee84bbc3ed44e8155be3,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243884179721071270, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
+    - target: {fileID: 82741855896145436, guid: 644a9eafa645ee84bbc3ed44e8155be3,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243884179721071270, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 644a9eafa645ee84bbc3ed44e8155be3, type: 2}
   m_IsPrefabParent: 0
@@ -1204,6 +1222,12 @@ Prefab:
       propertyPath: m_Name
       value: FiaccolaDaMuro (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 82593371222256446, guid: 48f2c030754228d469132fdf3a80be37,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243626509690165098, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
   m_IsPrefabParent: 0
@@ -1650,6 +1674,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 82055858428737750, guid: 0d8d296253662a04f9a7d8f11de07f5f,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243149638093295334, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d8d296253662a04f9a7d8f11de07f5f, type: 2}
   m_IsPrefabParent: 0
@@ -2178,6 +2208,12 @@ Prefab:
       propertyPath: m_Name
       value: FiaccolaDaMuro (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 82593371222256446, guid: 48f2c030754228d469132fdf3a80be37,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243626509690165098, guid: 1447d5a28ced407438d164fdb7d210f8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
   m_IsPrefabParent: 0
