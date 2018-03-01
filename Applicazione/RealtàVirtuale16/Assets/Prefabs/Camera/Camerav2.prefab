@@ -112,7 +112,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.62552905, g: 0.684092, b: 0.7761194, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.9411765}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -124,7 +124,7 @@ Camera:
   field of view: 45
   orthographic: 0
   orthographic size: 100
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294966783
