@@ -10,6 +10,8 @@ public class Spuntoni : MonoBehaviour {
     private GameObject FilaSpuntoni;
     public AudioClip spuntoniSound;
     private AudioSource source;
+    private bool once = false;
+    public bool sound;
 
 
 
@@ -31,9 +33,13 @@ public class Spuntoni : MonoBehaviour {
 
         FilaSpuntoni.transform.localPosition = new Vector3(Mathf.PingPong(Time.time*velocity, 1.65f), FilaSpuntoni.transform.localPosition.y, FilaSpuntoni.transform.localPosition.z);
         
-        if (FilaSpuntoni.transform.localPosition.x <= 0.1)
+        if (sound && FilaSpuntoni.transform.localPosition.x <= 0.1 &&!once)
         {
             source.PlayOneShot(spuntoniSound);
+            once = true;
+        }else
+    {
+            once = false;
         }
         
 
