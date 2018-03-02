@@ -143,6 +143,17 @@ public class UIManager : MonoBehaviour {
     }
 
 
+    public void ActiveDescriptionPanel()
+    {
+        m_descriptionPanel.SetActive(true);
+    }
+
+    public void DisableDescriptionPanel()
+    {
+        m_descriptionPanel.SetActive(false);
+    }
+
+
     
     
     public void DeathScreen()
