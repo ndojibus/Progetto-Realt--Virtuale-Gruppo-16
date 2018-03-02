@@ -28,6 +28,7 @@ public class SceneControl : MonoBehaviour
 
     string m_newSceneName;
     bool m_newSceneLoading = false;
+    bool m_isSaving = false;
 
     // Use this for initialization
     void Awake()
@@ -99,6 +100,16 @@ public class SceneControl : MonoBehaviour
 
     public void DeleteSave() {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+            Invoke("DeleteSaveFuncion", 0.25f);
+            m_isSaving = true;
+        }
+    }
+
+    private void DeleteSaveFunction()
+    {
+        if (m_isSaving)
+        {
+            m_isSaving = false;
             File.Delete(Application.persistentDataPath + "/playerInfo.dat");
         }
     }
