@@ -2950,92 +2950,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f2c030754228d469132fdf3a80be37, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &348993053 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1737381536798222, guid: fcfb4235c28420b4193ea493c5abbf58,
-    type: 2}
-  m_PrefabInternal: {fileID: 1891048119}
---- !u!82 &348993054
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 348993053}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243196009818013050, guid: 1447d5a28ced407438d164fdb7d210f8,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9ddbc87e0a0580c458fd2fb107e33e81, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.2
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 20
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &355090493 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1101676059962454, guid: 1be4e7adb3dae7047bdceceda3f6f1cb,
@@ -11990,6 +11904,16 @@ Prefab:
       propertyPath: m_Name
       value: MummiaV3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 82328835189830412, guid: 7d6fac9b7969fb24c9831d56582c88b4,
+        type: 2}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82814918730159248, guid: 7d6fac9b7969fb24c9831d56582c88b4,
+        type: 2}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6fac9b7969fb24c9831d56582c88b4, type: 2}
   m_IsPrefabParent: 0
@@ -17962,11 +17886,6 @@ Prefab:
       propertyPath: m_UIManager
       value: 
       objectReference: {fileID: 449943219}
-    - target: {fileID: 114881717871723404, guid: fcfb4235c28420b4193ea493c5abbf58,
-        type: 2}
-      propertyPath: spuntoniSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ddbc87e0a0580c458fd2fb107e33e81, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcfb4235c28420b4193ea493c5abbf58, type: 2}
   m_IsPrefabParent: 0
