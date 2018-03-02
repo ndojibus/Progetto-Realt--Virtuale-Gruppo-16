@@ -10,17 +10,13 @@ public class ObjectSpawn : MonoBehaviour {
     [SerializeField]
     private string m_triggerTag = "Player";
 
-    public AudioClip actionSound;
+    
     public string m_tutorial;
-    private AudioSource source;
+    
 
-    public UIManager m_uiManagaer;
+    public UIManager m_uiManager;
 
-
-    private void Awake()
-    {
-        source = this.GetComponent<AudioSource>();
-    }
+    
 
 
     void OnTriggerEnter(Collider other)
@@ -28,14 +24,12 @@ public class ObjectSpawn : MonoBehaviour {
         if (other.tag == m_triggerTag)
         {
 
-            //actionsound
-
-            source.PlayOneShot(actionSound, 1f);
+            
 
             //tutorial
 
-            m_uiManagaer.SetDescriptionText(m_tutorial);
-            m_uiManagaer.ActiveDescriptionPanel();
+            m_uiManager.SetDescriptionText(m_tutorial);
+            m_uiManager.ActiveDescriptionPanel();
 
             //apparelamummia
             foreach (GameObject obj in m_objectList)
@@ -47,10 +41,5 @@ public class ObjectSpawn : MonoBehaviour {
     }
 
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        
-        m_uiManagaer.DisableDescriptionPanel();
-    }
+    
 }

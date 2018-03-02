@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114335566390485934}
   m_Layer: 0
   m_Name: FilaSpuntoni
-  m_TagString: Untagged
+  m_TagString: Spuntoni
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ Transform:
   - {fileID: 4230627401409842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4230627401409842
 Transform:
   m_ObjectHideFlags: 1

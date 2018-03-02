@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour {
     bool GamePaused = false;
 
     public AudioClip gameOverSound;
+    public AudioClip actionSound;
     private AudioSource source;
 
 
@@ -146,6 +147,8 @@ public class UIManager : MonoBehaviour {
     public void ActiveDescriptionPanel()
     {
         m_descriptionPanel.SetActive(true);
+        source.PlayOneShot(actionSound);
+        Invoke("DisableDescriptionPanel", 2f);
     }
 
     public void DisableDescriptionPanel()

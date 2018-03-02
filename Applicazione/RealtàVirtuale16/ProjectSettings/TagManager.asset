@@ -8,6 +8,7 @@ TagManager:
   - Rubino
   - Enemy
   - Spuntoni
+  - TriggerSuonoSpuntoni
   layers:
   - Default
   - TransparentFX
