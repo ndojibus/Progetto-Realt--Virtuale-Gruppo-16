@@ -7,18 +7,21 @@ public class InteractableEnd : InteractableObject_Abstract
 {
 
     [SerializeField]
-    CameraTransitor m_doorTransitor;
+    CameraTransitor m_doorTransitorFirst;
+    [SerializeField]
+    CameraTransitor m_doorTransitorSecond;
 
     GameObject m_pickup1;
-    GameObject m_pickup2;
 
     bool m_noMorePick = false;
     // Use this for initialization
     void Start () {
         base.Start();
 
-        if (m_doorTransitor == null)
-            Debug.LogError(this.name + ": No door transitor selected");
+        if (m_doorTransitorFirst == null)
+            Debug.LogError(this.name + ": No door transitor1 selected");
+        if (m_doorTransitorSecond == null)
+            Debug.LogError(this.name + ": No door transitor2 selected");
 
         m_pickup1 = this.transform.Find("Pickup1").gameObject;
         if (m_pickup1 == null)
@@ -31,8 +34,11 @@ public class InteractableEnd : InteractableObject_Abstract
 
     // Update is called once per frame
     void Update () {
-        if (m_equiped && m_equiped != m_doorTransitor.forward)
-            m_doorTransitor.forward = !m_doorTransitor.forward;
+        if (m_equiped && m_equiped != m_doorTransitorFirst.forward)
+        {
+            m_doorTransitorFirst.forward = !m_doorTransitorFirst.forward;
+            m_doorTransitorSecond.forward = !m_doorTransitorSecond.forward;
+        }
 
         base.Update();
 
