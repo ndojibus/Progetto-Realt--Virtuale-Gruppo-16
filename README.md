@@ -4,9 +4,9 @@ Videogame made for Realtà Virtuale's course in Politecnico di Torino
 
 Made by:
 
-Claudio Gianfrate
-Francesco Fogliano
-Andrea Calosso
+Claudio Gianfrate,
+Francesco Fogliano,
+Andrea Calosso,
 Antonio Scaldaferri
 
 If you want to try out, here is a release version:
